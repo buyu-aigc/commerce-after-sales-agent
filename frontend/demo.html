@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Commerce Support · 售后工作流</title><link rel="stylesheet" href="/static/demo.css"></head>
+<body>
+<header><div><strong>Commerce Support</strong><span>售后自助服务与人工审核</span></div><nav><a href="/customer">消费者入口</a><a href="/review">审核台</a><button id="reset">新建会话</button></nav></header>
+<main>
+<div class="sessionbar"><span id="mode" role="status">正在读取运行状态</span><small id="session"></small></div>
+<div class="workspace">
+<section class="conversation"><div class="sectionhead"><h1>客户对话</h1><span>演示账户 · Olist</span></div>
+<div class="order"><span>当前订单</span><strong>203096f03d82e0dffbc41ebc2e2bcfb7</strong><small>公开历史订单 · 写操作使用本地业务服务</small></div>
+<div id="chat" aria-live="polite"><div class="empty">您好，请问需要处理什么售后问题？</div></div>
+<form id="compose"><label for="message">您的诉求</label><textarea id="message" rows="3" maxlength="2000" placeholder="请输入订单问题或售后诉求" required></textarea><div class="composebar"><select id="scenario" aria-label="示例请求"><option value="">选择示例请求</option><option value="order">查询订单</option><option value="refund">申请退款</option><option value="multi">查询、政策与退款</option><option value="policy">咨询退款政策</option><option value="cancel">申请取消已送达订单</option></select><button id="send" type="submit">发送</button></div></form>
+<p id="status" role="status"></p></section>
+<section class="review"><div class="sectionhead"><h2>处理与审核</h2><button id="refresh" title="刷新审核状态">刷新</button></div>
+<form id="login"><label for="token">审核凭证</label><div class="loginrow"><input id="token" type="password" autocomplete="off" placeholder="输入 REVIEW_API_TOKEN" required><button>连接</button></div></form>
+<div class="reviewstatus" id="reviewStatus">审核台未连接</div>
+<dl id="facts"></dl><div id="evidence"></div>
+<div class="actions"><button id="approve" disabled>批准申请</button><button id="reject" disabled>驳回申请</button></div>
+<h3>执行记录</h3><ol id="events"><li class="muted">暂无执行记录</li></ol>
+<details><summary>原始审核数据</summary><pre id="raw">尚未读取</pre></details>
+</section></div>
+</main><script src="/static/demo.js"></script></body></html>

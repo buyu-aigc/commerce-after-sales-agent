@@ -1,0 +1,58 @@
+{
+  "schema_version": "2.0",
+  "published_at": "2026-11-07",
+  "scope": "评测集：52 段客户对话、99 个计分诉求，自动判定，模型 deepseek-flash，每个版本跑一遍。订单是 Olist 公开数据，政策是演示规则，不是线上业务指标。详见 evaluation/heldout/。",
+  "baselines": {
+    "heldout_current": {
+      "label": "本版本（分级确认）",
+      "requests_correct": 95,
+      "requests_total": 99,
+      "cases_complete": 48,
+      "cases_total": 52,
+      "auto_realized": 12,
+      "auto_total": 12,
+      "human_involved": 28,
+      "policy_floor": 26,
+      "wrong_executions": 0,
+      "high_risk_auto": 0,
+      "leaks": 0,
+      "customer_clicks": 14,
+      "tokens": 363192,
+      "source": "evaluation/heldout/results.json"
+    },
+    "heldout_all_confirm": {
+      "label": "改进版（每个写操作都确认）",
+      "requests_correct": 97,
+      "requests_total": 99,
+      "cases_complete": 50,
+      "cases_total": 52,
+      "auto_realized": 12,
+      "auto_total": 12,
+      "human_involved": 27,
+      "policy_floor": 26,
+      "wrong_executions": 0,
+      "high_risk_auto": 0,
+      "leaks": 0,
+      "customer_clicks": 45,
+      "tokens": 362978,
+      "source": "evaluation/heldout/results.json"
+    },
+    "heldout_baseline": {
+      "label": "改进前的基线",
+      "requests_correct": 87,
+      "requests_total": 99,
+      "cases_complete": 43,
+      "cases_total": 52,
+      "auto_realized": 10,
+      "auto_total": 12,
+      "human_involved": 33,
+      "policy_floor": 26,
+      "wrong_executions": 0,
+      "high_risk_auto": 0,
+      "leaks": 0,
+      "customer_clicks": 0,
+      "tokens": 682848,
+      "source": "evaluation/heldout/results.json"
+    }
+  }
+}

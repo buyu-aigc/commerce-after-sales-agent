@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "policy_retrieval": {
+    "top1_min": 1.0,
+    "recall_at_3_min": 1.0,
+    "mrr_at_3_min": 1.0,
+    "source_type_at_1_min": 1.0,
+    "evidence_integrity_at_3_min": 1.0
+  },
+  "knowledge_pack": {
+    "document_count_min": 3,
+    "section_count_min": 19,
+    "required_source_types": [
+      "policy",
+      "faq",
+      "merchant_rule"
+    ]
+  },
+  "support_retrieval": {
+    "intent_at_1_min": 0.77,
+    "intent_at_5_min": 0.91,
+    "intent_mrr_at_5_min": 0.83
+  }
+}

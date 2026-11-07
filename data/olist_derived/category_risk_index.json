@@ -1,0 +1,2389 @@
+{
+  "metadata": {
+    "source": "Olist Brazilian E-Commerce Public Dataset",
+    "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+    "category_count": 73,
+    "basis": "Aggregated from full Olist orders/items/products/payments/reviews/sellers/customers tables"
+  },
+  "categories": {
+    "agro_industry_and_commerce": {
+      "category": "agro_industry_and_commerce",
+      "order_count": 182,
+      "delayed_order_count": 7,
+      "low_review_order_count": 27,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0385,
+      "low_review_rate": 0.1484,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.26,
+      "avg_review_score": 4.02,
+      "avg_payment_value": 430.65,
+      "sample_order_ids": [
+        "ee990334acb0ff9333b01afa465f3006",
+        "f09d0203a51785e9ba9279607c38958c",
+        "e4865416690d1f1fdad49bc94f871de6",
+        "8c49b48367363f2894bccea3248be15d",
+        "d92ec01edb4390e4a8e311202039e06a"
+      ],
+      "sample_delayed_order_ids": [
+        "e15ea1f7534d809bdc05d3c5ecedf24c",
+        "16be5e70ff2ab4fa7caf1f4350750711",
+        "23aee6ac2f5a0a3056aa62c615974c0c",
+        "1f68afd1b515cc9202ccaadf56181d57",
+        "3c12bc6e3b1b88c14e55b9c38fddecf6"
+      ],
+      "sample_low_review_order_ids": [
+        "fb2dccfadca8cd6ebddc5d10ae48d1f7",
+        "61d9b48d85b81cc207e948c13dbd633b",
+        "9f2940e7c87aa56f8dab37ac0be23138",
+        "16be5e70ff2ab4fa7caf1f4350750711",
+        "23aee6ac2f5a0a3056aa62c615974c0c"
+      ]
+    },
+    "air_conditioning": {
+      "category": "air_conditioning",
+      "order_count": 253,
+      "delayed_order_count": 10,
+      "low_review_order_count": 45,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0395,
+      "low_review_rate": 0.1779,
+      "cancellation_rate": 0.0079,
+      "avg_delay_days": -13.93,
+      "avg_review_score": 3.98,
+      "avg_payment_value": 245.24,
+      "sample_order_ids": [
+        "1790eea0b567cf50911c057cf20f90f9",
+        "fa516182d28f96f5f5c651026b0749ee",
+        "b75b4f6e7c5fe3fa05707992a88d9d38",
+        "257d1faedcbe9d328080c6ec04c8f819",
+        "270d816a580cef9525ac73d6c4b87255"
+      ],
+      "sample_delayed_order_ids": [
+        "a2a216a3b0034fa46d13dfa2ef86a62c",
+        "7e486325a643ff4ed591ad4fd1b80d16",
+        "88596e84592cd67e51c4727732dddde0",
+        "53f3cb0dcdecd62675e235186f24adcf",
+        "c68531b87a0e5baf9b8f526ec20d04e5"
+      ],
+      "sample_low_review_order_ids": [
+        "1790eea0b567cf50911c057cf20f90f9",
+        "257d1faedcbe9d328080c6ec04c8f819",
+        "017c9c82265e832840e4209750680e94",
+        "594bad57a253656f86d8282c5365be89",
+        "c6b82ae325fa2da7b9344f222b76908c"
+      ]
+    },
+    "art": {
+      "category": "art",
+      "order_count": 202,
+      "delayed_order_count": 12,
+      "low_review_order_count": 33,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0594,
+      "low_review_rate": 0.1634,
+      "cancellation_rate": 0.005,
+      "avg_delay_days": -12.88,
+      "avg_review_score": 4.0,
+      "avg_payment_value": 142.65,
+      "sample_order_ids": [
+        "a890088df39d4c062a07081527034784",
+        "8d994041d6127d2acc8d13aad557e75f",
+        "91051e0aea46cd16d99a2697b02d83d3",
+        "7a0d4292964e6d5c0fe0fd4238ee6500",
+        "24012690fe6562f4a154875f2f64ed93"
+      ],
+      "sample_delayed_order_ids": [
+        "98886a41872c9df13b990863b330f710",
+        "433a9459ece4c6083b2aa89b2480a1a8",
+        "6a07231081720ded5c208be252bdc004",
+        "4e2d3cbe10946bcaa7579f3de2cca091",
+        "d17f1a91c60b8fe9d060b2579f04fd0a"
+      ],
+      "sample_low_review_order_ids": [
+        "a890088df39d4c062a07081527034784",
+        "8d994041d6127d2acc8d13aad557e75f",
+        "430bd310105f069ac72ef7758f40299b",
+        "ee972a8714e62c729101427fc247d37e",
+        "8c9e6ed4aa9e011a36594abdd88d96cf"
+      ]
+    },
+    "arts_and_craftmanship": {
+      "category": "arts_and_craftmanship",
+      "order_count": 23,
+      "delayed_order_count": 1,
+      "low_review_order_count": 3,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0435,
+      "low_review_rate": 0.1304,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -6.65,
+      "avg_review_score": 4.17,
+      "avg_payment_value": 97.46,
+      "sample_order_ids": [
+        "cc9760bf7b5d5b74c4d1eb1ab6405b50",
+        "99496f27b38d83724e8dea944a320b44",
+        "1b546846285271f61f42bf2954352172",
+        "08322b6d209359f491acb1e5f89cb371",
+        "b9a703ce4f5ae752f1ea894775d250ff"
+      ],
+      "sample_delayed_order_ids": [
+        "31938103922393f681c7f0c0fc14cd20"
+      ],
+      "sample_low_review_order_ids": [
+        "cc9760bf7b5d5b74c4d1eb1ab6405b50",
+        "b9a703ce4f5ae752f1ea894775d250ff",
+        "31938103922393f681c7f0c0fc14cd20"
+      ]
+    },
+    "audio": {
+      "category": "audio",
+      "order_count": 350,
+      "delayed_order_count": 41,
+      "low_review_order_count": 78,
+      "canceled_order_count": 1,
+      "delay_rate": 0.1171,
+      "low_review_rate": 0.2229,
+      "cancellation_rate": 0.0029,
+      "avg_delay_days": -10.04,
+      "avg_review_score": 3.82,
+      "avg_payment_value": 165.97,
+      "sample_order_ids": [
+        "82daed31f80350ce51f518369a8d181c",
+        "20a6605d8265ca357d15eaf4f6710f63",
+        "91db217544d0eac98354b11f2f35abcb",
+        "e63271442e778d83ae9868408c1028e7",
+        "2d8a0bc4abbb7bbb3a420f2219f02f93"
+      ],
+      "sample_delayed_order_ids": [
+        "bf6ae1909b2e970bb1c4f1119b324b64",
+        "b1791785e507945110408ae91ef3fa18",
+        "3d7ee397cbe71826e767837af0d81c2a",
+        "5c1ae73856bf1d09958ec5ae3a64b73a",
+        "a23f721497b1d681e6408ab48c1cf387"
+      ],
+      "sample_low_review_order_ids": [
+        "b1791785e507945110408ae91ef3fa18",
+        "ca0b30de0e60967b91fd5366743ba643",
+        "70303c8f09c18171b0c0b226b699436e",
+        "5f85f13b7f5a2f767c222724ec8f2525",
+        "1ce0d4e564057882e017216607a2c196"
+      ]
+    },
+    "auto": {
+      "category": "auto",
+      "order_count": 3897,
+      "delayed_order_count": 278,
+      "low_review_order_count": 575,
+      "canceled_order_count": 24,
+      "delay_rate": 0.0713,
+      "low_review_rate": 0.1475,
+      "cancellation_rate": 0.0062,
+      "avg_delay_days": -11.21,
+      "avg_review_score": 4.08,
+      "avg_payment_value": 176.71,
+      "sample_order_ids": [
+        "47770eb9100c2d0c44946d9cf07ec65d",
+        "a4591c265e18cb1dcee52889e2d8acc3",
+        "6514b8ad8028c9f2cc2374ded245783f",
+        "68e48e68da1f50f7c5838ea75e3a20dd",
+        "bd4bd0194d6d29f83b8557d4b89b572a"
+      ],
+      "sample_delayed_order_ids": [
+        "f31535f21d145b2345e2bf7f09d62322",
+        "9d513821c0477231fc7c1bfd684d13d8",
+        "8ad3f1d0f96992e43566c4c82c9f6c58",
+        "43f9a3d3e9d95525bfce717e31f72a56",
+        "b4411c4be4f9514e53fe707972f98685"
+      ],
+      "sample_low_review_order_ids": [
+        "f31535f21d145b2345e2bf7f09d62322",
+        "ac2b7c522d811acba0aa270ed3e112e4",
+        "f9ca536e1ef897f153c183d72ba141bb",
+        "c9c090d55d074c5b0d0effca2b928d4c",
+        "7785b07bcf7b5bf8fbf50e491382d98e"
+      ]
+    },
+    "baby": {
+      "category": "baby",
+      "order_count": 2885,
+      "delayed_order_count": 226,
+      "low_review_order_count": 475,
+      "canceled_order_count": 16,
+      "delay_rate": 0.0783,
+      "low_review_rate": 0.1646,
+      "cancellation_rate": 0.0055,
+      "avg_delay_days": -11.5,
+      "avg_review_score": 4.02,
+      "avg_payment_value": 170.26,
+      "sample_order_ids": [
+        "95266dbfb7e20354baba07964dac78d5",
+        "acce194856392f074dbf9dada14d8d82",
+        "f70a0aff17df5a6cdd9a7196128bd354",
+        "a6aeb116d2cb5013eb8a94585b71ffef",
+        "23f553848a03aaab35bb3f9f87725125"
+      ],
+      "sample_delayed_order_ids": [
+        "a184881e0110ee6bba45e5ba8287c638",
+        "a69ddc335f989aa05576bc19f8b9a549",
+        "b3f352a3b3887a501a98642fa5840e66",
+        "860a775a4c01146f0dac9eebe2ac8461",
+        "749238696f501c747fe013b2a5fa014c"
+      ],
+      "sample_low_review_order_ids": [
+        "acce194856392f074dbf9dada14d8d82",
+        "f70a0aff17df5a6cdd9a7196128bd354",
+        "c4d2f075fc3bf3a06d1e68e113c35cbd",
+        "f373335aac9a659de916f7170b8bc07a",
+        "faa911f9ff46e53aedc9408c5d6a24ad"
+      ]
+    },
+    "bed_bath_table": {
+      "category": "bed_bath_table",
+      "order_count": 9417,
+      "delayed_order_count": 689,
+      "low_review_order_count": 1631,
+      "canceled_order_count": 18,
+      "delay_rate": 0.0732,
+      "low_review_rate": 0.1732,
+      "cancellation_rate": 0.0019,
+      "avg_delay_days": -11.39,
+      "avg_review_score": 3.95,
+      "avg_payment_value": 134.43,
+      "sample_order_ids": [
+        "5ff96c15d0b717ac6ad1f3d77225a350",
+        "85ce859fd6dc634de8d2f1e290444043",
+        "7206b86ea789983f7a273ea7fa0bc2a8",
+        "68873cf91053cd11e6b49a766db5af1a",
+        "10c320f977c6a18f91b2d14be13128c6"
+      ],
+      "sample_delayed_order_ids": [
+        "8fc207e94fa91a7649c5a5dab690272a",
+        "580c882a5805c78546ea65ec6d3690e4",
+        "b7ed5b357d48b6c8f588c5cf0d7ddf5d",
+        "6f36c999f8ef8d1a3a999079a5b637aa",
+        "5e4c365dd3cf7769a88981f408d069d3"
+      ],
+      "sample_low_review_order_ids": [
+        "5164933efe0cd14f31424b9badf81f19",
+        "615ae1b88a25a4ac47fbf55c9c847b6e",
+        "db0d194c127a36909de3bda3edad30bc",
+        "ac7a92560a9e99f0a0ab4988102f491b",
+        "c2215076050fa358934105b15c34cf3b"
+      ]
+    },
+    "books_general_interest": {
+      "category": "books_general_interest",
+      "order_count": 512,
+      "delayed_order_count": 32,
+      "low_review_order_count": 43,
+      "canceled_order_count": 7,
+      "delay_rate": 0.0625,
+      "low_review_rate": 0.084,
+      "cancellation_rate": 0.0137,
+      "avg_delay_days": -11.9,
+      "avg_review_score": 4.46,
+      "avg_payment_value": 110.09,
+      "sample_order_ids": [
+        "2ce1ad82022c1ba30c2079502ac725aa",
+        "6efcd938092fe73904610b4bd39b2e7f",
+        "879195f2460f97ab2f3bf119f2e8638b",
+        "27f9fff9f14236589804b62bce39f526",
+        "41de3b8bbb80e2cc80c8d446a752d2fb"
+      ],
+      "sample_delayed_order_ids": [
+        "c98f20eb107a235a15b60b2b5de731da",
+        "8055e039e3e86f6328082ea948230520",
+        "5dc4e4e9a4f28d5bda7879562fece272",
+        "64bf74354f2ce35678e99356584d3a2f",
+        "a11f86f65cf0246aa8d08f7a6b60973d"
+      ],
+      "sample_low_review_order_ids": [
+        "91894a6bee2407fdec8f29441d75541e",
+        "8055e039e3e86f6328082ea948230520",
+        "a11f86f65cf0246aa8d08f7a6b60973d",
+        "bf0b7464d227364486f59a79f335a212",
+        "e1c49aeb40d4ab159a18912ea48266d0"
+      ]
+    },
+    "books_imported": {
+      "category": "books_imported",
+      "order_count": 53,
+      "delayed_order_count": 2,
+      "low_review_order_count": 7,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0377,
+      "low_review_rate": 0.1321,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.22,
+      "avg_review_score": 4.32,
+      "avg_payment_value": 102.67,
+      "sample_order_ids": [
+        "e08878ad70acad81d0e90f59e56ce9a6",
+        "80850824446cd379f755548b967c61b9",
+        "9ea64f21920bb6b6972cadb024eabee6",
+        "73d60420cd1a179b2d8887d538efe4c2",
+        "c977f4831578bc1ea3d13592827eb6fb"
+      ],
+      "sample_delayed_order_ids": [
+        "493ba21a937e956c5e0e4e26c9f1b7f9",
+        "e6b23db78d4473c921fb9315e04b5c0f"
+      ],
+      "sample_low_review_order_ids": [
+        "f5cf5716413185387030a378bdd46ebe",
+        "9b4b42fc4f3a0ff13e896d031a9723c8",
+        "522eec5aa38ae3153b1c1a94e013947e",
+        "493ba21a937e956c5e0e4e26c9f1b7f9",
+        "442a41b00a8a8bda35511fdf1eb65cc5"
+      ]
+    },
+    "books_technical": {
+      "category": "books_technical",
+      "order_count": 260,
+      "delayed_order_count": 21,
+      "low_review_order_count": 28,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0808,
+      "low_review_rate": 0.1077,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.33,
+      "avg_review_score": 4.37,
+      "avg_payment_value": 90.88,
+      "sample_order_ids": [
+        "5c2d1d55c31db1cbe069dc9b6454b897",
+        "e69e2290db6b2d3b7593a40112e1a82a",
+        "d3c8851a6651eeff2f73b0e011ac45d0",
+        "40ef667b4259d5f521a0fd1a093d0415",
+        "3860898db238028285b1e05b5ab31238"
+      ],
+      "sample_delayed_order_ids": [
+        "a36a813c74f1991b48c5e3403bcebba5",
+        "65d5ab70320210b215c305db9ff2f1c8",
+        "3abf6dc158567370b9270287cfcf25bd",
+        "7d51427ec940da2e27bc824dd56a2300",
+        "4da1c4073a1bdbb3968cd681337f254d"
+      ],
+      "sample_low_review_order_ids": [
+        "d3c8851a6651eeff2f73b0e011ac45d0",
+        "18aff2402dfe994cc353173909a740ba",
+        "e3c291c9bddfedee62c613abb89f859e",
+        "ae22bdc244206a1adac2358b09ad3ab0",
+        "e6baf197cf97695698df42588f7c0d05"
+      ]
+    },
+    "cds_dvds_musicals": {
+      "category": "cds_dvds_musicals",
+      "order_count": 12,
+      "delayed_order_count": 0,
+      "low_review_order_count": 0,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.0,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -15.83,
+      "avg_review_score": 4.67,
+      "avg_payment_value": 79.58,
+      "sample_order_ids": [
+        "37104fd8b73d0691fda9491fe8906808",
+        "7ed69fbc79fbda50e09caa9c127026e5",
+        "264f3762919b6ad2a8cae65fd1202106",
+        "ffc4072a9ea36a3341efa25b69c449eb",
+        "cea54c1853c864ab36cea3ef732d7191"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": []
+    },
+    "christmas_supplies": {
+      "category": "christmas_supplies",
+      "order_count": 128,
+      "delayed_order_count": 10,
+      "low_review_order_count": 17,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0781,
+      "low_review_rate": 0.1328,
+      "cancellation_rate": 0.0078,
+      "avg_delay_days": -12.18,
+      "avg_review_score": 4.04,
+      "avg_payment_value": 94.15,
+      "sample_order_ids": [
+        "0760a852e4e9d89eb77bf631eaaf1c84",
+        "cf1bc456a0d5c63bb6c94d3b8b2c56e7",
+        "9274443a23faa8fd9d5805fc0bd68c5e",
+        "6c6971df6cfa20527e3e3d32aded78b1",
+        "6718a9b577ce4d3dfbdbdc7d3ec97cb6"
+      ],
+      "sample_delayed_order_ids": [
+        "4525dd56bc3c3fb6d4e3b02a54db984d",
+        "5601efc723d40b097b2c97df55cb8fbe",
+        "db72d4b9dccc8768cb8691e888ae7f5f",
+        "df81dcb40098fb783a6525fa2f868bc9",
+        "993bf2a40855c39703b0ac1339be7fbf"
+      ],
+      "sample_low_review_order_ids": [
+        "4525dd56bc3c3fb6d4e3b02a54db984d",
+        "28744e7a534028309c1d21455f676752",
+        "35681d761149a472aa05d9fe484c61b3",
+        "ae953cc1e58850c44e9d68bf216cb8c0",
+        "e57f9e7c60adf9829a8cadaf9d153e5d"
+      ]
+    },
+    "cine_photo": {
+      "category": "cine_photo",
+      "order_count": 65,
+      "delayed_order_count": 4,
+      "low_review_order_count": 9,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0615,
+      "low_review_rate": 0.1385,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -10.65,
+      "avg_review_score": 4.23,
+      "avg_payment_value": 129.58,
+      "sample_order_ids": [
+        "f112b9fc8967a675670bedf5a2bc6b2b",
+        "3c333445207b077f35c9e81a7e7c7273",
+        "335cf1cb074c8dfcdf59bc86f8255409",
+        "e8dbfb34a57fe34db02546aa50b56f10",
+        "a4c100660bd4f8af58cf90ef7641d5e6"
+      ],
+      "sample_delayed_order_ids": [
+        "27cf3bc7a008cb9eb712e4db141d25a2",
+        "27c0ea3b1286c30e92f05f413398d055",
+        "0ec7299d65db721d9a6b5c95c2ff494a",
+        "38568e887b1eeef65756294b42fc8fb3"
+      ],
+      "sample_low_review_order_ids": [
+        "27cf3bc7a008cb9eb712e4db141d25a2",
+        "27c0ea3b1286c30e92f05f413398d055",
+        "b812ed76702a2ef99a79eb6a32e410c7",
+        "91be51c856a90d7efe86cf9d082d6ae3",
+        "d1175caace64414de4ca9404ab747e2e"
+      ]
+    },
+    "computers": {
+      "category": "computers",
+      "order_count": 181,
+      "delayed_order_count": 10,
+      "low_review_order_count": 25,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0552,
+      "low_review_rate": 0.1381,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.58,
+      "avg_review_score": 4.14,
+      "avg_payment_value": 1286.95,
+      "sample_order_ids": [
+        "76754c0e642c8f99a8c3fcb8a14ac700",
+        "607911c4ac62f9038b4ec434673e486e",
+        "0af28d87520565eb3b57c9b2abe1a2cc",
+        "0d91fd5b8475f8f0576a6e8f90c6497d",
+        "256ccc96b2c931006d95ba7a05181037"
+      ],
+      "sample_delayed_order_ids": [
+        "fefacc66af859508bf1a7934eab1e97f",
+        "1d6bda6e5595652f956770a32ae4ba0d",
+        "3bd820484fb08cbd09f9d3f378fae1a4",
+        "fdddc15fc7b9c37476820d6eb722f33b",
+        "2bcf1f79964f8b4f4f62f19441601b1a"
+      ],
+      "sample_low_review_order_ids": [
+        "607911c4ac62f9038b4ec434673e486e",
+        "05d61bb749461f4805dbda51f767fa47",
+        "63b0abee9c82e79c3b6e860d070f2c62",
+        "12f2f3174deba94de2aa43ad4adf6d3e",
+        "a73de8635a0cb0aee3da3736197f76b2"
+      ]
+    },
+    "computers_accessories": {
+      "category": "computers_accessories",
+      "order_count": 6689,
+      "delayed_order_count": 417,
+      "low_review_order_count": 1091,
+      "canceled_order_count": 35,
+      "delay_rate": 0.0623,
+      "low_review_rate": 0.1631,
+      "cancellation_rate": 0.0052,
+      "avg_delay_days": -12.38,
+      "avg_review_score": 4.02,
+      "avg_payment_value": 159.41,
+      "sample_order_ids": [
+        "34513ce0c4fab462a55830c0989c7edb",
+        "5acce57f8d9dfd55fa48e212a641a69d",
+        "688052146432ef8253587b930b01a06d",
+        "cadbb3657dac2dbbd5b84b12e7b78aad",
+        "86f21bf63784876b9fd6d35f46581d72"
+      ],
+      "sample_delayed_order_ids": [
+        "4190ab61a7fced69f3ee84d1da1120cc",
+        "64ea4c51ad1203229ba011693f35da54",
+        "cc06813c8d9909633f390ed9b5df999f",
+        "45b0a671da62d1c868294b22b4837dca",
+        "8187896518689722d7c05bfbaeed0933"
+      ],
+      "sample_low_review_order_ids": [
+        "86f21bf63784876b9fd6d35f46581d72",
+        "6f5a2dbe5ccce73a9d053a542baabd1c",
+        "cbbb524a0e1646aa6cf7a3c0bbe517ad",
+        "1b9ecfe83cdc259250e1a8aca174f0ad",
+        "5b96fa278c2b3c1e29c190ef1b651d08"
+      ]
+    },
+    "consoles_games": {
+      "category": "consoles_games",
+      "order_count": 1062,
+      "delayed_order_count": 62,
+      "low_review_order_count": 158,
+      "canceled_order_count": 8,
+      "delay_rate": 0.0584,
+      "low_review_rate": 0.1488,
+      "cancellation_rate": 0.0075,
+      "avg_delay_days": -11.53,
+      "avg_review_score": 4.04,
+      "avg_payment_value": 167.64,
+      "sample_order_ids": [
+        "93a21c10557cc1b1ecfe2c3a808c648a",
+        "197edbaa61a8a349f382553fd2180ee1",
+        "0d25f1b15acb59ceff22667265743132",
+        "3440f090efa1949bc4e9ebd0b89b2b6c",
+        "6e09e14cbfbf46215f17805edfb79aae"
+      ],
+      "sample_delayed_order_ids": [
+        "43e99f3020b420b8aff15449ff4f7561",
+        "df5c9b471c8cb2bf4fd5d986d8811ed1",
+        "2d1bec8cfa830e47e6267b4e3c329dbd",
+        "7f1308d4daa38317363931054a0358f3",
+        "43ac8d91a0749b176f9c311545881aa7"
+      ],
+      "sample_low_review_order_ids": [
+        "43e99f3020b420b8aff15449ff4f7561",
+        "cb418bb4b6115438d20b0141ed5bc9e0",
+        "e9376d90b28f9cdea83d4d850e4bb1a7",
+        "7888c674da87585ee031e3b68a377499",
+        "69b00a66e2558dd57ba062f782995941"
+      ]
+    },
+    "construction_tools_construction": {
+      "category": "construction_tools_construction",
+      "order_count": 748,
+      "delayed_order_count": 54,
+      "low_review_order_count": 111,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0722,
+      "low_review_rate": 0.1484,
+      "cancellation_rate": 0.0027,
+      "avg_delay_days": -11.1,
+      "avg_review_score": 4.07,
+      "avg_payment_value": 224.46,
+      "sample_order_ids": [
+        "403b97836b0c04a622354cf531062e5f",
+        "138849fd84dff2fb4ca70a0a34c4aa1c",
+        "f271576bed568e896f99eb710cd3a6f8",
+        "b52cc4919de82b4d696a4380d10804a3",
+        "141ad0192cfa16174e4fd0a1a7e7ba4a"
+      ],
+      "sample_delayed_order_ids": [
+        "b0ea6041ac66a83e6a8508f3954edf91",
+        "cc15ef8448a7506bdcd6eb851c0aea1f",
+        "cd0b902d14f0c8d23aa34f4d50bf7843",
+        "7b74647ef95b9578401bd8a4f723b301",
+        "1777854e00599d581f88f45af1432949"
+      ],
+      "sample_low_review_order_ids": [
+        "cc94aa62777cf27c082eaa521ba00747",
+        "97c5a4acc0915c5bd17e5a3256693ef6",
+        "0fb3b7bbfc3693b115aa62a83fad2714",
+        "72c43226251f106407afcfe2b2f2e247",
+        "af1ffd059ac0a5f3996b4fe6c2863116"
+      ]
+    },
+    "construction_tools_lights": {
+      "category": "construction_tools_lights",
+      "order_count": 244,
+      "delayed_order_count": 16,
+      "low_review_order_count": 30,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0656,
+      "low_review_rate": 0.123,
+      "cancellation_rate": 0.0041,
+      "avg_delay_days": -11.5,
+      "avg_review_score": 4.09,
+      "avg_payment_value": 228.39,
+      "sample_order_ids": [
+        "90349f264a3d6a2525a34598d09dda6b",
+        "9ceb8ab5165cefecdddb546cb5a6362b",
+        "418764469a9e73f76f56783c1863bd05",
+        "ac71263052acddd3b2031b5937f8fc30",
+        "db115077a7bd949a515922eb40aea6c3"
+      ],
+      "sample_delayed_order_ids": [
+        "24843df655e56c3713485a7880677287",
+        "b7441c24c727cdf423f8339a62447193",
+        "e194f9ac9793de14b87eecf9b3532421",
+        "faa68fcba0ef1321e0c356db33de5293",
+        "ae375d6b88c37582455ff3a2b83462d4"
+      ],
+      "sample_low_review_order_ids": [
+        "24843df655e56c3713485a7880677287",
+        "b7441c24c727cdf423f8339a62447193",
+        "e194f9ac9793de14b87eecf9b3532421",
+        "7b5677c6b812459afed4f29edef9debc",
+        "6d9e993faed56b20fe3f762fd8bbf24f"
+      ]
+    },
+    "construction_tools_safety": {
+      "category": "construction_tools_safety",
+      "order_count": 167,
+      "delayed_order_count": 4,
+      "low_review_order_count": 35,
+      "canceled_order_count": 2,
+      "delay_rate": 0.024,
+      "low_review_rate": 0.2096,
+      "cancellation_rate": 0.012,
+      "avg_delay_days": -12.92,
+      "avg_review_score": 3.83,
+      "avg_payment_value": 277.9,
+      "sample_order_ids": [
+        "5ec8f4e8fe5ee3fd5460b244d0804f9e",
+        "f04bfdbef5359607d39e66fccc9cc0de",
+        "c514dba8d0ed614c6a397d2f0f3fe202",
+        "48b7d84507eb52608a007fde9d641daa",
+        "9855054362f487c4f25172bd0b8a44cf"
+      ],
+      "sample_delayed_order_ids": [
+        "0f559863677fb17eed36c4374e198a93",
+        "0b39d78b430d574a6eafefe82c11b4a3",
+        "589208c4bf8d3e9c613ee4b6de49c568",
+        "203acfb176ad05fd52bc951bd747ad91"
+      ],
+      "sample_low_review_order_ids": [
+        "f04bfdbef5359607d39e66fccc9cc0de",
+        "4b90912a086907b087947c385e8d13b1",
+        "0f559863677fb17eed36c4374e198a93",
+        "0499c7fe87611ea8ba76fc6ddceaad0e",
+        "05259e30e40e08eddb05428cb38ff248"
+      ]
+    },
+    "cool_stuff": {
+      "category": "cool_stuff",
+      "order_count": 3632,
+      "delayed_order_count": 210,
+      "low_review_order_count": 470,
+      "canceled_order_count": 15,
+      "delay_rate": 0.0578,
+      "low_review_rate": 0.1294,
+      "cancellation_rate": 0.0041,
+      "avg_delay_days": -12.42,
+      "avg_review_score": 4.15,
+      "avg_payment_value": 200.94,
+      "sample_order_ids": [
+        "fbf9ac61453ac646ce8ad9783d7d0af6",
+        "6abaad69b8b349c3a529b4b91ce18e46",
+        "210e60465099814a1d2c7635e4065153",
+        "74ebfa44a323c96a7760bd693d690a3d",
+        "ebc8d4b1397747291b758772e9d87984"
+      ],
+      "sample_delayed_order_ids": [
+        "fbf9ac61453ac646ce8ad9783d7d0af6",
+        "4906eeadde5f70b308c20c4a8f20be02",
+        "eafef0e6c44f121531569a69a318c3b3",
+        "8a0b2bc5c7a1c524635f4de8bae9dffe",
+        "58b198357d2b68044f885a370a585ff3"
+      ],
+      "sample_low_review_order_ids": [
+        "fbf9ac61453ac646ce8ad9783d7d0af6",
+        "21f4a37ec131158f1615d0f186f190af",
+        "eafef0e6c44f121531569a69a318c3b3",
+        "a98012aa8c697f2bcff9f8c2183e0f2b",
+        "8a0b2bc5c7a1c524635f4de8bae9dffe"
+      ]
+    },
+    "costruction_tools_garden": {
+      "category": "costruction_tools_garden",
+      "order_count": 194,
+      "delayed_order_count": 10,
+      "low_review_order_count": 27,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0515,
+      "low_review_rate": 0.1392,
+      "cancellation_rate": 0.0103,
+      "avg_delay_days": -13.55,
+      "avg_review_score": 4.19,
+      "avg_payment_value": 166.1,
+      "sample_order_ids": [
+        "e69e2290db6b2d3b7593a40112e1a82a",
+        "746347ecc5cc9cb88a346545608fb635",
+        "b35514909dd1ba45599c5f535621238a",
+        "624ffe16156e4aac5b9ec7ac27ed23c6",
+        "78a192ee84633d7c3a125c57c6e4d970"
+      ],
+      "sample_delayed_order_ids": [
+        "730e2dc2bec23dbf9b0594dc01b26ec3",
+        "da1e438a39bc8b47403207e4c043594d",
+        "487cdbe6d900d62275117d1fd45674bf",
+        "00d50baf1bc56a3c59de1810a6b84b0d",
+        "ffae83c600bcc82f84437a9248825b80"
+      ],
+      "sample_low_review_order_ids": [
+        "624ffe16156e4aac5b9ec7ac27ed23c6",
+        "862cca64868df4c3a3f0058a93aef465",
+        "da1e438a39bc8b47403207e4c043594d",
+        "867318eda451a721d23a5e0fbc82fcc9",
+        "e7c290bfc31d7eed478c3d3d2d4d2953"
+      ]
+    },
+    "costruction_tools_tools": {
+      "category": "costruction_tools_tools",
+      "order_count": 97,
+      "delayed_order_count": 6,
+      "low_review_order_count": 10,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0619,
+      "low_review_rate": 0.1031,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -12.18,
+      "avg_review_score": 4.37,
+      "avg_payment_value": 184.89,
+      "sample_order_ids": [
+        "8c5fa1a922cfa46db8478221148d7bfd",
+        "57829c554e00894996ac7cdc85692e8f",
+        "bd1addb3e998af6689dacf2d7619ece3",
+        "6d1f5da238306b0008063ff2f93feac9",
+        "23d42019f5dad56f22fc05644f13b3fb"
+      ],
+      "sample_delayed_order_ids": [
+        "b8529452a8ad8e7009333b957f87412c",
+        "fb612793f43e55d0df079f56c7ffb811",
+        "68f730bca7855a941b075dfde3e84ab9",
+        "0a92bad75c24fdf33ed2a18801262e89",
+        "14ac73e061a88e655cc2d6b984f3c81d"
+      ],
+      "sample_low_review_order_ids": [
+        "6d1f5da238306b0008063ff2f93feac9",
+        "23d42019f5dad56f22fc05644f13b3fb",
+        "80f1a60aab67dd9a56cc211cf8874382",
+        "adeb87b732e8e3684863866c067aa9de",
+        "fb612793f43e55d0df079f56c7ffb811"
+      ]
+    },
+    "diapers_and_hygiene": {
+      "category": "diapers_and_hygiene",
+      "order_count": 27,
+      "delayed_order_count": 0,
+      "low_review_order_count": 5,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.1852,
+      "cancellation_rate": 0.037,
+      "avg_delay_days": -12.44,
+      "avg_review_score": 3.74,
+      "avg_payment_value": 79.31,
+      "sample_order_ids": [
+        "fa612a1874826daa30fed5e3073b9d0d",
+        "796033ffde6ba06e0abe387e36ee8fe0",
+        "ea06b59475b47ae67676d47fbe54d29d",
+        "eb4fc04dec501a9893d00e5090e59f7d",
+        "92d14247bec036e6b052ba1331bd2add"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "c3708e02f3ae7cf8e715ce16e826e952",
+        "b144e2ac9863ed27bc59dbe4dd2f8773",
+        "30d7af26cb5f8577b5c6a0164dc814c5",
+        "97c400db1c80dfef436580bfdb07a181",
+        "5020a3db49225f967490d76021c7d13a"
+      ]
+    },
+    "drinks": {
+      "category": "drinks",
+      "order_count": 297,
+      "delayed_order_count": 15,
+      "low_review_order_count": 37,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0505,
+      "low_review_rate": 0.1246,
+      "cancellation_rate": 0.0034,
+      "avg_delay_days": -10.97,
+      "avg_review_score": 4.15,
+      "avg_payment_value": 98.04,
+      "sample_order_ids": [
+        "c228d309379c3ae545cc6ca2d5aae1b2",
+        "acbe07f22f29ad7e5a78f30008cc6ec7",
+        "c382d84d35f4d874b1f1c372f4bde27c",
+        "7f2f81a366f89b37109845799fc5bbf3",
+        "cb2ca9584ce09074196d8fa3f3ae804b"
+      ],
+      "sample_delayed_order_ids": [
+        "a9ef87f686349168d7b25621bac29d5e",
+        "a1119e009d1d91655405307f4c095818",
+        "6902f0d9d7309f56f50b8713c3b6a4de",
+        "beb278f2f2946133b76dd6196b02d0e5",
+        "47ff8d381edb0deb837f57d7805f0a56"
+      ],
+      "sample_low_review_order_ids": [
+        "a245a32d07762c385b4620fd16bab160",
+        "bd26f79807cb5e17e470195232bf67d7",
+        "a251837e3fdaf53bc31e35e612cf58be",
+        "a1119e009d1d91655405307f4c095818",
+        "6902f0d9d7309f56f50b8713c3b6a4de"
+      ]
+    },
+    "dvds_blu_ray": {
+      "category": "dvds_blu_ray",
+      "order_count": 59,
+      "delayed_order_count": 4,
+      "low_review_order_count": 11,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0678,
+      "low_review_rate": 0.1864,
+      "cancellation_rate": 0.0339,
+      "avg_delay_days": -13.18,
+      "avg_review_score": 4.03,
+      "avg_payment_value": 125.62,
+      "sample_order_ids": [
+        "07c33a9470d0df2a30cc8a8ebd0288d1",
+        "bb82d1c94323c38a3d8124414a6a5ca5",
+        "40eca6a07bc5b53e520eb20f2d83997c",
+        "8f65131225833fbebbca5422422026cf",
+        "72c3f657842e35f5d5279cc0fd06826b"
+      ],
+      "sample_delayed_order_ids": [
+        "6c7378154382f7378b82fa860f68c758",
+        "eaf77fff2564e301d10b2a335babf44b",
+        "8c695ffcf56400764176fd1789ec7fa2",
+        "7bda7fb1e596f90f607376af2ca647cd"
+      ],
+      "sample_low_review_order_ids": [
+        "bb82d1c94323c38a3d8124414a6a5ca5",
+        "263f5778d1130e9c186958780172a107",
+        "6c7378154382f7378b82fa860f68c758",
+        "7c1c60f422c242e539075d9b9edca95c",
+        "a9957adf297a6be5e8625b3e93329c6d"
+      ]
+    },
+    "electronics": {
+      "category": "electronics",
+      "order_count": 2550,
+      "delayed_order_count": 192,
+      "low_review_order_count": 367,
+      "canceled_order_count": 6,
+      "delay_rate": 0.0753,
+      "low_review_rate": 0.1439,
+      "cancellation_rate": 0.0024,
+      "avg_delay_days": -11.02,
+      "avg_review_score": 4.08,
+      "avg_payment_value": 82.77,
+      "sample_order_ids": [
+        "2807d0e504d6d4894d41672727bc139f",
+        "60550084e6b4c0cb89a87df1f3e5ebd9",
+        "663830a477534735bbdec9de01113fa2",
+        "ed01ce003df13cab401ba2ff57ea2542",
+        "56a4ac10a4a8f2ba7693523bb439eede"
+      ],
+      "sample_delayed_order_ids": [
+        "7297f6bfea2a33ef176cff30f467aa41",
+        "fa44b98d202360f1246681a3e0405db4",
+        "cb6e441ff2ef574ce08d3709426f88ec",
+        "442dccfb1443cb7035f2b7810f974dd9",
+        "f9ada76953fa490d8a254d2e28f353ac"
+      ],
+      "sample_low_review_order_ids": [
+        "1a7ee01992a69255a005e9db8a96d898",
+        "fa44b98d202360f1246681a3e0405db4",
+        "d44cb52677c0960afb3e43a96d79a25b",
+        "be5b278e38c06fb98c18c6ed0554b754",
+        "6bbf71e04f4d0e748315be02506a1b63"
+      ]
+    },
+    "fashio_female_clothing": {
+      "category": "fashio_female_clothing",
+      "order_count": 39,
+      "delayed_order_count": 2,
+      "low_review_order_count": 9,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0513,
+      "low_review_rate": 0.2308,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.92,
+      "avg_review_score": 3.69,
+      "avg_payment_value": 89.98,
+      "sample_order_ids": [
+        "1c54750859f8472306a0b63d74e782ef",
+        "64f5569ef96004a1e1137bdf28fd4c45",
+        "5af5ca095ad252181b2d59519e3714db",
+        "9c290246355e5c4ece97651b258c9d06",
+        "7b76996a441de2788a09b987c34e477e"
+      ],
+      "sample_delayed_order_ids": [
+        "599fbee4cc4b8dabe57ea66e0ecd7031",
+        "1312c3e9b13335ff82ee5ee0599e9e60"
+      ],
+      "sample_low_review_order_ids": [
+        "1c54750859f8472306a0b63d74e782ef",
+        "d2963c58df9137ef973abf2f3a8c634f",
+        "615e54068238441742c4daf6a7b4ccff",
+        "8c0921d37402722b282083329db79f9b",
+        "05aacaaec38544ee11d42a69bc098d4b"
+      ]
+    },
+    "fashion_bags_accessories": {
+      "category": "fashion_bags_accessories",
+      "order_count": 1864,
+      "delayed_order_count": 102,
+      "low_review_order_count": 225,
+      "canceled_order_count": 6,
+      "delay_rate": 0.0547,
+      "low_review_rate": 0.1207,
+      "cancellation_rate": 0.0032,
+      "avg_delay_days": -13.18,
+      "avg_review_score": 4.17,
+      "avg_payment_value": 99.44,
+      "sample_order_ids": [
+        "4b3a605942f29d490cb74bd6ace6b9f0",
+        "f26f92a3da58e9c771820a7b4d9a6800",
+        "1da00355018ed3e0fdd548cf3ddada99",
+        "7835af1856de332f2f3c9204b740a3a2",
+        "22ff7c206b68858435452298296c2fcb"
+      ],
+      "sample_delayed_order_ids": [
+        "2573400a7beba401684ca3eca5e38936",
+        "4516299f280a0f30720256ae0cd592d6",
+        "922162cabb84e44a2efa143dd96ef464",
+        "0b01066982af6f2681ea9b0169f0d987",
+        "7b072cb297a1526bf0dcd28d61c6004d"
+      ],
+      "sample_low_review_order_ids": [
+        "1f6405caa14a2debb88594b0471ed340",
+        "d8721b9f395286c3b43ff47a250ad40a",
+        "051fcda88d997d3ff86012da2a556342",
+        "20febe29f23cdee32db9532860db7341",
+        "689e8820798347950a2649f71c734bd0"
+      ]
+    },
+    "fashion_childrens_clothes": {
+      "category": "fashion_childrens_clothes",
+      "order_count": 8,
+      "delayed_order_count": 0,
+      "low_review_order_count": 1,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.125,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -15.71,
+      "avg_review_score": 4.5,
+      "avg_payment_value": 98.21,
+      "sample_order_ids": [
+        "3be3bae6f665380f803dc59c9053cf26",
+        "cb53f0b6e8f9082a9f5a113765dd1236",
+        "bc3ac768a8963f4ca68942ea6558fc9f",
+        "3da4b0f0c89bb8fee8a810459e641414",
+        "cab08f0417a702d0f4782ec02356a4ac"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "3be3bae6f665380f803dc59c9053cf26"
+      ]
+    },
+    "fashion_male_clothing": {
+      "category": "fashion_male_clothing",
+      "order_count": 112,
+      "delayed_order_count": 5,
+      "low_review_order_count": 30,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0446,
+      "low_review_rate": 0.2679,
+      "cancellation_rate": 0.0089,
+      "avg_delay_days": -13.44,
+      "avg_review_score": 3.68,
+      "avg_payment_value": 116.21,
+      "sample_order_ids": [
+        "38b7efdf33dd5561f4f5d4f6e07b0414",
+        "6d60cc495dfb5a5851f56f188c4e4059",
+        "c7da3693b9936c359eb9d60640dbb967",
+        "4b8332fdbf824168f691498b79e5e556",
+        "6a7e99c1218ca32aefdff408295eb467"
+      ],
+      "sample_delayed_order_ids": [
+        "e13c8ddd0d03ac5525c6b54d0442e9a5",
+        "a04e5564f7cbcf78fee1ccaab8d3b0f2",
+        "2474b5060c1dfacbb46002aa2563f9bc",
+        "87230abed36d9ec9a1dafd369948b4df",
+        "fb662b5ba362e72d75d486ca4d29c9e4"
+      ],
+      "sample_low_review_order_ids": [
+        "38b7efdf33dd5561f4f5d4f6e07b0414",
+        "c7da3693b9936c359eb9d60640dbb967",
+        "4b8332fdbf824168f691498b79e5e556",
+        "2a834f698c8b713627f7729b9c164746",
+        "6732c97d4cbdac9ed23b4c7148f61590"
+      ]
+    },
+    "fashion_shoes": {
+      "category": "fashion_shoes",
+      "order_count": 240,
+      "delayed_order_count": 11,
+      "low_review_order_count": 32,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0458,
+      "low_review_rate": 0.1333,
+      "cancellation_rate": 0.0083,
+      "avg_delay_days": -14.28,
+      "avg_review_score": 4.19,
+      "avg_payment_value": 119.09,
+      "sample_order_ids": [
+        "9f882c1f904b7dd156572ada58d7a7ae",
+        "1cb6cfd9e6306cfe607017391834999a",
+        "305b0101ce8f8fd2d7b32f7480340018",
+        "af42887f85d980291a066176c4d13709",
+        "8713b68a2b202b96d7de08d7e0b8f1a9"
+      ],
+      "sample_delayed_order_ids": [
+        "febcb6742e4652312e996b6bc7fbcdd8",
+        "ab6442c868ae3695e675d3c39aa616a2",
+        "b52314e04baaecb498e1446be2dcabee",
+        "2ef87cb1b6109775d8ebcca2ad5f1022",
+        "f00cdb6f9004b64118cf7814d3a03cff"
+      ],
+      "sample_low_review_order_ids": [
+        "af42887f85d980291a066176c4d13709",
+        "febcb6742e4652312e996b6bc7fbcdd8",
+        "c66c3d7b42dbd139f921139df1eeb31c",
+        "a12258b681fd853343742c997b082ca1",
+        "ab6442c868ae3695e675d3c39aa616a2"
+      ]
+    },
+    "fashion_sport": {
+      "category": "fashion_sport",
+      "order_count": 27,
+      "delayed_order_count": 1,
+      "low_review_order_count": 3,
+      "canceled_order_count": 0,
+      "delay_rate": 0.037,
+      "low_review_rate": 0.1111,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -12.19,
+      "avg_review_score": 4.26,
+      "avg_payment_value": 105.91,
+      "sample_order_ids": [
+        "84398110dbaecfbc9ef3dc592c6b189b",
+        "1a17c1925a4d5a18c4880b06b51c2b0f",
+        "181b10d008567cbac5bed22ff54e0299",
+        "567320164aa96555310f5c8ed6e8c5d7",
+        "9b951f6f81b73f9ee291b9735e6fe993"
+      ],
+      "sample_delayed_order_ids": [
+        "eb4a3d0046ad19061885dc5ce242068f"
+      ],
+      "sample_low_review_order_ids": [
+        "8c0921d37402722b282083329db79f9b",
+        "57edfe6486364c7777241f5ab5902715",
+        "a2ff580cc6ca2ad0f0f7074b9f307cd0"
+      ]
+    },
+    "fashion_underwear_beach": {
+      "category": "fashion_underwear_beach",
+      "order_count": 121,
+      "delayed_order_count": 11,
+      "low_review_order_count": 23,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0909,
+      "low_review_rate": 0.1901,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -10.5,
+      "avg_review_score": 3.91,
+      "avg_payment_value": 94.69,
+      "sample_order_ids": [
+        "9defaf92cff22420e4e8ef7784815a55",
+        "3dddd02cc38fbaa0a544a1e928aee40e",
+        "fc0973ba8c96e67e0cfb458c1bac3a6a",
+        "bd396d4cd7a0507db99110954a0d9173",
+        "3d242cd631044a419d68e504892eacda"
+      ],
+      "sample_delayed_order_ids": [
+        "a7c96c67b28612698cc5e0fb735dad94",
+        "ae7ebc8121246202b1ff260fb0b9d719",
+        "39f428ffba2a9207ffb6406237ffe25a",
+        "4a4bf6614444d2e3a7c20a87106ddc97",
+        "9f6db5df970e4f6210f284243da63804"
+      ],
+      "sample_low_review_order_ids": [
+        "57a7b18332c1b9b26d96e35379af3a38",
+        "b18b5fde5616ba3978e71483cf648a26",
+        "a7c96c67b28612698cc5e0fb735dad94",
+        "4d018d28940042ac4bfd91cb21ac8b8b",
+        "ae7ebc8121246202b1ff260fb0b9d719"
+      ]
+    },
+    "fixed_telephony": {
+      "category": "fixed_telephony",
+      "order_count": 217,
+      "delayed_order_count": 10,
+      "low_review_order_count": 42,
+      "canceled_order_count": 3,
+      "delay_rate": 0.0461,
+      "low_review_rate": 0.1935,
+      "cancellation_rate": 0.0138,
+      "avg_delay_days": -14.91,
+      "avg_review_score": 3.88,
+      "avg_payment_value": 296.45,
+      "sample_order_ids": [
+        "bb4f0c21ae6014e40ef007ff6fbcbeb9",
+        "bcdbb3b243d4e882503b919785e2343f",
+        "7d1ac7d65c6b5d59a9ac241fa41da57d",
+        "f8965d92f9d8e18cd5d1a0e3bc9d15fc",
+        "94dccbc39bc2673b3639fc98286c99b0"
+      ],
+      "sample_delayed_order_ids": [
+        "1dd7e8d1a469f3ce26f8c5c93ce9e636",
+        "bd982aee32cd290fc0ecf05ec77c326b",
+        "c289e5c187ac5cff9d78eba42f7058b4",
+        "cffc3fce7450b2db5f6294229289299b",
+        "db22f279752a5ef41428982b9a7ba8c3"
+      ],
+      "sample_low_review_order_ids": [
+        "bcdbb3b243d4e882503b919785e2343f",
+        "94dccbc39bc2673b3639fc98286c99b0",
+        "d95ca1fcb72812383e41e2eb7ca65dc2",
+        "9ae55f703836fe363393a3873c1b42b4",
+        "03caa2c082116e1d31e67e9ae3700499"
+      ]
+    },
+    "flowers": {
+      "category": "flowers",
+      "order_count": 29,
+      "delayed_order_count": 1,
+      "low_review_order_count": 3,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0345,
+      "low_review_rate": 0.1034,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.83,
+      "avg_review_score": 4.28,
+      "avg_payment_value": 61.89,
+      "sample_order_ids": [
+        "02c371100bf54facae80322579c7fefb",
+        "c259fd488a73ebbd67d79df856d4befc",
+        "92a410c4261cd2c3a4d1a865ef3ba431",
+        "8fabd912f4e4dd0372ada8ca6633a738",
+        "abc7e319cb9e3bb886909c5ec18969a3"
+      ],
+      "sample_delayed_order_ids": [
+        "b35d2c40061791df49f5e3fe718b0b0b"
+      ],
+      "sample_low_review_order_ids": [
+        "b35d2c40061791df49f5e3fe718b0b0b",
+        "a3b2201d0e95f595df90c26c8dae015f",
+        "9bdf94af058f959fbc09c3ea1eb32465"
+      ]
+    },
+    "food": {
+      "category": "food",
+      "order_count": 450,
+      "delayed_order_count": 31,
+      "low_review_order_count": 55,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0689,
+      "low_review_rate": 0.1222,
+      "cancellation_rate": 0.0022,
+      "avg_delay_days": -9.8,
+      "avg_review_score": 4.25,
+      "avg_payment_value": 83.71,
+      "sample_order_ids": [
+        "ccbabeb0b02433bd0fcbac46e70339f2",
+        "fdf128b3630c21adc9ca4fb8a51b68ec",
+        "cefa8ee1540139ac77fa0c1b4ff1f04b",
+        "f847298c3beb552989d31c5f673da6fc",
+        "c0e59bb74c6b71dbd39b3073120e957d"
+      ],
+      "sample_delayed_order_ids": [
+        "6c636e8cee90bf0aac0ec71c90f873e3",
+        "d61c0e8066e7a5a2e6071533b9efdd95",
+        "9fce3cd33d8928808f389d86ea7556e6",
+        "087a1c1dfd41b68ab6a6cd8551147bb2",
+        "22e93d4515387496e3bd3cf6e8eca396"
+      ],
+      "sample_low_review_order_ids": [
+        "d815bd2c2bdd79e4c0e0263caa986d66",
+        "8a9cce19aa49e055f2babb81d5a71c40",
+        "d61c0e8066e7a5a2e6071533b9efdd95",
+        "087a1c1dfd41b68ab6a6cd8551147bb2",
+        "fd2abbf4e0f632ba709f0059c02da633"
+      ]
+    },
+    "food_drink": {
+      "category": "food_drink",
+      "order_count": 227,
+      "delayed_order_count": 8,
+      "low_review_order_count": 14,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0352,
+      "low_review_rate": 0.0617,
+      "cancellation_rate": 0.0088,
+      "avg_delay_days": -11.41,
+      "avg_review_score": 4.37,
+      "avg_payment_value": 88.25,
+      "sample_order_ids": [
+        "7ce20b22753ccc86fdb3b6f7efefcc75",
+        "bf4f937c279d6f44c375450523ee9383",
+        "194e7b03e4469b2bcc7ba3c353077252",
+        "3246fdc7c13d566c0081c78d49ab6515",
+        "3c04118e4788bb999f7371015e3dbdbe"
+      ],
+      "sample_delayed_order_ids": [
+        "29fd35acc2205a78e40f2141e78a839a",
+        "84e898dd83ad8b720859ce93c97509ba",
+        "59e94c656aec3cee1b4a97e8324b47d2",
+        "7d2d231c0b3abb985ed020ffa3acf300",
+        "c0e184ce4df1d9df3ef40938ab7ee173"
+      ],
+      "sample_low_review_order_ids": [
+        "749d73f14d7f582a7c7b12894d552da2",
+        "52e0844a4571e7443dd8e575e7f33480",
+        "59e94c656aec3cee1b4a97e8324b47d2",
+        "c0e184ce4df1d9df3ef40938ab7ee173",
+        "aaa965f3b2dc351f34bbe80a4a0d1c0e"
+      ]
+    },
+    "furniture_bedroom": {
+      "category": "furniture_bedroom",
+      "order_count": 95,
+      "delayed_order_count": 6,
+      "low_review_order_count": 15,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0632,
+      "low_review_rate": 0.1579,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -13.33,
+      "avg_review_score": 4.14,
+      "avg_payment_value": 261.54,
+      "sample_order_ids": [
+        "f175d67589e059cbbda956f10f0702e6",
+        "364bfe8be0f9a89a9a817d0e8ecd859c",
+        "1f02df2b80d060dfde8445dcb32f347e",
+        "97b4d83323a5917d5df6ff4581daaaec",
+        "4c23c4164a5456caf473aa274df8b8b9"
+      ],
+      "sample_delayed_order_ids": [
+        "e3c654307c9b3b9988c35371c5bbf738",
+        "1f137a14de43d022802dd2375ff30e87",
+        "e7f65461e6bfbb6977c3d24ff623024e",
+        "7d70cb0ac6f54fed6851b5179404450f",
+        "e0751bde470ca1e50b59a49b0d3d8fb6"
+      ],
+      "sample_low_review_order_ids": [
+        "133a94aa41cab8ad1d4cf02c2636b9cc",
+        "be0f8b9e1444dc69d1288a37e32d2895",
+        "bfcb171109072a41eb811fe6bda0c94d",
+        "cceecfd4fd8a5cdfc10a03fb86e1d5b9",
+        "643072b191b07f013f4d88ec43acb812"
+      ]
+    },
+    "furniture_decor": {
+      "category": "furniture_decor",
+      "order_count": 6449,
+      "delayed_order_count": 449,
+      "low_review_order_count": 1100,
+      "canceled_order_count": 24,
+      "delay_rate": 0.0696,
+      "low_review_rate": 0.1706,
+      "cancellation_rate": 0.0037,
+      "avg_delay_days": -12.34,
+      "avg_review_score": 4.0,
+      "avg_payment_value": 144.57,
+      "sample_order_ids": [
+        "76c6e866289321a7c93b82b54852dc33",
+        "989225ba6d0ebd5873335f7e01de2ae7",
+        "25f4376934e13d3508486352e11a5db0",
+        "e425680f760cbc130be3e53a9773c584",
+        "a685d016c8a26f71a0bb67821070e398"
+      ],
+      "sample_delayed_order_ids": [
+        "a685d016c8a26f71a0bb67821070e398",
+        "6a0a8bfbbe700284feb0845d95e0867f",
+        "9d531c565e28c3e0d756192f84d8731f",
+        "fb9b2930f4a30f96c7cc98eaaa85e5f0",
+        "91bcade2288597459e1dbce52d6d0ef9"
+      ],
+      "sample_low_review_order_ids": [
+        "76c6e866289321a7c93b82b54852dc33",
+        "a685d016c8a26f71a0bb67821070e398",
+        "6a0a8bfbbe700284feb0845d95e0867f",
+        "9d531c565e28c3e0d756192f84d8731f",
+        "6d7de866a140b19d09e825b2a4e944c7"
+      ]
+    },
+    "furniture_living_room": {
+      "category": "furniture_living_room",
+      "order_count": 422,
+      "delayed_order_count": 31,
+      "low_review_order_count": 67,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0735,
+      "low_review_rate": 0.1588,
+      "cancellation_rate": 0.0047,
+      "avg_delay_days": -11.73,
+      "avg_review_score": 4.0,
+      "avg_payment_value": 211.9,
+      "sample_order_ids": [
+        "6d710101fb9f067dd5385ea1b6021946",
+        "476984a30a6929077bedabbefc98ce38",
+        "114e12eca60507f3e3153182f258684d",
+        "eb7aac057d7c17adb860b770451ae250",
+        "9c30d1a4692fbd9418f2404ada176ccd"
+      ],
+      "sample_delayed_order_ids": [
+        "03720fdc92032ee4abd471d172006ab0",
+        "d30c22b84ba5239f2ae0fc078be7611c",
+        "f5af86a3bea41e5daef5c06e7a02ad2e",
+        "6401cfe160d72392195bd6e311a582cd",
+        "5e42950b6aa90d698e75af4e41641386"
+      ],
+      "sample_low_review_order_ids": [
+        "114e12eca60507f3e3153182f258684d",
+        "eb7aac057d7c17adb860b770451ae250",
+        "03720fdc92032ee4abd471d172006ab0",
+        "f5af86a3bea41e5daef5c06e7a02ad2e",
+        "6401cfe160d72392195bd6e311a582cd"
+      ]
+    },
+    "furniture_mattress_and_upholstery": {
+      "category": "furniture_mattress_and_upholstery",
+      "order_count": 38,
+      "delayed_order_count": 5,
+      "low_review_order_count": 8,
+      "canceled_order_count": 0,
+      "delay_rate": 0.1316,
+      "low_review_rate": 0.2105,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -7.16,
+      "avg_review_score": 3.82,
+      "avg_payment_value": 157.86,
+      "sample_order_ids": [
+        "18ed15b7c2fadc5faa4db7a9f24d7d61",
+        "2be4ffd7d4cce421234db66149a7f749",
+        "440fd902b617080eeb9463a65ffae07a",
+        "ff69de2237431040b7e8d1fcd79c0a7a",
+        "8aa1b241d97b02dbdb9a617b54added8"
+      ],
+      "sample_delayed_order_ids": [
+        "9edafa4c6dbc4a9dd05637c84bf96605",
+        "2d476d9a9af938c2ab76a4aefb7e74d7",
+        "1e12d5b3e0bc11aa9db357373ccde6f8",
+        "0ebf39cd91e6c7f650db30a438805518",
+        "96174b2c267b2d46452c03ffcc689468"
+      ],
+      "sample_low_review_order_ids": [
+        "440fd902b617080eeb9463a65ffae07a",
+        "9edafa4c6dbc4a9dd05637c84bf96605",
+        "d7537253b8b150b7fa2be482da1e7719",
+        "2d476d9a9af938c2ab76a4aefb7e74d7",
+        "8afe93422f74d4eb5b74349a643d94e3"
+      ]
+    },
+    "garden_tools": {
+      "category": "garden_tools",
+      "order_count": 3518,
+      "delayed_order_count": 225,
+      "low_review_order_count": 482,
+      "canceled_order_count": 13,
+      "delay_rate": 0.064,
+      "low_review_rate": 0.137,
+      "cancellation_rate": 0.0037,
+      "avg_delay_days": -11.86,
+      "avg_review_score": 4.12,
+      "avg_payment_value": 169.63,
+      "sample_order_ids": [
+        "e6ce16cb79ec1d90b1da9085a6118aeb",
+        "ecab90c9933c58908d3d6add7c6f5ae3",
+        "8563039e855156e48fccee4d611a3196",
+        "1e7aff52cdbb2451ace09d0f848c3699",
+        "6ebaec694d7025e2ad4a05dba887c032"
+      ],
+      "sample_delayed_order_ids": [
+        "33a3edb84b9df4cb49546859b990ac6d",
+        "da8be3bb62e9bf01e2e1a3bfd74ebd1a",
+        "376a342d70faa7a733b871acc701def8",
+        "88c588c116fd06fb8e48dd83af88ec4a",
+        "7dbad9087d339419eb06d86950842742"
+      ],
+      "sample_low_review_order_ids": [
+        "e6ce16cb79ec1d90b1da9085a6118aeb",
+        "6ebaec694d7025e2ad4a05dba887c032",
+        "33a3edb84b9df4cb49546859b990ac6d",
+        "da8be3bb62e9bf01e2e1a3bfd74ebd1a",
+        "4207ad8e0e4e4070f271c930d25f72d7"
+      ]
+    },
+    "health_beauty": {
+      "category": "health_beauty",
+      "order_count": 8836,
+      "delayed_order_count": 650,
+      "low_review_order_count": 1157,
+      "canceled_order_count": 36,
+      "delay_rate": 0.0736,
+      "low_review_rate": 0.1309,
+      "cancellation_rate": 0.0041,
+      "avg_delay_days": -11.98,
+      "avg_review_score": 4.16,
+      "avg_payment_value": 163.96,
+      "sample_order_ids": [
+        "203096f03d82e0dffbc41ebc2e2bcfb7",
+        "f848643eec1d69395095eb3840d2051e",
+        "434d158e96bdd6972ad6e6d73ddcfd22",
+        "ee64d42b8cf066f35eac1cf57de1aa85",
+        "974c1993ab8024d3ed16229183c2308d"
+      ],
+      "sample_delayed_order_ids": [
+        "203096f03d82e0dffbc41ebc2e2bcfb7",
+        "a5474c0071dd5d1074e12d417078bbd0",
+        "7b58fca3faf09217a36d5febee5739a5",
+        "f30607daae66843552e00843c6de88ef",
+        "7753606fb1d0067848f8a1a7ae5abefa"
+      ],
+      "sample_low_review_order_ids": [
+        "203096f03d82e0dffbc41ebc2e2bcfb7",
+        "ee64d42b8cf066f35eac1cf57de1aa85",
+        "741fd1b80f015f170a7f458cf86769b8",
+        "f4471dae8c482f51aa1826cd9f5d4433",
+        "1e8c81805b92ff169971231458670460"
+      ]
+    },
+    "home_appliances": {
+      "category": "home_appliances",
+      "order_count": 764,
+      "delayed_order_count": 33,
+      "low_review_order_count": 96,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0432,
+      "low_review_rate": 0.1257,
+      "cancellation_rate": 0.0026,
+      "avg_delay_days": -12.61,
+      "avg_review_score": 4.15,
+      "avg_payment_value": 124.35,
+      "sample_order_ids": [
+        "5561adcb0fd46da4cad3048fa4e7fc00",
+        "ce9feeba53c652dd6569cca62e2bb287",
+        "62b2adbcbcf4e28df4b998bfb094f3f9",
+        "eb7ad8aef38707da6cf8a476dd47198e",
+        "ed3096861c94e38da3ac5ded1f35a0b0"
+      ],
+      "sample_delayed_order_ids": [
+        "32805b94a882eabc129b1d2fd5bd2dfa",
+        "89243c8b1f29ba7a225bdad8061fb473",
+        "3f7a6450c7d9e47a7132abfb18aac99a",
+        "739554bca7c0f1d20cf28779b6e37aa4",
+        "6c5eb0920626d3ff5588d03d6f2d4936"
+      ],
+      "sample_low_review_order_ids": [
+        "ce9feeba53c652dd6569cca62e2bb287",
+        "e639eb028398f98b7958207b2a45684c",
+        "41c284ffd871324eadf06fc989583619",
+        "69b5f9421e21822b212fa48bf807b811",
+        "297a6cbb707aabf7bf2fd71dca333168"
+      ]
+    },
+    "home_appliances_2": {
+      "category": "home_appliances_2",
+      "order_count": 234,
+      "delayed_order_count": 14,
+      "low_review_order_count": 31,
+      "canceled_order_count": 3,
+      "delay_rate": 0.0598,
+      "low_review_rate": 0.1325,
+      "cancellation_rate": 0.0128,
+      "avg_delay_days": -12.34,
+      "avg_review_score": 4.12,
+      "avg_payment_value": 529.75,
+      "sample_order_ids": [
+        "2b72a32a2c3e93fa260ca7655073886f",
+        "7d219bd2feeb13ad311a00db33c06a3c",
+        "1f69e4870ffb8313df2fef3df0af2718",
+        "9320275e627cc0d374f04e77e1ee2f0e",
+        "8ddd6fc19a466ec0847fec42d69824c6"
+      ],
+      "sample_delayed_order_ids": [
+        "56030114e560e8093abc06e38626e871",
+        "2292c00843a93f0cff36af4ad5791098",
+        "6d0940a8f5fba47562bb14cd97dfd6da",
+        "3322f81bd149a446356f03c9803665cf",
+        "8907bb9eea50481b73734c7aa8fd2e16"
+      ],
+      "sample_low_review_order_ids": [
+        "9320275e627cc0d374f04e77e1ee2f0e",
+        "995438b4ed84d7fc87366f4b2f5fec9f",
+        "56030114e560e8093abc06e38626e871",
+        "6f20546433de334abe46b79336ead4b8",
+        "982b8f41e38f544803f6acd22729a910"
+      ]
+    },
+    "home_comfort_2": {
+      "category": "home_comfort_2",
+      "order_count": 24,
+      "delayed_order_count": 3,
+      "low_review_order_count": 6,
+      "canceled_order_count": 0,
+      "delay_rate": 0.125,
+      "low_review_rate": 0.25,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -8.71,
+      "avg_review_score": 3.71,
+      "avg_payment_value": 55.52,
+      "sample_order_ids": [
+        "9e7298f5bfed83404b628b69f965c94d",
+        "3005c05dbcb19ff903a28b5d654bb1cf",
+        "9d57c2295efd51a11106d2d8175c676a",
+        "9d0ad9e3a6c8ade53a107a1008214396",
+        "3ed26cafd58917f71e9044701fe9e7cb"
+      ],
+      "sample_delayed_order_ids": [
+        "9d57c2295efd51a11106d2d8175c676a",
+        "9d0ad9e3a6c8ade53a107a1008214396",
+        "2a952f9ea7fad0c8238967a2c4df72b8"
+      ],
+      "sample_low_review_order_ids": [
+        "9d57c2295efd51a11106d2d8175c676a",
+        "2a952f9ea7fad0c8238967a2c4df72b8",
+        "c024f07f4e10b8bb319211ee4bdd27de",
+        "0725ad25260ef550bc00be1179252efe",
+        "688c77c72e79654a39228923333fc18f"
+      ]
+    },
+    "home_confort": {
+      "category": "home_confort",
+      "order_count": 397,
+      "delayed_order_count": 37,
+      "low_review_order_count": 76,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0932,
+      "low_review_rate": 0.1914,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -9.76,
+      "avg_review_score": 3.87,
+      "avg_payment_value": 185.27,
+      "sample_order_ids": [
+        "5487a8ac1699754d975f853ce8bb9321",
+        "c26b94aa87e95d1c1eb1b592f43eb223",
+        "65d7e9625cc211f641191203e231ac24",
+        "371f13dd168ce30a881e0db8cf3929fb",
+        "05ae7d6bd78e2a61f4c0076a9d690aa8"
+      ],
+      "sample_delayed_order_ids": [
+        "7f94f1618e029449c3041113289cc240",
+        "ee4f89a4d2cea2a4910f24c491696af1",
+        "ff3d961f941d0784936dbe5da739575e",
+        "b2904e4b8dc7f4317993cb7d645f1a85",
+        "d1158619ad4cc6e0de905250f28ade12"
+      ],
+      "sample_low_review_order_ids": [
+        "00a77f9cc25b05b2004752593d7b8888",
+        "53cbf33b674d602f6746cb90a9d874fd",
+        "e4805728ef2799ec455a63ddd08aa52e",
+        "d839ea07a528e914f89702508023da37",
+        "9b8aaa74d468897a211fb359950937e5"
+      ]
+    },
+    "home_construction": {
+      "category": "home_construction",
+      "order_count": 490,
+      "delayed_order_count": 29,
+      "low_review_order_count": 87,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0592,
+      "low_review_rate": 0.1776,
+      "cancellation_rate": 0.002,
+      "avg_delay_days": -11.48,
+      "avg_review_score": 3.97,
+      "avg_payment_value": 208.12,
+      "sample_order_ids": [
+        "f04bfdbef5359607d39e66fccc9cc0de",
+        "3b14820d642ea72e95df3289b6539c1c",
+        "98e54ac24cb241c366307ed88ae84902",
+        "a98012aa8c697f2bcff9f8c2183e0f2b",
+        "f3d418a0887dbfd5bd41c788c87ac28b"
+      ],
+      "sample_delayed_order_ids": [
+        "b98c5a8bd8fcbb53d6d1189d07279780",
+        "47b40429ed8cce3aee9199792275433f",
+        "82598d1412ae8a6ab0939b8d0d12e16d",
+        "7646f2fa9419a132d8ff5528846a48d3",
+        "3a67e05f7b4f7fe736e90e6acc8689b3"
+      ],
+      "sample_low_review_order_ids": [
+        "f04bfdbef5359607d39e66fccc9cc0de",
+        "a98012aa8c697f2bcff9f8c2183e0f2b",
+        "f3d418a0887dbfd5bd41c788c87ac28b",
+        "492bed007520827cbed51959e4ce4385",
+        "fcc92ad75bbb8728d4d4488325ffc907"
+      ]
+    },
+    "housewares": {
+      "category": "housewares",
+      "order_count": 5884,
+      "delayed_order_count": 308,
+      "low_review_order_count": 805,
+      "canceled_order_count": 37,
+      "delay_rate": 0.0523,
+      "low_review_rate": 0.1368,
+      "cancellation_rate": 0.0063,
+      "avg_delay_days": -12.09,
+      "avg_review_score": 4.12,
+      "avg_payment_value": 134.81,
+      "sample_order_ids": [
+        "e481f51cbdc54678b7cc49136f2d6af7",
+        "6ea2f835b4556291ffdc53fa0b3b95e8",
+        "82bce245b1c9148f8d19a55b9ff70644",
+        "e3447938231fb6ba2fee0231b51eca59",
+        "af5b0604e113e1526593d505a26ef39d"
+      ],
+      "sample_delayed_order_ids": [
+        "6ea2f835b4556291ffdc53fa0b3b95e8",
+        "18d686f1bb1270182c646fe337459d79",
+        "3606d0126c19d4197f835572f5162c20",
+        "a06c43ed81f5c604287461f4d21949ce",
+        "81f2ee7669eee05b13906d24d43ebc69"
+      ],
+      "sample_low_review_order_ids": [
+        "6ea2f835b4556291ffdc53fa0b3b95e8",
+        "82bce245b1c9148f8d19a55b9ff70644",
+        "af5b0604e113e1526593d505a26ef39d",
+        "01a75ac3dd000b7628a684be97c29234",
+        "18d686f1bb1270182c646fe337459d79"
+      ]
+    },
+    "industry_commerce_and_business": {
+      "category": "industry_commerce_and_business",
+      "order_count": 235,
+      "delayed_order_count": 16,
+      "low_review_order_count": 28,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0681,
+      "low_review_rate": 0.1191,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -12.26,
+      "avg_review_score": 4.17,
+      "avg_payment_value": 205.74,
+      "sample_order_ids": [
+        "412fccb2b44a99b36714bca3fef8ad7b",
+        "21fc1ff2a7ed8b2ec6ff62ac18d7a1b7",
+        "4edca0186e467f58fe99ab648f604ce8",
+        "8c98f0aff69a4ac8620e15058c497092",
+        "93720f5a467d2edd5e84e209e8a9a4f6"
+      ],
+      "sample_delayed_order_ids": [
+        "4edca0186e467f58fe99ab648f604ce8",
+        "ada302d82697f51b2373ac6da3131588",
+        "87999cc2deff757e5f5db42eb840675f",
+        "019d444bd00f1ccb4643de466f9a1525",
+        "0e903df9d14796df715e2f6cc52e2c1d"
+      ],
+      "sample_low_review_order_ids": [
+        "019d444bd00f1ccb4643de466f9a1525",
+        "ea884b5a25f86e605e1750bd936e0122",
+        "2703773aea9533b606eed4f16f883e2e",
+        "6a8ead05c1fec9733ff10c379faa4e59",
+        "172fa490c511f028f9fb22f36a3b0d83"
+      ]
+    },
+    "kitchen_dining_laundry_garden_furniture": {
+      "category": "kitchen_dining_laundry_garden_furniture",
+      "order_count": 248,
+      "delayed_order_count": 11,
+      "low_review_order_count": 34,
+      "canceled_order_count": 2,
+      "delay_rate": 0.0444,
+      "low_review_rate": 0.1371,
+      "cancellation_rate": 0.0081,
+      "avg_delay_days": -12.29,
+      "avg_review_score": 4.04,
+      "avg_payment_value": 237.89,
+      "sample_order_ids": [
+        "f419e615bbdeb34741d4bdd661ff8599",
+        "112f6cd3047e7f158607233e26206398",
+        "444ebbf5602b5acdad22e0b4a9951bda",
+        "61f4d740ca1d5469d7aeb49f65719f3f",
+        "b836b696665c1f7e1d72497adf574b4f"
+      ],
+      "sample_delayed_order_ids": [
+        "26298a4e971b2abb0e472ae55f3a6cd0",
+        "30da20eacd71a5e8cac16c775ef72984",
+        "05c60320bb28437325f2d6d67467d93c",
+        "e1a9a4e68f9e918e0b27952d64dc51f8",
+        "f081de5f638ebea21bfb2cc74339e925"
+      ],
+      "sample_low_review_order_ids": [
+        "444ebbf5602b5acdad22e0b4a9951bda",
+        "30da20eacd71a5e8cac16c775ef72984",
+        "a785f992778e63bfb3b2288b684217a2",
+        "ccafddb54a91c4cebc1ab1ba6fa5f68d",
+        "bb7c6d87a72c89ffafb1bef12c4e23d4"
+      ]
+    },
+    "la_cuisine": {
+      "category": "la_cuisine",
+      "order_count": 13,
+      "delayed_order_count": 0,
+      "low_review_order_count": 3,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.2308,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -16.38,
+      "avg_review_score": 4.0,
+      "avg_payment_value": 198.42,
+      "sample_order_ids": [
+        "3821dc9ac1b25bed42324d0885b0a930",
+        "e22a3e8048469ea68906f666d446c25c",
+        "8f95199a6809023bbfabcd9759bd04a1",
+        "a5f8439f1e560659a492608e370ecde2",
+        "7f0cc9a8528cca2dc63cddba3940474f"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "3821dc9ac1b25bed42324d0885b0a930",
+        "8f95199a6809023bbfabcd9759bd04a1",
+        "28915ae2a90c218f0c2b7f8e0fb280e0"
+      ]
+    },
+    "luggage_accessories": {
+      "category": "luggage_accessories",
+      "order_count": 1034,
+      "delayed_order_count": 44,
+      "low_review_order_count": 97,
+      "canceled_order_count": 4,
+      "delay_rate": 0.0426,
+      "low_review_rate": 0.0938,
+      "cancellation_rate": 0.0039,
+      "avg_delay_days": -12.59,
+      "avg_review_score": 4.32,
+      "avg_payment_value": 166.8,
+      "sample_order_ids": [
+        "688052146432ef8253587b930b01a06d",
+        "e9ce52cd563d0124dced659e69eab10a",
+        "8bbbef97d763f4dcf2e12cc5b5e0cee6",
+        "87386e2485df1ab61a6d060a092e4d6f",
+        "16e38caa92e342c7780f68832f832d4d"
+      ],
+      "sample_delayed_order_ids": [
+        "43f8e020752c67130ddf027e0297291a",
+        "01cbdb2a8c075eaf248af643b3389f73",
+        "dc17a6461db14f3625728b10493ef332",
+        "6f847f9ac6e3766bd689f8761043795a",
+        "13d6f87da8ba3d0feb95e58ab304a9dd"
+      ],
+      "sample_low_review_order_ids": [
+        "ca28049cbd8e65a6e26834584bb3d38e",
+        "e9a85f45594b8912672374e10d99f1a7",
+        "6fcbcb1f955446e907a02e03b1808d25",
+        "ef9a774a63ac7a8f256cd7dc7a52f03c",
+        "5b4858f2dcf69731f2285a38829bfa7c"
+      ]
+    },
+    "market_place": {
+      "category": "market_place",
+      "order_count": 280,
+      "delayed_order_count": 11,
+      "low_review_order_count": 40,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0393,
+      "low_review_rate": 0.1429,
+      "cancellation_rate": 0.0036,
+      "avg_delay_days": -13.96,
+      "avg_review_score": 4.01,
+      "avg_payment_value": 127.72,
+      "sample_order_ids": [
+        "6245ae0abd9de1ae647b5da78c0ea69b",
+        "a840a7a89e3d9137358eb7b9408681fe",
+        "234c056c50619f48da64f731c48242b4",
+        "99fe1f54d97630a40c549779ea00e8c9",
+        "c7172e1a6b8de65fbc6e9e77afda672d"
+      ],
+      "sample_delayed_order_ids": [
+        "234c056c50619f48da64f731c48242b4",
+        "5adb5eb1fe82008e15f6eca420111c7b",
+        "6f8f0e3ba6fb99d979b8db8728b6a385",
+        "7dbe7b520d00d04a3f695cd91e904980",
+        "66bd5293331e02863f2054bf659ed2be"
+      ],
+      "sample_low_review_order_ids": [
+        "234c056c50619f48da64f731c48242b4",
+        "4a3e33350d1fd4eace1585032a97ee06",
+        "6222f10321c7b098c4d165139993de63",
+        "88b3b4d2f2d10a6dafd468832fc6962f",
+        "6f8f0e3ba6fb99d979b8db8728b6a385"
+      ]
+    },
+    "music": {
+      "category": "music",
+      "order_count": 38,
+      "delayed_order_count": 2,
+      "low_review_order_count": 4,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0526,
+      "low_review_rate": 0.1053,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -14.34,
+      "avg_review_score": 4.21,
+      "avg_payment_value": 181.62,
+      "sample_order_ids": [
+        "05ad157e8f606d82b474fd05703b7610",
+        "99daacedd8423e3b5169338429be0110",
+        "5ec6f0269bc66a9f965c2fdff5af3652",
+        "8b5525f36b49822ea7c5f37ffc94b66d",
+        "96a056333b6517f334ac928d91dc7e15"
+      ],
+      "sample_delayed_order_ids": [
+        "fe1466a3d7546b7ae29bcd953b472339",
+        "8dcb7601ceb0b144a5fdd0055b91ba28"
+      ],
+      "sample_low_review_order_ids": [
+        "99daacedd8423e3b5169338429be0110",
+        "fe1466a3d7546b7ae29bcd953b472339",
+        "af1f8e604dd6e52d35dd93dd7c2b46da",
+        "8dcb7601ceb0b144a5fdd0055b91ba28"
+      ]
+    },
+    "musical_instruments": {
+      "category": "musical_instruments",
+      "order_count": 628,
+      "delayed_order_count": 46,
+      "low_review_order_count": 85,
+      "canceled_order_count": 8,
+      "delay_rate": 0.0732,
+      "low_review_rate": 0.1354,
+      "cancellation_rate": 0.0127,
+      "avg_delay_days": -11.48,
+      "avg_review_score": 4.16,
+      "avg_payment_value": 336.08,
+      "sample_order_ids": [
+        "3923e3ade70348985bd2ca389905cf19",
+        "72344ea1113e3227494c465a64ae58aa",
+        "c82430e4a84f03b67cc2a82fecd873f0",
+        "2978901accabf6eef42711d8133a62f1",
+        "ee3fad68d0f56d60e91a2363ec879e44"
+      ],
+      "sample_delayed_order_ids": [
+        "614990b55e705d163e360ad21ed63a30",
+        "d75ec4cf8c3c2afb8cd60498e725dfe3",
+        "3b4ccaa47ae0c0d6966133bcdb0c8ad4",
+        "68233f255c4f267082b2fc19f6449977",
+        "ac9c24587cf6cf6fc0276576b9e95cc6"
+      ],
+      "sample_low_review_order_ids": [
+        "04b7738ad5fbb213eeb7a2145bea8242",
+        "c2fe713d93a9f489de49d6a79eb7f45c",
+        "0ddc19990b82039355525481533ea7eb",
+        "614990b55e705d163e360ad21ed63a30",
+        "d75ec4cf8c3c2afb8cd60498e725dfe3"
+      ]
+    },
+    "office_furniture": {
+      "category": "office_furniture",
+      "order_count": 1273,
+      "delayed_order_count": 101,
+      "low_review_order_count": 291,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0793,
+      "low_review_rate": 0.2286,
+      "cancellation_rate": 0.0008,
+      "avg_delay_days": -11.82,
+      "avg_review_score": 3.61,
+      "avg_payment_value": 270.92,
+      "sample_order_ids": [
+        "e69bfb5eb88e0ed6a785585b27e16dbf",
+        "e4de6d53ecff736bc68804b0b6e9f635",
+        "f2fa3795760c35b8c05fa8e2f09d5143",
+        "35660aec0cc42b6257e24281ee0e6255",
+        "93ec3e2c9a4beee38c28973d307093e1"
+      ],
+      "sample_delayed_order_ids": [
+        "7edf656fde82d2902cc1a19596cdf422",
+        "10ef04a6021b2bac686ed668485c8c80",
+        "d6a2e1d3b958b6c5cb3af6f1d4d4a203",
+        "76279ee78a4924f44a3a83ef23b169b8",
+        "b4c8c7add8acbdb1bebcae219ab6c141"
+      ],
+      "sample_low_review_order_ids": [
+        "e4de6d53ecff736bc68804b0b6e9f635",
+        "35660aec0cc42b6257e24281ee0e6255",
+        "93ec3e2c9a4beee38c28973d307093e1",
+        "64a9f2b487f66506d463ca18152280e8",
+        "6a6c7d523fd59eb5bbefc007331af717"
+      ]
+    },
+    "party_supplies": {
+      "category": "party_supplies",
+      "order_count": 39,
+      "delayed_order_count": 0,
+      "low_review_order_count": 7,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.1795,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -14.79,
+      "avg_review_score": 4.0,
+      "avg_payment_value": 139.14,
+      "sample_order_ids": [
+        "775130c792f4c6460c63162e994a1114",
+        "b32b3375c9aee9e103b0c8ef64af9087",
+        "a732b8bd0437cccab9e945143ad0a775",
+        "be9b4aa61bbe31e9d0191e3bfe51723d",
+        "e32049d31df0d952f7a6f6d8243b554a"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "b32b3375c9aee9e103b0c8ef64af9087",
+        "897ef7424df8edd3139511b631ae8e94",
+        "71394edb269e67b8431cc1c355cc53df",
+        "0e24f70accd4e5573b5173a35a773e5d",
+        "2e1205ef23c9d6445449283ddfe660ad"
+      ]
+    },
+    "pc_gamer": {
+      "category": "pc_gamer",
+      "order_count": 8,
+      "delayed_order_count": 0,
+      "low_review_order_count": 3,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.375,
+      "cancellation_rate": 0.125,
+      "avg_delay_days": -10.71,
+      "avg_review_score": 3.12,
+      "avg_payment_value": 214.63,
+      "sample_order_ids": [
+        "e4aac63ea6f6b75b6d91ead05207fb43",
+        "d7ae3c10c3a4c7a721e64ba401ee745b",
+        "2ad4df0af7a71d632dccc0129bee3268",
+        "804e5ddab73def7d5e86b8ae6f27e83b",
+        "94f94ebc2e26aeea2aa9e8945cb9fb0c"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "d7ae3c10c3a4c7a721e64ba401ee745b",
+        "2ad4df0af7a71d632dccc0129bee3268",
+        "4821d5af4c2ac98b0f70e47c5d845520"
+      ]
+    },
+    "perfumery": {
+      "category": "perfumery",
+      "order_count": 3162,
+      "delayed_order_count": 202,
+      "low_review_order_count": 426,
+      "canceled_order_count": 14,
+      "delay_rate": 0.0639,
+      "low_review_rate": 0.1347,
+      "cancellation_rate": 0.0044,
+      "avg_delay_days": -12.39,
+      "avg_review_score": 4.2,
+      "avg_payment_value": 144.51,
+      "sample_order_ids": [
+        "53cdb2fc8bc7dce0b6741e2150273451",
+        "82566a660a982b15fb86e904c8d32918",
+        "dcb36b511fcac050b97cd5c05de84dc3",
+        "dd78f560c270f1909639c11b925620ea",
+        "b276e4f8c0fb86bd82fce576f21713e0"
+      ],
+      "sample_delayed_order_ids": [
+        "690199d6a2c51ff57c6b392d7680cbfd",
+        "dfa7d326a489fe0c01a652351a552b43",
+        "25e2eb92a4861f100d82edfb2cbbb47f",
+        "0904fb2c91a18099a0b7315f1ac9501b",
+        "a2c2158d6a2596315ca45703207e97c4"
+      ],
+      "sample_low_review_order_ids": [
+        "aeb4c9d05ab11d7c6c9ca24f8c43bd70",
+        "6942b8da583c2f9957e990d028607019",
+        "45ed6e85398a87c253db47c2d9f48216",
+        "01835ef41c5ac66dd9ec6084fa1d0533",
+        "5cd498954e2b37d71b315166809b4bd7"
+      ]
+    },
+    "pet_shop": {
+      "category": "pet_shop",
+      "order_count": 1710,
+      "delayed_order_count": 86,
+      "low_review_order_count": 202,
+      "canceled_order_count": 4,
+      "delay_rate": 0.0503,
+      "low_review_rate": 0.1181,
+      "cancellation_rate": 0.0023,
+      "avg_delay_days": -12.36,
+      "avg_review_score": 4.23,
+      "avg_payment_value": 149.32,
+      "sample_order_ids": [
+        "949d5b44dbf5de918fe9c16f97b45f8a",
+        "86b37610c0e86e94afe3d5ba4b73fa14",
+        "3f849648ffbabb0562c7668f212e3e88",
+        "fd9b8ed51e5ffedf7a56bea36cc5b6f9",
+        "c10ff28c81d0b9bd2a265bb0836c8b0c"
+      ],
+      "sample_delayed_order_ids": [
+        "3f849648ffbabb0562c7668f212e3e88",
+        "7b2f3756c235e93b2ad6330c54805401",
+        "afffe744c625af23449137b8f832e630",
+        "27a70a8fdf1c9edcfa01d463b45a5b03",
+        "c505a1999c5ad6aacc8339242d824073"
+      ],
+      "sample_low_review_order_ids": [
+        "b68d69564a79dea4776afa33d1d2fcab",
+        "7b2f3756c235e93b2ad6330c54805401",
+        "afffe744c625af23449137b8f832e630",
+        "f7c061a1028ca02063801272ba6297f2",
+        "3eb08a4c95b522bed075ec059ad858ab"
+      ]
+    },
+    "portateis_cozinha_e_preparadores_de_alimentos": {
+      "category": "portateis_cozinha_e_preparadores_de_alimentos",
+      "order_count": 14,
+      "delayed_order_count": 1,
+      "low_review_order_count": 4,
+      "canceled_order_count": 1,
+      "delay_rate": 0.0714,
+      "low_review_rate": 0.2857,
+      "cancellation_rate": 0.0714,
+      "avg_delay_days": -9.77,
+      "avg_review_score": 3.43,
+      "avg_payment_value": 305.59,
+      "sample_order_ids": [
+        "8dbdb81783a3c754dc9441826510a36a",
+        "b35a771164a9defa3b4767f1b66918b1",
+        "b1829b9fc61d2f28d8668cd5bde29e3f",
+        "542dd8c7a80f7006b56c9cbb95e6433b",
+        "7faf8b9448b66f4a3ac98a312b3e7609"
+      ],
+      "sample_delayed_order_ids": [
+        "b35a771164a9defa3b4767f1b66918b1"
+      ],
+      "sample_low_review_order_ids": [
+        "b1829b9fc61d2f28d8668cd5bde29e3f",
+        "542dd8c7a80f7006b56c9cbb95e6433b",
+        "d94600e5b855ffe8db3b9bc06e21b1bd",
+        "1d911134e95ec6f299e80fe19b5b88c5"
+      ]
+    },
+    "security_and_services": {
+      "category": "security_and_services",
+      "order_count": 2,
+      "delayed_order_count": 0,
+      "low_review_order_count": 1,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0,
+      "low_review_rate": 0.5,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -17.0,
+      "avg_review_score": 2.5,
+      "avg_payment_value": 162.25,
+      "sample_order_ids": [
+        "2c4ada2e75c2ad41dd93cebb5df5f023",
+        "bede3503afed051733eeb4a84d1adcc5"
+      ],
+      "sample_delayed_order_ids": [],
+      "sample_low_review_order_ids": [
+        "bede3503afed051733eeb4a84d1adcc5"
+      ]
+    },
+    "signaling_and_security": {
+      "category": "signaling_and_security",
+      "order_count": 140,
+      "delayed_order_count": 6,
+      "low_review_order_count": 17,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0429,
+      "low_review_rate": 0.1214,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.69,
+      "avg_review_score": 4.09,
+      "avg_payment_value": 200.84,
+      "sample_order_ids": [
+        "176ada94dcc6f5fa6091d19a9d1fffde",
+        "b4a1c1abe13b0e2adafb21da024cef98",
+        "904194f416371c5ccc2bf141308220ab",
+        "337fc25996a2eefd2a075d5967670799",
+        "61059985a6fc0ad64e95d9944caacdad"
+      ],
+      "sample_delayed_order_ids": [
+        "4b4b94ef72b5f4fe86ce88a01b54e7a7",
+        "40516474d4dead1446fa9e9ae60d233a",
+        "bf247f0c5b4e3a8993f0e0e1f0d4ff87",
+        "3607a5c1a425d6896e8327401100e0b2",
+        "db20f0c71fd126ce34d0b209e634f3d7"
+      ],
+      "sample_low_review_order_ids": [
+        "b4a1c1abe13b0e2adafb21da024cef98",
+        "2850436e0937a8f3408d9b9929a455dc",
+        "67acbda15487a0495068196ebdfbbcf7",
+        "bf8335c7f470714a6a72b83d1fd1796c",
+        "bf247f0c5b4e3a8993f0e0e1f0d4ff87"
+      ]
+    },
+    "small_appliances": {
+      "category": "small_appliances",
+      "order_count": 630,
+      "delayed_order_count": 29,
+      "low_review_order_count": 92,
+      "canceled_order_count": 8,
+      "delay_rate": 0.046,
+      "low_review_rate": 0.146,
+      "cancellation_rate": 0.0127,
+      "avg_delay_days": -13.87,
+      "avg_review_score": 4.15,
+      "avg_payment_value": 331.05,
+      "sample_order_ids": [
+        "47aa4816b27ba60ec948cd019cc1afc1",
+        "734e7d1bbaeb2ff82521ca0fe6fb6f79",
+        "14e6e050a57912543937e93051cc7b2c",
+        "ac64f79a33bfa575fc5a17e7926df3d5",
+        "0ac645ddb846d1373321decb39c9956f"
+      ],
+      "sample_delayed_order_ids": [
+        "b7579d24f5b2dd3e20f2e57d0e07d170",
+        "e2bd28bec2c4b78b6b39dd0cda08c177",
+        "d725a73ed0e99e678f0a6862e3d09539",
+        "f5c7fcc9933ae8861462ee79735d9993",
+        "c6122e6a623a45c8dfc876f10733682f"
+      ],
+      "sample_low_review_order_ids": [
+        "b3206cf64b7cd1480a6c6f9912b20666",
+        "8ca57f2b32c00588cab243b2115441f5",
+        "b7579d24f5b2dd3e20f2e57d0e07d170",
+        "4dd077c76e72e73742c4af14ebfbd4d1",
+        "d233630561c3babf58e2ca3c0ca52bd2"
+      ]
+    },
+    "small_appliances_home_oven_and_coffee": {
+      "category": "small_appliances_home_oven_and_coffee",
+      "order_count": 75,
+      "delayed_order_count": 4,
+      "low_review_order_count": 8,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0533,
+      "low_review_rate": 0.1067,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -11.51,
+      "avg_review_score": 4.29,
+      "avg_payment_value": 669.55,
+      "sample_order_ids": [
+        "fb8c84f49d464b75f05a3de37923fc87",
+        "55bd3d21d10786b863b8537b32bc3899",
+        "c3b2c9ce918dcc0fdf5053927cd0ff8e",
+        "fe25e6ae3200a0fd420ba45277d19fc5",
+        "03b31f549c27d03bed25fc42ddb46138"
+      ],
+      "sample_delayed_order_ids": [
+        "11a6156f787eb963fb211db50db44d99",
+        "d99b8ff94ddb329c1d7e03ab9d9019e3",
+        "c7197036433dac8ba4041a18b0b435aa",
+        "5ab86968467c65a96b9a6437e9e83164"
+      ],
+      "sample_low_review_order_ids": [
+        "fe25e6ae3200a0fd420ba45277d19fc5",
+        "11a6156f787eb963fb211db50db44d99",
+        "b7349b2c8b3b8105cb58b4c65602206e",
+        "d99b8ff94ddb329c1d7e03ab9d9019e3",
+        "18eadded4d37d643ad53765a205ad45b"
+      ]
+    },
+    "sports_leisure": {
+      "category": "sports_leisure",
+      "order_count": 7720,
+      "delayed_order_count": 495,
+      "low_review_order_count": 1033,
+      "canceled_order_count": 47,
+      "delay_rate": 0.0641,
+      "low_review_rate": 0.1338,
+      "cancellation_rate": 0.0061,
+      "avg_delay_days": -11.87,
+      "avg_review_score": 4.15,
+      "avg_payment_value": 151.04,
+      "sample_order_ids": [
+        "948097deef559c742e7ce321e5e58919",
+        "d17dc4a904426827ca80f2ccb3a6be56",
+        "5820a1100976432c7968a52da59e9364",
+        "9faeb9b2746b9d7526aef5acb08e2aa0",
+        "2edfd6d1f0b4cd0db4bf37b1b224d855"
+      ],
+      "sample_delayed_order_ids": [
+        "16c24987724018f73b746aacfbb5f8e8",
+        "4f7ce3efe568a5e57290a9fa3e45b1f5",
+        "0fc34e566d3273325c404c113f4a8b2a",
+        "4d2d8a4224215f680cc5221011347401",
+        "bd3f8b3f4ff1469c0709218f7fde9fe8"
+      ],
+      "sample_low_review_order_ids": [
+        "9faeb9b2746b9d7526aef5acb08e2aa0",
+        "f4471dae8c482f51aa1826cd9f5d4433",
+        "36530871a5e80138db53bcfd8a104d90",
+        "16c24987724018f73b746aacfbb5f8e8",
+        "5869074071e0f56e9085dc3742c97b2a"
+      ]
+    },
+    "stationery": {
+      "category": "stationery",
+      "order_count": 2311,
+      "delayed_order_count": 148,
+      "low_review_order_count": 271,
+      "canceled_order_count": 12,
+      "delay_rate": 0.064,
+      "low_review_rate": 0.1173,
+      "cancellation_rate": 0.0052,
+      "avg_delay_days": -12.05,
+      "avg_review_score": 4.23,
+      "avg_payment_value": 121.64,
+      "sample_order_ids": [
+        "ad21c59c0840e6cb83a9ceb5573f8159",
+        "f3e7c359154d965827355f39d6b1fdac",
+        "d22e9fa5731b9e30e8b27afcdc2f8563",
+        "80d817467dc3d0a4bb5ab8986c962b1f",
+        "9344ccd01ff5fa7ec2aef0ee7e1c49c3"
+      ],
+      "sample_delayed_order_ids": [
+        "b60b53ad0bb7dacacf2989fe27ad567a",
+        "cafc9b2f7d35ec42bdb74347cc6e8a70",
+        "0ef89e47a5078a9e54a080d5fa8c9109",
+        "b5195225c11fc325d686d24fe14eedbb",
+        "a4efaffc506a395c9cea7402b078c1e5"
+      ],
+      "sample_low_review_order_ids": [
+        "cafc9b2f7d35ec42bdb74347cc6e8a70",
+        "a9b151f0c0471d9b2534fa73c9c0e123",
+        "0ef89e47a5078a9e54a080d5fa8c9109",
+        "b5195225c11fc325d686d24fe14eedbb",
+        "a4efaffc506a395c9cea7402b078c1e5"
+      ]
+    },
+    "tablets_printing_image": {
+      "category": "tablets_printing_image",
+      "order_count": 79,
+      "delayed_order_count": 4,
+      "low_review_order_count": 12,
+      "canceled_order_count": 0,
+      "delay_rate": 0.0506,
+      "low_review_rate": 0.1519,
+      "cancellation_rate": 0.0,
+      "avg_delay_days": -13.08,
+      "avg_review_score": 4.08,
+      "avg_payment_value": 116.68,
+      "sample_order_ids": [
+        "0917636d789ce3b3eac37895935af5c2",
+        "cf439d61252ef55f81ce2e531d64a275",
+        "47bfd5091e67cf36c5d7d5e6ca97db53",
+        "8c9210b604388d38e4ecc5eea3c06b12",
+        "a7b6b0d33a2814dff897167e737b22c8"
+      ],
+      "sample_delayed_order_ids": [
+        "b86ec88f5bffbf1f61fb5daed332e355",
+        "3d7769d40f0a71dd4954af1ddea4897e",
+        "6854558dc4979ad704ccd9ff6a90e628",
+        "e3e1b813f658feb4bc2c345bc2d399f5"
+      ],
+      "sample_low_review_order_ids": [
+        "bde4e874383e1817284c013ec6a2d72e",
+        "655b20c809450d9f4e2d3b62d5b7f416",
+        "dba28a189fd1425d68f33018e1d88808",
+        "3735a11cbccd8916dbc9ccf5f671cc2c",
+        "7f56220583170a9a779f55e555e7e986"
+      ]
+    },
+    "telephony": {
+      "category": "telephony",
+      "order_count": 4199,
+      "delayed_order_count": 291,
+      "low_review_order_count": 664,
+      "canceled_order_count": 16,
+      "delay_rate": 0.0693,
+      "low_review_rate": 0.1581,
+      "cancellation_rate": 0.0038,
+      "avg_delay_days": -11.26,
+      "avg_review_score": 3.99,
+      "avg_payment_value": 94.97,
+      "sample_order_ids": [
+        "116f0b09343b49556bbad5f35bee0cdf",
+        "83018ec114eee8641c97e08f7b4e926f",
+        "66e4624ae69e7dc89bd50222b59f581f",
+        "686541986ecfb7d9296eb67719973bf0",
+        "2711a938db643b3f0b62ee2c8a2784aa"
+      ],
+      "sample_delayed_order_ids": [
+        "66e4624ae69e7dc89bd50222b59f581f",
+        "d010facca14d57e997bf54e52f0ea03b",
+        "13bad9a229ea7c04888ada5c6c971c28",
+        "523d7597c0c82db94fd16b4213e2f0ab",
+        "24791bba1a08147c3b660bb80d0de8d3"
+      ],
+      "sample_low_review_order_ids": [
+        "66e4624ae69e7dc89bd50222b59f581f",
+        "b6b3633f97c686d8e188ac6fa29ff20d",
+        "4f7e398a1ddb1c349465b42b6865c60b",
+        "cfd355e6233b9854f7decc72472f9c3e",
+        "682fba8f9ac0c164d162ff702d6bcc23"
+      ]
+    },
+    "toys": {
+      "category": "toys",
+      "order_count": 3886,
+      "delayed_order_count": 243,
+      "low_review_order_count": 514,
+      "canceled_order_count": 31,
+      "delay_rate": 0.0625,
+      "low_review_rate": 0.1323,
+      "cancellation_rate": 0.008,
+      "avg_delay_days": -12.09,
+      "avg_review_score": 4.17,
+      "avg_payment_value": 145.89,
+      "sample_order_ids": [
+        "432aaf21d85167c2c86ec9448c4e42cc",
+        "d887b52c6516beb39e8cd44a5f8b60f7",
+        "abc5ec9ecaec740b498a37f19c29a8c0",
+        "d1f54c6a2a7015c5687439d6d4e971ba",
+        "3f3913e8c7fd221ac82a34ffa20b93ee"
+      ],
+      "sample_delayed_order_ids": [
+        "9472d3c8a0ad463cbfc89897334431da",
+        "08763574782690116475ea62ffdecadb",
+        "5e8d0f2f1e06e715aee3eefe4c175e52",
+        "8cf0fd0e7dc9c106fa1f09ba6bce7626",
+        "9b189f6cf2ef734a7dd0419ed3c64d99"
+      ],
+      "sample_low_review_order_ids": [
+        "9472d3c8a0ad463cbfc89897334431da",
+        "f6f6a68d78c7dd4b319f6df3c846094b",
+        "5e8d0f2f1e06e715aee3eefe4c175e52",
+        "651bd7286b2e17e1e3ea7b644870e429",
+        "6e9cd3f36a1e951e29d455913402c171"
+      ]
+    },
+    "watches_gifts": {
+      "category": "watches_gifts",
+      "order_count": 5624,
+      "delayed_order_count": 406,
+      "low_review_order_count": 880,
+      "canceled_order_count": 20,
+      "delay_rate": 0.0722,
+      "low_review_rate": 0.1565,
+      "cancellation_rate": 0.0036,
+      "avg_delay_days": -11.8,
+      "avg_review_score": 4.05,
+      "avg_payment_value": 233.09,
+      "sample_order_ids": [
+        "91b2a010e1e45e6ba3d133fa997597be",
+        "641fb0752bf5b5940c376b3a8bb9dc52",
+        "634e8f4c0f6744a626f77f39770ac6aa",
+        "6d25592267349b322799e2beb687871e",
+        "8447ff843b2616c50c0ced28ab1dae03"
+      ],
+      "sample_delayed_order_ids": [
+        "f11e9516ca2b6091b64f2e2ea0ebebb3",
+        "80b0f4fc350532f6e0ce9aa81ccde91c",
+        "8b37f436aea079bd73bbcbe103d14a0b",
+        "bd74c36a843f8560d4b4b2a902dfb22e",
+        "43f312594026fc6c67ccf619afe600d1"
+      ],
+      "sample_low_review_order_ids": [
+        "634e8f4c0f6744a626f77f39770ac6aa",
+        "e1da8361c76cab67aa3588a1fbf1af54",
+        "3b4ad687e7e5190db827e1ae5a8989dd",
+        "f11e9516ca2b6091b64f2e2ea0ebebb3",
+        "59b32faedc12322c672e95ec3716d614"
+      ]
+    }
+  }
+}

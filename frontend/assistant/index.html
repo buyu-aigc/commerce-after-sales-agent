@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Olist · 订单助手</title>
+  <link rel="stylesheet" href="/static/product.css?v=20260921-4">
+<style>.orders-rail { display: none !important; } .customer-layout { grid-template-columns: minmax(0, 1fr); }</style></head>
+<body>
+  <header>
+    <a class="brand" href="/customer">olist<span>订单助手</span></a>
+    <div class="header-actions"><a href="/review" class="staff-link">工作人员入口</a><span class="account">体验账户</span></div>
+  </header>
+  <main class="customer-layout">
+    <aside class="orders-rail">
+      <div class="aside-title"><div><p class="eyebrow">我的账户</p><h1>订单与售后</h1></div><span id="orderCount"></span></div>
+      <div id="orderSummary" class="order-summary" aria-live="polite"></div>
+      <div id="orders" class="order-list" aria-live="polite">正在读取订单…</div>
+      <small class="footnote">体验环境使用公开历史订单。申请只写入本地沙箱，不会触发真实付款或物流操作。</small>
+    </aside>
+    <section class="service">
+      <div class="service-heading"><div class="avatar" aria-hidden="true">O</div><div><h2>订单与售后助手</h2><span id="selectionHint">查询进度、处理售后，或直接描述您遇到的问题。</span></div><button id="resetSession" class="reset-session" type="button" title="开始新咨询" aria-label="开始新咨询">↻</button></div>
+      <div id="availability" role="status" hidden></div>
+      <div id="progress" hidden></div>
+      <div id="chat" class="messages" aria-live="polite"></div>
+      <form id="compose">
+        <div id="shortcuts" class="shortcuts"><button type="button" data-query="我有哪些订单还在运输中？" data-action="list_active_shipments">在途订单</button><button type="button" data-query="帮我总结一下当前订单记录。" data-action="order_summary">订单小结</button><button type="button" data-query="退款一般需要满足什么条件？" data-action="refund_policy">退款条件</button></div>
+        <label class="sr-only" for="message">输入您的问题</label>
+        <div class="composer"><textarea id="message" maxlength="2000" rows="2" placeholder="例如：包裹还没到，帮我看看哪一单" required></textarea><button id="send" title="发送消息" aria-label="发送消息" type="submit">↑</button></div>
+        <p id="status" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <script src="/static/product-customer.js?v=20261020-1"></script>
+</body>
+</html>

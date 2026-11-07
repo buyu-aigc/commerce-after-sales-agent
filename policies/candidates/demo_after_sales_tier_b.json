@@ -1,0 +1,151 @@
+{
+  "demo_only": true,
+  "version": "1.2.0",
+  "assumptions": [
+    "This is a learning-project policy pack, not an official marketplace or legal policy.",
+    "Amounts and thresholds are demo assumptions for exercising the agent workflow.",
+    "A real deployment must replace this pack with business- and legal-approved rules.",
+    "Policy packs are versioned and replayed against frozen fixtures before rollout.",
+    "Effective windows are right-open: effective_to is the first instant the policy is inactive."
+  ],
+  "policies": [
+    {
+      "policy_id": "demo_delay_refund_auto_tier_b_v1",
+      "priority": 15,
+      "action_types": [
+        "refund_request"
+      ],
+      "conditions": {
+        "order_status": "delivered",
+        "delay_days_min": 7,
+        "amount_max": 100,
+        "prior_compensation": false,
+        "repeat_claim": false,
+        "risk_level_not": [
+          "high"
+        ],
+        "refund_failure": false
+      },
+      "decision": "auto",
+      "max_amount": 100,
+      "reason": "Tier B candidate: low-value delivered refund with delay >=7 days, no hard-risk signals"
+    },
+    {
+      "policy_id": "demo_repeat_claim_review_v1",
+      "priority": 5,
+      "action_types": [
+        "refund_request",
+        "cancel_order"
+      ],
+      "conditions": {
+        "repeat_claim": true
+      },
+      "decision": "review",
+      "max_amount": 0,
+      "reason": "重复索赔，需要人工核查历史记录"
+    },
+    {
+      "policy_id": "demo_high_risk_user_review_v1",
+      "priority": 6,
+      "action_types": [
+        "refund_request",
+        "cancel_order",
+        "change_address",
+        "invoice_request",
+        "complaint_escalation",
+        "open_support_case"
+      ],
+      "conditions": {
+        "risk_level": "high"
+      },
+      "decision": "review",
+      "max_amount": 0,
+      "reason": "高风险用户，需要人工审核"
+    },
+    {
+      "policy_id": "demo_refund_failure_review_v1",
+      "priority": 7,
+      "action_types": [
+        "refund_request"
+      ],
+      "conditions": {
+        "refund_failure": true
+      },
+      "decision": "review",
+      "max_amount": 0,
+      "reason": "退款失败/异常，需要人工跟进"
+    },
+    {
+      "policy_id": "demo_preship_cancel_auto_v1",
+      "priority": 10,
+      "action_types": [
+        "cancel_order"
+      ],
+      "conditions": {
+        "order_status": [
+          "created",
+          "approved",
+          "invoiced",
+          "processing"
+        ],
+        "amount_max": 300,
+        "prior_compensation": false
+      },
+      "decision": "auto",
+      "max_amount": 300,
+      "reason": "未发货订单，低金额取消可直接处理"
+    },
+    {
+      "policy_id": "demo_delay_refund_auto_v1",
+      "priority": 20,
+      "action_types": [
+        "refund_request"
+      ],
+      "conditions": {
+        "order_status": "delivered",
+        "delay_days_min": 10,
+        "amount_max": 100,
+        "prior_compensation": false,
+        "repeat_claim": false,
+        "risk_level_not": [
+          "high"
+        ]
+      },
+      "decision": "auto",
+      "max_amount": 100,
+      "reason": "已送达且延迟达到阈值，低金额退款可自动处理"
+    },
+    {
+      "policy_id": "demo_delay_refund_review_v1",
+      "priority": 30,
+      "action_types": [
+        "refund_request"
+      ],
+      "conditions": {
+        "order_status": "delivered",
+        "delay_days_min": 10
+      },
+      "decision": "review",
+      "max_amount": 0,
+      "reason": "延迟退款但金额较高或存在风险，需要人工审核"
+    },
+    {
+      "policy_id": "demo_default_review_v1",
+      "priority": 999,
+      "action_types": [
+        "refund_request",
+        "cancel_order",
+        "change_address",
+        "invoice_request",
+        "complaint_escalation",
+        "open_support_case"
+      ],
+      "conditions": {},
+      "decision": "review",
+      "max_amount": 0,
+      "reason": "没有命中的自动政策，默认转人工审核"
+    }
+  ],
+  "effective_from": "2026-01-01T00:00:00Z",
+  "effective_to": null
+}

@@ -1,0 +1,33 @@
+{
+  "policy_id": "after_sales_e2e_v2",
+  "purpose": "Independent evaluation oracle for the public Olist sandbox.",
+  "action_rules": {
+    "cancel_order": {
+      "reject_statuses": ["canceled", "shipped", "delivered"],
+      "auto_when": {
+        "statuses": ["approved", "invoiced"],
+        "payment_lt": 50,
+        "min_review_score": 3,
+        "max_delay_days": 0
+      },
+      "otherwise": "handoff"
+    },
+    "change_address": {
+      "reject_statuses": ["canceled", "shipped", "delivered"],
+      "auto_when": {
+        "statuses": ["approved", "invoiced"],
+        "payment_lt": 50,
+        "min_review_score": 3,
+        "max_delay_days": 0
+      },
+      "otherwise": "handoff"
+    },
+    "refund_request": {
+      "handoff_when": {"min_delay_days": 7, "max_review_score": 2},
+      "otherwise": "clarify"
+    },
+    "invoice_request": {"otherwise": "handoff"},
+    "complaint_escalation": {"otherwise": "handoff"},
+    "open_support_case": {"otherwise": "handoff"}
+  }
+}

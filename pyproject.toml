@@ -1,0 +1,56 @@
+[project]
+name = "commerce-support-agent"
+version = "0.2.0"
+description = "E-commerce self-service after-sales Agent with staff HITL review"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic>=2.10.0",
+    "langgraph>=0.3.0",
+    "langgraph-checkpoint-sqlite>=2.0.0",
+    "aiosqlite>=0.20.0",
+    "langchain-openai>=1.0.0",
+    "mcp>=1.0.0",
+    "httpx>=0.28.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "anyio>=4.0",
+    "ruff>=0.11.0",
+]
+eval = [
+    "deepeval>=3.0.0",
+]
+data = [
+    "pyarrow>=25.0.1",
+]
+redis = [
+    "redis>=5.0.0",
+]
+vector = [
+    "qdrant-client>=1.12.0",
+]
+
+[tool.ruff]
+line-length = 110
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/llm/prompts.py" = ["E501"]   # LLM prompts - breaking lines alters prompt text
+
+[tool.pytest.ini_options]
+addopts = "--basetemp=.pytest-tmp"
+norecursedirs = ["benchmark-tmp", "benchmark_runs", ".venv", ".git"]
+filterwarnings = [
+    "ignore::DeprecationWarning:langchain_core.*",
+]
+
+[tool.ruff.format]
+quote-style = "double"

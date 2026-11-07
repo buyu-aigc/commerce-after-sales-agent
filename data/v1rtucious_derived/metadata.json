@@ -1,0 +1,100 @@
+{
+  "source": "V1rtucious/Ecom-Chatbot-Test-Set",
+  "source_url": "https://huggingface.co/datasets/V1rtucious/Ecom-Chatbot-Test-Set",
+  "license": "MIT",
+  "case_count": 2000,
+  "group_counts": [
+    [
+      "B",
+      667
+    ],
+    [
+      "A",
+      667
+    ],
+    [
+      "C",
+      666
+    ]
+  ],
+  "response_type_counts": [
+    [
+      "text",
+      1172
+    ],
+    [
+      "tool_call",
+      828
+    ]
+  ],
+  "top_intents": [
+    [
+      "product_detail_qa",
+      203
+    ],
+    [
+      "complaint",
+      169
+    ],
+    [
+      "escalation",
+      166
+    ],
+    [
+      "return_refund",
+      146
+    ],
+    [
+      "similarity_search",
+      146
+    ],
+    [
+      "exchange_request",
+      120
+    ],
+    [
+      "policy_exception",
+      119
+    ],
+    [
+      "repeat_issue",
+      119
+    ],
+    [
+      "order_status",
+      109
+    ],
+    [
+      "review_qa",
+      106
+    ],
+    [
+      "bundle_suggestions",
+      106
+    ],
+    [
+      "order_cancellation",
+      106
+    ],
+    [
+      "cross_sell",
+      106
+    ],
+    [
+      "edge_case",
+      93
+    ],
+    [
+      "address_update",
+      93
+    ],
+    [
+      "refund_status",
+      53
+    ],
+    [
+      "reorder_assistance",
+      40
+    ]
+  ]
+}

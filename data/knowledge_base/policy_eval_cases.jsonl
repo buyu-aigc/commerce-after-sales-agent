@@ -1,0 +1,19 @@
+{"id":"kb-order-status","query":"客户问订单当前状态，回答前必须查什么信息？","expected_section":"Order Status Response Policy","expected_source_type":"policy"}
+{"id":"kb-delay","query":"订单送达晚于预计送达时间时，能不能直接承诺退款？","expected_section":"Delivery Delay Policy","expected_source_type":"policy"}
+{"id":"kb-low-review","query":"客户给了1星或2星低分时，客服跟进重点是什么？","expected_section":"Low Review Recovery Policy","expected_source_type":"policy"}
+{"id":"kb-cancel","query":"取消订单是否可以直接创建售后case？","expected_section":"Cancellation Follow-Up Policy","expected_source_type":"policy"}
+{"id":"kb-compensation","query":"优惠券、退款、补偿这类动作为什么不能让模型直接执行？","expected_section":"Compensation Boundary Policy","expected_source_type":"policy"}
+{"id":"kb-invoice","query":"发票申请需要哪些信息？","expected_section":"Invoice Request Policy","expected_source_type":"policy"}
+{"id":"kb-address","query":"客户要修改收货地址，客服应该怎么处理？","expected_section":"Address Change Policy","expected_source_type":"policy"}
+{"id":"kb-human-approval","query":"创建售后case之前需要什么确认？","expected_section":"Human Approval Policy","expected_source_type":"policy"}
+{"id":"kb-message-style","query":"给客户的话术应该避免哪些内部技术词？","expected_section":"Customer Message Style","expected_source_type":"policy"}
+{"id":"kb-tool-boundary","query":"订单状态、延迟天数、评价分这些事实应该从哪里来？","expected_section":"Tool Boundary Policy","expected_source_type":"policy"}
+{"id":"kb-category","query":"类目运营风险分析可以回答什么，不能替代什么？","expected_section":"Category Operations Policy","expected_source_type":"policy"}
+{"id":"kb-audit","query":"生产系统里一次客服agent任务应该记录哪些轨迹？","expected_section":"Audit and Trace Policy","expected_source_type":"policy"}
+{"id":"kb-refund-status-faq","query":"客户问退款是不是已经完成了，应该怎么回答？","expected_section":"Refund Status FAQ","expected_source_type":"faq"}
+{"id":"kb-return-label-faq","query":"商品破损或错发时能不能直接承诺退货标签？","expected_section":"Return Label FAQ","expected_source_type":"faq"}
+{"id":"kb-delivery-complaint-faq","query":"客户说包裹没收到，应该区分哪些物流状态？","expected_section":"Delivery Complaint FAQ","expected_source_type":"faq"}
+{"id":"kb-complaint-escalation-faq","query":"什么情况下投诉需要转人工复核？","expected_section":"Complaint Escalation FAQ","expected_source_type":"faq"}
+{"id":"kb-health-beauty-merchant","query":"health beauty 美妆类目已送达订单能不能直接取消？","expected_section":"Health Beauty Merchant Rule","expected_source_type":"merchant_rule"}
+{"id":"kb-electronics-merchant","query":"数码电子产品退款前需要核查序列号和保修吗？","expected_section":"Electronics Merchant Rule","expected_source_type":"merchant_rule"}
+{"id":"kb-high-value-merchant","query":"高金额订单退款补偿为什么必须人工审核？","expected_section":"High Value Order Rule","expected_source_type":"merchant_rule"}

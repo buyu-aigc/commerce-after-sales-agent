@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Commerce Support · 售后服务体验</title>
+  <link rel="stylesheet" href="/static/guided-demo.css?v=20260922-1">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/demo"><span class="brand-mark">C</span><span>Commerce Support</span></a>
+    <div class="topbar-actions"><span class="sandbox-note">体验环境 · 不连接真实订单与资金</span><a href="/customer">产品入口</a><a href="/technical">技术视图</a></div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro">
+      <p class="eyebrow">售后服务体验</p>
+      <h1>从用户求助到处理结果，完整走一遍。</h1>
+      <p>选择一个常见情境。系统会读取订单事实、匹配处理规则；需要人工把关的申请会进入审核步骤。</p>
+    </section>
+
+    <section class="scenario-picker" aria-label="选择体验情境">
+      <button class="scenario selected" type="button" data-scenario="delayed_refund">
+        <span class="scenario-index">01</span><strong>配送异常，申请退款</strong><small>查看为何需要人工复核</small>
+      </button>
+      <button class="scenario" type="button" data-scenario="track_delivery">
+        <span class="scenario-index">02</span><strong>查询配送进度</strong><small>查看标准问题如何自助解决</small>
+      </button>
+      <button class="scenario" type="button" data-scenario="delivered_address">
+        <span class="scenario-index">03</span><strong>已送达后改地址</strong><small>查看无效动作如何被阻止</small>
+      </button>
+    </section>
+
+    <section class="workspace" aria-live="polite">
+      <article class="customer-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">用户侧</p><h2>订单与售后助手</h2></div>
+          <span id="customerState" class="state-pill">等待开始</span>
+        </div>
+        <div class="order-context">
+          <span>关联订单</span>
+          <strong id="orderName">选择情境后加载</strong>
+          <small id="orderDetail">公开历史订单 · 仅用于本地体验</small>
+        </div>
+        <div id="conversation" class="conversation">
+          <div class="welcome"><strong>你好，我是订单与售后助手。</strong><span>我会先核对订单和规则，再给出下一步。</span></div>
+        </div>
+        <div class="customer-footer">
+          <p id="scenarioSummary">配送异常时，系统会先整理事实和处理依据。</p>
+          <button id="start" class="primary" type="button">开始体验</button>
+        </div>
+      </article>
+
+      <article class="workflow-panel">
+        <div class="panel-heading"><div><p class="eyebrow">处理进度</p><h2>本次服务如何流转</h2></div></div>
+        <ol id="timeline" class="timeline">
+          <li><span>1</span><div><strong>等待用户请求</strong><small>选择一个情境开始体验</small></div></li>
+          <li class="muted"><span>2</span><div><strong>核对订单与规则</strong></div></li>
+          <li class="muted"><span>3</span><div><strong>生成处理结果</strong></div></li>
+        </ol>
+        <div id="reviewCard" class="review-card" hidden>
+          <div class="review-heading"><div><p class="eyebrow">人工复核</p><h3>请确认这项申请</h3></div><span class="review-badge">待处理</span></div>
+          <dl id="reviewFacts"></dl>
+          <div id="reviewReason" class="review-reason"></div>
+          <div class="review-actions"><button id="approve" class="primary" type="button">批准申请</button><button id="reject" class="secondary" type="button">驳回申请</button></div>
+          <p class="review-caption">体验模式下的决定会写入本地沙箱，不会触发真实退款或订单修改。</p>
+        </div>
+        <div id="resultCard" class="result-card" hidden></div>
+      </article>
+    </section>
+    <p id="feedback" class="feedback" role="status"></p>
+  </main>
+  <script src="/static/guided-demo.js?v=20260922-1"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+.git
+.gitignore
+.idea
+.venv
+__pycache__
+.pytest_cache
+.pytest-tmp
+.ruff_cache
+*.pyc
+.env.example
+*.md
+!data/knowledge_base/*.md
+docs/
+tests/
+
+# Host-specific 85MB derived index; the app falls back to agent_records.json.
+data/olist_derived/order_facts_index.json
+data/*.db
