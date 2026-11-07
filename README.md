@@ -63,7 +63,7 @@
 
 ```bash
 uv sync --extra dev
-cp .env.example .env    # 把 OPENAI_API_KEY 换成你自己的 DeepSeek key
+cp .env.example .env    # 在 .env 中填写 OPENAI_API_KEY
 uv run uvicorn app.main:app --port 8000
 ```
 
