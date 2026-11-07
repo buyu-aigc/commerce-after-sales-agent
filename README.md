@@ -63,8 +63,6 @@
 
 ![电商售后 Agent 运行流程](docs/diagrams/agent-workflow.png)
 
-[查看可编辑 SVG](docs/diagrams/agent-workflow.svg)
-
 ## 快速开始
 
 需要 Python 3.11 及以上版本。
