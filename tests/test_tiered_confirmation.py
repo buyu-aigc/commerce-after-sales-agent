@@ -65,7 +65,9 @@ async def test_auto_route_write_still_waits_for_the_click(client, v2_runtime, ti
 
 
 @pytest.mark.anyio
-async def test_mixed_turn_submits_the_reviewed_write_and_cards_the_automatic_one(client, v2_runtime, tiered_mode):
+async def test_mixed_turn_submits_the_reviewed_write_and_cards_the_automatic_one(
+    client, v2_runtime, tiered_mode
+):
     planner, _ = planner_returning(refund_a, cancel_b)
     response = await chat(client, planner, "tiered-mixed", "退款那笔，再取消家居那笔")
     assert [a["order_id"] for a in confirm_offers(response)] == [B]
@@ -86,8 +88,14 @@ async def test_withdrawal_still_needs_a_click(client, v2_runtime, tiered_mode):
     offer = next(a for a in second.json()["ui_actions"] if a["id"] == "confirm_application")
     assert offer["action_type"] == "withdraw_case"
     assert v2_runtime["case_service"].get(case["case_id"])["status"] == "pending_review"
-    await say(client, planner, "tiered-withdraw", offer["message"], requested_action="confirm_application",
-              confirmation_id=offer["confirmation_id"])
+    await say(
+        client,
+        planner,
+        "tiered-withdraw",
+        offer["message"],
+        requested_action="confirm_application",
+        confirmation_id=offer["confirmation_id"],
+    )
     assert v2_runtime["case_service"].get(case["case_id"])["status"] == "withdrawn"
 
 
@@ -95,7 +103,9 @@ async def test_withdrawal_still_needs_a_click(client, v2_runtime, tiered_mode):
 async def test_choosing_another_order_offers_cards_even_for_reviewed_routes(client, v2_runtime, tiered_mode):
     planner, _ = planner_returning(cancel_b)
     first = await chat(client, planner, "tiered-reselect", "家居那笔帮我取消")
-    offered = await chat(client, planner, "tiered-reselect", "不是这笔订单", **clicked(reselect(first), "reselect_application"))
+    offered = await chat(
+        client, planner, "tiered-reselect", "不是这笔订单", **clicked(reselect(first), "reselect_application")
+    )
     assert {a["order_id"] for a in confirm_offers(offered)} == {C}  # R$1783.44 cancel: reviewed, still a card
     assert not v2_runtime["case_service"].list_by_session("tiered-reselect")
 

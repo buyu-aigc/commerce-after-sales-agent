@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Evaluate hard after-sales strata against the demo policy pack."""
+
 from __future__ import annotations
 
 import argparse
@@ -94,7 +95,11 @@ def main() -> None:
     for name, row in report["by_stratum"].items():
         md.append(f"| {name} | {row['total']} | {row['auto']} | {row['review']} |")
     args.output.with_suffix(".md").write_text("\n".join(md) + "\n", encoding="utf-8")
-    print(json.dumps({key: report[key] for key in ("total", "auto", "review", "false_auto")}, ensure_ascii=False))
+    print(
+        json.dumps(
+            {key: report[key] for key in ("total", "auto", "review", "false_auto")}, ensure_ascii=False
+        )
+    )
     if report["false_auto"]:
         raise SystemExit(1)
 

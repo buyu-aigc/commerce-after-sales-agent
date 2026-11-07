@@ -20,11 +20,10 @@ from pydantic import BaseModel, Field
 
 from app import observability
 from app import support_conversations as conversations
-from app.agent import order_discovery, semantic_order_grounding
 from app.after_sales.decision import AfterSalesDecisionEngine
+from app.agent import order_discovery, semantic_order_grounding
 from app.agent.actions import _customer_category_label, _customer_order_status_label
 from app.agent.state import AgentState
-from app.intent.turn_contract import ACTIVE_TURN, CustomerTurnPlanner
 from app.config.di import (
     agent_graph_builder,
     case_service,
@@ -37,7 +36,9 @@ from app.config.di import (
     runtime_store,
     shadow_service,
 )
+from app.config.di import policy_engine as _policy_engine
 from app.evaluation_snapshot import load_evaluation_snapshot
+from app.intent.turn_contract import ACTIVE_TURN, CustomerTurnPlanner
 from app.llm.customer_presenter import present
 from app.logger import format_state, setup_logger
 from app.models import (
@@ -57,7 +58,6 @@ from app.models import (
     TraceReplayResponse,
     TraceSummaryResponse,
 )
-from app.config.di import policy_engine as _policy_engine
 from app.olist.category_labels import CATEGORY_LABELS
 from app.olist.status import PRE_SHIPMENT_STATUSES
 from app.policy.guard import PolicyGuard
@@ -403,7 +403,11 @@ async def chat(
             # delivered after this turn's message was recorded; the turn's own message
             # must still come last, because the graph treats the last message as the turn.
             last_customer = next(
-                (i for i in range(len(history_messages) - 1, -1, -1) if history_messages[i]["role"] == "user"),
+                (
+                    i
+                    for i in range(len(history_messages) - 1, -1, -1)
+                    if history_messages[i]["role"] == "user"
+                ),
                 None,
             )
             if last_customer is not None:
@@ -638,7 +642,9 @@ _WITHDRAWABLE_STATUSES = {"pending_review", "appealed_pending_review"}
 
 def _withdrawable(task: dict) -> bool:
     record = case_service.get(str(task.get("case_id") or ""))
-    return bool(record) and record.get("status") in _WITHDRAWABLE_STATUSES and not record.get("review_decision")
+    return (
+        bool(record) and record.get("status") in _WITHDRAWABLE_STATUSES and not record.get("review_decision")
+    )
 
 
 def _withdrawn_case_name(task: dict) -> str:
@@ -649,7 +655,9 @@ def _withdrawn_case_name(task: dict) -> str:
 def _perform_withdrawal(task: dict, user_id: str, session_id: str) -> str:
     """Atomic: only a case nobody has decided can be withdrawn; afterwards approval conflicts."""
     name = _withdrawn_case_name(task)
-    outcome = case_service.withdraw_case(str(task.get("case_id") or ""), user_id=user_id, session_id=session_id)
+    outcome = case_service.withdraw_case(
+        str(task.get("case_id") or ""), user_id=user_id, session_id=session_id
+    )
     if outcome.get("ok"):
         return f"已撤回您的{name}，工作人员不会再处理它。"
     if outcome.get("conflict"):
@@ -730,7 +738,8 @@ def _confirmation_reply(cards: list[dict]) -> str:
             lines.append(f"请确认是否撤回{order}的{_withdrawn_case_name(card['task'])}。")
         else:
             lines.append(
-                f"请确认是否为{order}提交{_WRITE_ACTION_NAMES.get(card['task'].get('action_type'), '售后申请')}。"
+                f"请确认是否为{order}提交"
+                f"{_WRITE_ACTION_NAMES.get(card['task'].get('action_type'), '售后申请')}。"
             )
     if any(card["task"].get("action_type") != "withdraw_case" for card in cards):
         lines.append("点击确认后才会提交；系统会按售后规则处理，符合条件的直接办理，其余转人工审核。")
@@ -753,10 +762,16 @@ def _confirmation_actions(cards: list[dict]) -> list[CustomerAction]:
             confirm_label, decline_label = f"确认提交{name}", "先不提交"
         actions.append(
             CustomerAction(
-                id="confirm_application", label=confirm_label, style="primary", message=confirm_label, **shared
+                id="confirm_application",
+                label=confirm_label,
+                style="primary",
+                message=confirm_label,
+                **shared,
             )
         )
-        actions.append(CustomerAction(id="decline_application", label=decline_label, message=decline_label, **shared))
+        actions.append(
+            CustomerAction(id="decline_application", label=decline_label, message=decline_label, **shared)
+        )
         if task.get("action_type") != "withdraw_case":
             # "Wrong order" is not "don't do it": keep the action, let the customer pick the object.
             # No order_id, so the page does not switch to the rejected order.
@@ -772,7 +787,9 @@ def _confirmation_actions(cards: list[dict]) -> list[CustomerAction]:
     return actions
 
 
-async def _offer_other_orders(graph, task: dict, orders: list[dict], user_id: str, session_id: str) -> list[dict]:
+async def _offer_other_orders(
+    graph, task: dict, orders: list[dict], user_id: str, session_id: str
+) -> list[dict]:
     """The card named the wrong order: offer the same action on the orders the customer may have meant.
 
     Same-category orders first (the usual confusion), otherwise any owned order where the action would
@@ -824,15 +841,21 @@ def _goes_to_review(task: dict) -> bool:
         return False
     action_type = str(task.get("action_type") or "")
     try:
-        decision = AfterSalesDecisionEngine().assess(
-            action_type=action_type,
-            order=order,
-            user_request=str(task.get("text") or ""),
-            policy_sections=[],
-        ).decision
+        decision = (
+            AfterSalesDecisionEngine()
+            .assess(
+                action_type=action_type,
+                order=order,
+                user_request=str(task.get("text") or ""),
+                policy_sections=[],
+            )
+            .decision
+        )
         task_risk, decision_risk = str(task.get("risk_level") or ""), str(decision.risk_level or "")
         risk = "high" if "high" in {task_risk, decision_risk} else (task_risk or decision_risk)
-        policy = PolicyGuard(_policy_engine, olist_service, case_service).check(action_type, order_id, risk_level=risk)
+        policy = PolicyGuard(_policy_engine, olist_service, case_service).check(
+            action_type, order_id, risk_level=risk
+        )
     except Exception:
         return False
     return policy.get("decision") == "review"
@@ -850,12 +873,16 @@ def _would_submit(task: dict) -> bool:
     order = olist_service.get_order_status(str(task.get("order_id") or ""))
     if order is None:
         return False
-    outcome = AfterSalesDecisionEngine().assess(
-        action_type=str(task.get("action_type") or ""),
-        order=order,
-        user_request=str(task.get("text") or ""),
-        policy_sections=[],
-    ).decision.outcome
+    outcome = (
+        AfterSalesDecisionEngine()
+        .assess(
+            action_type=str(task.get("action_type") or ""),
+            order=order,
+            user_request=str(task.get("text") or ""),
+            policy_sections=[],
+        )
+        .decision.outcome
+    )
     return outcome not in {"reject", "ask_clarification"}
 
 
@@ -870,7 +897,8 @@ async def _defer_writes_for_confirmation(
     """
     skip_review = tiered and _confirmation_scope() == "auto_only"
     writes = [
-        t for t in plan["tasks"]
+        t
+        for t in plan["tasks"]
         if t.get("side_effect") and _would_submit(t) and not (skip_review and _goes_to_review(t))
     ]
     if not writes:
@@ -897,7 +925,12 @@ async def _defer_writes_for_confirmation(
         cards.append({"confirmation_id": token, "task": dict(task), "order": by_id.get(task.get("order_id"))})
     await graph.aupdate_state(
         config,
-        {"pending_confirmations": pending, "user_id": user_id, "tenant_id": "olist-demo", "session_id": session_id},
+        {
+            "pending_confirmations": pending,
+            "user_id": user_id,
+            "tenant_id": "olist-demo",
+            "session_id": session_id,
+        },
         as_node="finalize_answer",
     )
     held = {id(t) for t in writes}
@@ -914,7 +947,11 @@ async def _consume_customer_confirmation(graph, request: ChatRequest, user_id: s
     if snapshot.values:
         await graph.aupdate_state(
             config,
-            {"pending_confirmations": {t: r for t, r in pending.items() if float(r.get("expires_at", 0)) > now}},
+            {
+                "pending_confirmations": {
+                    t: r for t, r in pending.items() if float(r.get("expires_at", 0)) > now
+                }
+            },
             as_node="finalize_answer",
         )
     if (
@@ -1012,25 +1049,39 @@ async def customer_chat(
                     session_id=session_id,
                     ui_actions=_confirmation_actions(cards) or _customer_follow_up_actions(None),
                 )
-            if outcome["status"] == "confirmed" and outcome["plan"]["tasks"][0].get("intent") == "case_withdraw":
+            if (
+                outcome["status"] == "confirmed"
+                and outcome["plan"]["tasks"][0].get("intent") == "case_withdraw"
+            ):
                 outcome = {
                     "status": "withdrawal",
                     "answer": _perform_withdrawal(outcome["plan"]["tasks"][0], customer_user_id, session_id),
                 }
             if outcome["status"] != "confirmed":
-                await asyncio.to_thread(conversations.append_message, session_id, "assistant", outcome["answer"])
+                await asyncio.to_thread(
+                    conversations.append_message, session_id, "assistant", outcome["answer"]
+                )
                 return ChatResponse(
-                    answer=outcome["answer"], session_id=session_id, ui_actions=_customer_follow_up_actions(None)
+                    answer=outcome["answer"],
+                    session_id=session_id,
+                    ui_actions=_customer_follow_up_actions(None),
                 )
             server_turn_plan = outcome["plan"]
         else:
             history = await asyncio.to_thread(conversations.messages, session_id)
-            owned_cases = [c for c in await asyncio.to_thread(case_service.list_by_session, session_id)
-                           if c.get("user_id") == customer_user_id]
+            owned_cases = [
+                c
+                for c in await asyncio.to_thread(case_service.list_by_session, session_id)
+                if c.get("user_id") == customer_user_id
+            ]
             server_turn_plan = await CustomerTurnPlanner(llm_client.chat_openai).plan(
-                message=request.message, orders=contract_orders, cases=owned_cases,
-                allowed=_allowed_customer_order_ids(customer_user_id), user_id=customer_user_id,
-                session_id=session_id, history=history[:-1],
+                message=request.message,
+                orders=contract_orders,
+                cases=owned_cases,
+                allowed=_allowed_customer_order_ids(customer_user_id),
+                user_id=customer_user_id,
+                session_id=session_id,
+                history=history[:-1],
                 pending=(previous.values or {}).get("validated_turn_plan"),
                 page_context={**page_context.model_dump(), "requested_action": request.requested_action},
             )
@@ -1038,16 +1089,28 @@ async def customer_chat(
                 server_turn_plan, confirmation_cards = await _defer_writes_for_confirmation(
                     graph, server_turn_plan, contract_orders, customer_user_id, session_id
                 )
-            server_turn_plan, withdrawal_notes = _settle_withdrawals(server_turn_plan, customer_user_id, session_id)
+            server_turn_plan, withdrawal_notes = _settle_withdrawals(
+                server_turn_plan, customer_user_id, session_id
+            )
         await graph.aupdate_state(
             {"configurable": {"thread_id": session_id}},
-            {"customer_order_context": {"orders": contract_orders, "allowed": sorted(_allowed_customer_order_ids(customer_user_id))},
-             "user_id": customer_user_id, "tenant_id": "olist-demo", "session_id": session_id},
+            {
+                "customer_order_context": {
+                    "orders": contract_orders,
+                    "allowed": sorted(_allowed_customer_order_ids(customer_user_id)),
+                },
+                "user_id": customer_user_id,
+                "tenant_id": "olist-demo",
+                "session_id": session_id,
+            },
             as_node="finalize_answer",
         )
         if (confirmation_cards or withdrawal_notes) and not server_turn_plan["tasks"]:
             answer = "\n".join(
-                [*withdrawal_notes, *([_confirmation_reply(confirmation_cards)] if confirmation_cards else [])]
+                [
+                    *withdrawal_notes,
+                    *([_confirmation_reply(confirmation_cards)] if confirmation_cards else []),
+                ]
             )
             await asyncio.to_thread(conversations.append_message, session_id, "assistant", answer)
             return ChatResponse(
@@ -1138,7 +1201,11 @@ async def customer_chat(
                 ui_actions=actions,
                 case_id=None,
             )
-    clarification = None if contract_mode else _customer_order_clarification(customer_user_id, request.message, page_context)
+    clarification = (
+        None
+        if contract_mode
+        else _customer_order_clarification(customer_user_id, request.message, page_context)
+    )
     if clarification is not None:
         answer, actions = clarification
         await asyncio.to_thread(conversations.append_message, session_id, "assistant", answer)
@@ -1178,7 +1245,9 @@ async def customer_chat(
         # Nothing ran this turn: presenting the conversation state would repeat an older answer.
         answer = "我可以协助查询本人订单、了解售后政策或提交售后申请。本次没有办理任何事项。"
         await asyncio.to_thread(conversations.append_message, session_id, "assistant", answer)
-        return ChatResponse(answer=answer, session_id=session_id, ui_actions=_customer_follow_up_actions(None))
+        return ChatResponse(
+            answer=answer, session_id=session_id, ui_actions=_customer_follow_up_actions(None)
+        )
     t_chat = time.perf_counter()
     snapshot = await graph.aget_state({"configurable": {"thread_id": response.session_id}})
     state = {**dict(snapshot.values or {}), "final_answer": response.answer}
@@ -1207,7 +1276,8 @@ async def customer_chat(
     if not turn_records:
         turn_records = session_records
     state["customer_case_records"] = [
-        item for item in session_records
+        item
+        for item in session_records
         if request_id and _case_request_id(item) == request_id and item.get("user_id") == customer_user_id
     ]
     t_present = time.perf_counter()
@@ -1236,7 +1306,9 @@ async def customer_chat(
         response.timings["total_ms"],
     )
     response.ui_actions = _customer_follow_up_actions(page_context.selected_order_id)
-    if server_turn_plan and any(t["intent"] in {"customer_orders", "clarify"} for t in server_turn_plan["tasks"]):
+    if server_turn_plan and any(
+        t["intent"] in {"customer_orders", "clarify"} for t in server_turn_plan["tasks"]
+    ):
         response.ui_actions = _order_options(server_turn_plan, contract_orders)
     if withdrawal_notes:
         response.answer = "\n".join([*withdrawal_notes, response.answer])
@@ -1259,9 +1331,13 @@ async def review_conversations(x_review_token: str | None = Header(default=None)
     rows = await asyncio.to_thread(conversations.recent_sessions)
     for row in rows:
         record = await asyncio.to_thread(case_service.get_by_session, row["session_id"])
-        row.update({"order_id": record.get("order_id", "") if record else "",
-                    "action_type": record.get("action_type", "咨询会话") if record else "咨询会话",
-                    "created_at": row["updated_at"]})
+        row.update(
+            {
+                "order_id": record.get("order_id", "") if record else "",
+                "action_type": record.get("action_type", "咨询会话") if record else "咨询会话",
+                "created_at": row["updated_at"],
+            }
+        )
     return {"cases": rows}
 
 
@@ -1332,21 +1408,26 @@ async def customer_messages(
     x_demo_customer: str | None = Header(default=None),
 ) -> dict:
     await _customer_conversation_owner(session_id, _resolve_customer_actor(x_demo_customer))
-    return {"messages": await asyncio.to_thread(conversations.messages, session_id),
-            "human": await asyncio.to_thread(conversations.human_mode, session_id)}
+    return {
+        "messages": await asyncio.to_thread(conversations.messages, session_id),
+        "human": await asyncio.to_thread(conversations.human_mode, session_id),
+    }
 
 
 @app.get("/review/sessions/{session_id}/messages")
 async def staff_messages(session_id: str, x_review_token: str | None = Header(default=None)) -> dict:
     _authorize_review("after_sales_operator", ["after_sales:write"], x_review_token)
     await _existing_conversation(session_id)
-    return {"messages": await asyncio.to_thread(conversations.messages, session_id),
-            "human": await asyncio.to_thread(conversations.human_mode, session_id)}
+    return {
+        "messages": await asyncio.to_thread(conversations.messages, session_id),
+        "human": await asyncio.to_thread(conversations.human_mode, session_id),
+    }
 
 
 @app.post("/review/sessions/{session_id}/messages")
-async def staff_reply(session_id: str, body: StaffMessage,
-    x_review_token: str | None = Header(default=None)) -> dict:
+async def staff_reply(
+    session_id: str, body: StaffMessage, x_review_token: str | None = Header(default=None)
+) -> dict:
     _authorize_review("after_sales_operator", ["after_sales:write"], x_review_token)
     await _existing_conversation(session_id)
     await asyncio.to_thread(conversations.set_human_mode, session_id, True)
@@ -1362,8 +1443,9 @@ async def staff_reply(session_id: str, body: StaffMessage,
 
 
 @app.post("/review/sessions/{session_id}/handoff")
-async def staff_handoff(session_id: str, body: HandoffMode,
-    x_review_token: str | None = Header(default=None)) -> dict:
+async def staff_handoff(
+    session_id: str, body: HandoffMode, x_review_token: str | None = Header(default=None)
+) -> dict:
     _authorize_review("after_sales_operator", ["after_sales:write"], x_review_token)
     await _existing_conversation(session_id)
     await asyncio.to_thread(conversations.set_human_mode, session_id, body.human)
@@ -1384,12 +1466,16 @@ async def staff_suggestion(session_id: str, x_review_token: str | None = Header(
     history = await asyncio.to_thread(conversations.messages, session_id)
     snapshot = await agent.aget_state({"configurable": {"thread_id": session_id}})
     latest = next((m["content"] for m in reversed(history) if m["sender"] == "customer"), "")
-    draft = await present(llm_client.chat_openai, latest, dict(snapshot.values),
-                          case_service.get_by_session(session_id))
+    draft = await present(
+        llm_client.chat_openai, latest, dict(snapshot.values), case_service.get_by_session(session_id)
+    )
     signals = [word for word in ("投诉", "生气", "失望", "太慢", "着急", "等了", "不满意") if word in latest]
-    return {"draft": draft, "signals": signals,
-            "attention": "建议先回应客户不满或催促，再说明下一步" if signals else "未发现明显不满或催促用词",
-            "signal_method": "本轮文本关键词提示，不代表心理状态判断"}
+    return {
+        "draft": draft,
+        "signals": signals,
+        "attention": "建议先回应客户不满或催促，再说明下一步" if signals else "未发现明显不满或催促用词",
+        "signal_method": "本轮文本关键词提示，不代表心理状态判断",
+    }
 
 
 @app.get("/customer/cases/{case_id}", response_model=CustomerCaseResponse)
@@ -1466,13 +1552,10 @@ async def list_review_cases(
         record["age_seconds"] = _iso_age_seconds(record.get("created_at"), now)
         stuck_since = record.get("reviewed_at") or record.get("updated_at")
         record["stuck_seconds"] = (
-            _iso_age_seconds(stuck_since, now)
-            if str(record.get("status")) == "approving"
-            else 0
+            _iso_age_seconds(stuck_since, now) if str(record.get("status")) == "approving" else 0
         )
         record["needs_attention"] = (
-            str(record.get("status")) == "approving"
-            and int(record["stuck_seconds"]) >= 120
+            str(record.get("status")) == "approving" and int(record["stuck_seconds"]) >= 120
         )
         record.pop("case_payload", None)
         cases.append(record)
@@ -1567,12 +1650,7 @@ async def list_session_cases(
 ) -> dict:
     _authorize_review(role, auth_scopes, x_review_token)
     records = case_service.list_by_session(session_id)
-    return {
-        "cases": [
-            _case_queue_summary(record)
-            for record in records
-        ]
-    }
+    return {"cases": [_case_queue_summary(record) for record in records]}
 
 
 @app.get("/review/cases/{case_id}")
@@ -1715,8 +1793,7 @@ def _case_queue_summary(record: dict) -> dict:
         "expires_at": record.get("expires_at"),
         "workflow_thread_id": record.get("workflow_thread_id"),
         "workflow_attempt": record.get("workflow_attempt"),
-        "has_pending": record.get("status")
-        in {"pending_review", "appealed_pending_review"},
+        "has_pending": record.get("status") in {"pending_review", "appealed_pending_review"},
         "age_seconds": _iso_age_seconds(record.get("created_at"), now),
         "stuck_seconds": (
             _iso_age_seconds(record.get("reviewed_at") or record.get("updated_at"), now)
@@ -1725,8 +1802,7 @@ def _case_queue_summary(record: dict) -> dict:
         ),
     }
     summary["needs_attention"] = (
-        str(record.get("status")) == "approving"
-        and int(summary["stuck_seconds"]) >= 120
+        str(record.get("status")) == "approving" and int(summary["stuck_seconds"]) >= 120
     )
     return summary
 
@@ -1785,9 +1861,7 @@ def _customer_case_response(record: dict) -> CustomerCaseResponse:
         expires_at=record.get("expires_at"),
         appeal_count=int(record.get("appeal_count") or 0),
         request_id=str(sub_task.get("request_id") or payload.get("request_id") or ""),
-        request_tier=str(
-            sub_task.get("request_tier") or payload.get("request_tier") or ""
-        ),
+        request_tier=str(sub_task.get("request_tier") or payload.get("request_tier") or ""),
         risk_level=str(sub_task.get("risk_level") or ""),
         policy_decision=policy_decision,
         auto_executed=status == "executed"
@@ -1885,7 +1959,9 @@ def _progress_groups(cases: list[dict]) -> dict:
     }
     for item in cases:
         bucket = str(item.get("display_status") or _display_status(str(item.get("status") or "")))
-        groups.setdefault(bucket if bucket in groups or bucket == "withdrawn" else "processing", []).append(item)
+        groups.setdefault(bucket if bucket in groups or bucket == "withdrawn" else "processing", []).append(
+            item
+        )
     return groups
 
 
@@ -1898,9 +1974,7 @@ def _request_progress(cases: list[dict], summary: dict) -> dict:
         "request_id": sorted(request_ids)[-1] if request_ids else "",
         "tier": "complex" if "complex" in tiers else ("simple" if tiers else ""),
         "risk_level": (
-            "high"
-            if "high" in risks
-            else ("medium" if "medium" in risks else ("low" if risks else ""))
+            "high" if "high" in risks else ("medium" if "medium" in risks else ("low" if risks else ""))
         ),
         "sub_task_total": max(totals) if totals else len(cases),
         "processed": summary["processed"],
@@ -2193,8 +2267,7 @@ def _customer_order_clarification(
         )
     if category_label:
         return (
-            f"理解，您不想要{category_label}了。"
-            f"请选择要处理的订单，我会按{action_label}继续核查：",
+            f"理解，您不想要{category_label}了。请选择要处理的订单，我会按{action_label}继续核查：",
             actions,
         )
     return (
@@ -2236,43 +2309,67 @@ def _customer_follow_up_actions(order_id: str | None = None) -> list[CustomerAct
     order = olist_service.get_order_status(order_id)
     status = order.status if order else ""
     if status in PRE_SHIPMENT_STATUSES:
-        common.extend([
-            CustomerAction(
-                id="cancel_order", label="取消订单", order_id=order_id, message="我想取消这笔订单。",
-                style="primary",
-            ),
-            CustomerAction(
-                id="change_address", label="修改地址", order_id=order_id,
-                message="我想修改这笔订单的收货地址。",
-            ),
-        ])
+        common.extend(
+            [
+                CustomerAction(
+                    id="cancel_order",
+                    label="取消订单",
+                    order_id=order_id,
+                    message="我想取消这笔订单。",
+                    style="primary",
+                ),
+                CustomerAction(
+                    id="change_address",
+                    label="修改地址",
+                    order_id=order_id,
+                    message="我想修改这笔订单的收货地址。",
+                ),
+            ]
+        )
     elif status in {"shipped", "delivered"}:
-        common.extend([
-            CustomerAction(
-                id="refund_request", label="申请退款", order_id=order_id,
-                message="我想为这笔订单申请退款。", style="primary",
-            ),
-            CustomerAction(
-                id="complaint_escalation", label="申请售后", order_id=order_id,
-                message="这笔订单遇到了问题，我想申请售后处理。",
-            ),
-        ])
+        common.extend(
+            [
+                CustomerAction(
+                    id="refund_request",
+                    label="申请退款",
+                    order_id=order_id,
+                    message="我想为这笔订单申请退款。",
+                    style="primary",
+                ),
+                CustomerAction(
+                    id="complaint_escalation",
+                    label="申请售后",
+                    order_id=order_id,
+                    message="这笔订单遇到了问题，我想申请售后处理。",
+                ),
+            ]
+        )
     elif status == "canceled":
-        common.extend([
-            CustomerAction(
-                id="refund_request", label="查询退款", order_id=order_id,
-                message="我想查询这笔已取消订单的退款处理情况。", style="primary",
-            ),
-            CustomerAction(
-                id="invoice_request", label="申请发票", order_id=order_id,
-                message="我想为这笔订单申请发票。",
-            ),
-        ])
+        common.extend(
+            [
+                CustomerAction(
+                    id="refund_request",
+                    label="查询退款",
+                    order_id=order_id,
+                    message="我想查询这笔已取消订单的退款处理情况。",
+                    style="primary",
+                ),
+                CustomerAction(
+                    id="invoice_request",
+                    label="申请发票",
+                    order_id=order_id,
+                    message="我想为这笔订单申请发票。",
+                ),
+            ]
+        )
     else:
         common.append(
             CustomerAction(
-                id="open_support_case", label="申请售后", order_id=order_id,
-                message="这笔订单遇到了问题，我想申请售后处理。", style="primary",
+                id="open_support_case",
+                label="申请售后",
+                order_id=order_id,
+                message="这笔订单遇到了问题，我想申请售后处理。",
+                style="primary",
             )
         )
     return common
@@ -2339,10 +2436,7 @@ def _customer_order_access_denied(
         return None
 
     session_id = request.session_id or str(uuid.uuid4())
-    answer = (
-        "为了保护订单隐私，我只能处理当前账号名下的订单。"
-        "请确认登录账号或订单号后再试。"
-    )
+    answer = "为了保护订单隐私，我只能处理当前账号名下的订单。请确认登录账号或订单号后再试。"
     record_trace(
         session_id=session_id,
         user_message=request.message,
@@ -2467,10 +2561,7 @@ async def _check_rate_limit(
     limit = _env_int("AGENT_RATE_LIMIT_PER_MINUTE", 1000)
     if limit <= 0:
         return None
-    key = (
-        f"tenant:{tenant_id or request.tenant_id}:"
-        f"user:{user_id or request.user_id}:minute"
-    )
+    key = f"tenant:{tenant_id or request.tenant_id}:user:{user_id or request.user_id}:minute"
     return await runtime_store.check_rate_limit(key, limit=limit, window_seconds=60)
 
 
@@ -2482,10 +2573,7 @@ def _rate_limited_chat_response(
     latency_ms: float = 0.0,
 ) -> ChatResponse:
     session_id = session_id or request.session_id or str(uuid.uuid4())
-    answer = (
-        "当前请求过于频繁，请稍后再试。"
-        f"预计 {decision.reset_after_seconds} 秒后恢复。"
-    )
+    answer = f"当前请求过于频繁，请稍后再试。预计 {decision.reset_after_seconds} 秒后恢复。"
     record_trace(
         session_id=session_id,
         user_message=request.message,
@@ -2598,11 +2686,17 @@ def _review_session_response(session_id: str, has_pending: bool, state: dict) ->
                 order_id = match.group(0)
                 break
     order = olist_service.get_order_status(order_id) if order_id else None
-    order_facts = {
-        "order_id": order.order_id, "order_status": order.status,
-        "payment_value": order.payment_value, "delay_days": order.delay_days,
-        "review_score": order.review_score,
-    } if order else {}
+    order_facts = (
+        {
+            "order_id": order.order_id,
+            "order_status": order.status,
+            "payment_value": order.payment_value,
+            "delay_days": order.delay_days,
+            "review_score": order.review_score,
+        }
+        if order
+        else {}
+    )
     summary = "当前没有待审核售后 case。"
     if has_pending and action_type:
         summary = f"待审核动作：{action_type}；订单：{order_id[:8] if order_id else 'unknown'}。"

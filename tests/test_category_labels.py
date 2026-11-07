@@ -18,7 +18,9 @@ def test_every_category_in_the_data_has_a_chinese_name():
 
 
 def test_demo_category_names_are_unchanged():
-    assert {c: CATEGORY_LABELS[c] for c in ("health_beauty", "bed_bath_table", "computers_accessories", "baby")} == {
+    assert {
+        c: CATEGORY_LABELS[c] for c in ("health_beauty", "bed_bath_table", "computers_accessories", "baby")
+    } == {
         "health_beauty": "健康与美容用品",
         "bed_bath_table": "家居用品",
         "computers_accessories": "电脑配件",

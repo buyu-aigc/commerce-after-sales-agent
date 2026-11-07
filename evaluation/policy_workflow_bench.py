@@ -5,6 +5,7 @@ This is a routing simulation over the real PolicyEngine, not 20 live browser
 conversations. It assumes the no-policy baseline routes every write-intent
 case to human review.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -79,10 +80,14 @@ def main() -> None:
         "> Baseline assumes every write-intent case would otherwise go to human review.",
         "",
         f"- cases: {report['total']}",
-        f"- before: auto {report['before_policy_check']['auto']} / review {report['before_policy_check']['review']}",
-        f"- after: auto {report['after_policy_check']['auto']} / review {report['after_policy_check']['review']}",
-        f"- auto rate: {report['before_policy_check']['auto_rate']:.2%} → {report['after_policy_check']['auto_rate']:.2%}",
-        f"- review rate: {report['before_policy_check']['review_rate']:.2%} → {report['after_policy_check']['review_rate']:.2%}",
+        f"- before: auto {report['before_policy_check']['auto']}"
+        f" / review {report['before_policy_check']['review']}",
+        f"- after: auto {report['after_policy_check']['auto']}"
+        f" / review {report['after_policy_check']['review']}",
+        f"- auto rate: {report['before_policy_check']['auto_rate']:.2%}"
+        f" → {report['after_policy_check']['auto_rate']:.2%}",
+        f"- review rate: {report['before_policy_check']['review_rate']:.2%}"
+        f" → {report['after_policy_check']['review_rate']:.2%}",
         f"- review reduction: {report['review_reduction_pp']:.2f} pp",
         f"- false auto: {report['false_auto']}",
         f"- demo_only: {report['demo_only']}",

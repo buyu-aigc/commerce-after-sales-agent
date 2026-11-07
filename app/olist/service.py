@@ -364,7 +364,9 @@ class InMemoryCaseService:
             return {"ok": False, "error": "owner_required"}
         if record.get("status") == "withdrawn":
             return {"ok": True, "already": True, "record": record}
-        if record.get("status") not in {"pending_review", "appealed_pending_review"} or record.get("review_decision"):
+        if record.get("status") not in {"pending_review", "appealed_pending_review"} or record.get(
+            "review_decision"
+        ):
             return {"ok": False, "conflict": True, "record": record}
         record["status"] = "withdrawn"
         record["updated_at"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())

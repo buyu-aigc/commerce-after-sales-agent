@@ -73,7 +73,10 @@ def test_read_task_keeps_verified_wording_for_answering():
 def test_foreign_or_missing_index_is_never_bound():
     plan = compile_turn(
         TurnProposal(
-            tasks=[TaskProposal(kind="order_read", order_index=2), TaskProposal(kind="order_read", order_index=5)]
+            tasks=[
+                TaskProposal(kind="order_read", order_index=2),
+                TaskProposal(kind="order_read", order_index=5),
+            ]
         ),
         message="原话",
         orders=ORDERS,
@@ -208,8 +211,18 @@ def test_parse_accepts_common_wrappers():
 @pytest.mark.anyio
 async def test_planner_lists_orders_newest_first_with_plain_shipping_facts_and_binds_by_that_numbering():
     orders = [
-        {"order_id": "old", "category": "bed_bath_table", "status": "shipped", "purchased_at": "2017-01-02 10:00:00"},
-        {"order_id": "new", "category": "bed_bath_table", "status": "invoiced", "purchased_at": "2017-03-04 09:00:00"},
+        {
+            "order_id": "old",
+            "category": "bed_bath_table",
+            "status": "shipped",
+            "purchased_at": "2017-01-02 10:00:00",
+        },
+        {
+            "order_id": "new",
+            "category": "bed_bath_table",
+            "status": "invoiced",
+            "purchased_at": "2017-03-04 09:00:00",
+        },
     ]
     model = AsyncMock()
     model.ainvoke.return_value = raw({"tasks": [{"kind": "order_read", "order_index": 1}]})
@@ -239,7 +252,9 @@ async def test_request_list_is_recorded_and_never_fatal():
     assert plan["diagnostics"]["request_count"] == 0 and plan["tasks"]
 
 
-@pytest.mark.parametrize("quote", ["三十多的家居...帮我取消", "三十多的家居…帮我取消", "三十多的家居……这两笔都帮我取消"])
+@pytest.mark.parametrize(
+    "quote", ["三十多的家居...帮我取消", "三十多的家居…帮我取消", "三十多的家居……这两笔都帮我取消"]
+)
 def test_application_evidence_accepts_in_order_fragments_of_a_shared_clause(quote):
     plan = compile_one(
         TaskProposal(
@@ -270,7 +285,9 @@ def test_elided_evidence_must_be_the_customers_words_in_their_order(quote):
     assert plan["decisions"][0]["validation"] == "unverifiable_evidence"
 
 
-@pytest.mark.parametrize("deferred_candidates, request_survives", [([1, 3], True), ([1, 2], False), ([], False)])
+@pytest.mark.parametrize(
+    "deferred_candidates, request_survives", [([1, 3], True), ([1, 2], False), ([], False)]
+)
 def test_deferral_only_conflicts_with_a_request_it_could_refer_to(deferred_candidates, request_survives):
     orders = [{"order_id": o, "category": c} for o, c in [("h", "home"), ("g", "baby"), ("b", "home")]]
     message = "家居那笔先别取消，母婴那笔帮我取消"

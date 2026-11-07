@@ -50,7 +50,9 @@ def refund(indices, message):
 
 def withdraw(disposition="requested"):
     def make(indices, message):
-        return [TaskProposal(kind="case_withdraw", case_index=1, disposition=disposition, evidence_quote=message)]
+        return [
+            TaskProposal(kind="case_withdraw", case_index=1, disposition=disposition, evidence_quote=message)
+        ]
 
     return make
 
@@ -109,14 +111,22 @@ async def test_asking_whether_one_can_withdraw_changes_nothing(client, v2_runtim
 
 
 @pytest.mark.anyio
-async def test_withdrawal_waits_for_confirmation_when_cards_are_on(client, v2_runtime, contract_mode, monkeypatch):
+async def test_withdrawal_waits_for_confirmation_when_cards_are_on(
+    client, v2_runtime, contract_mode, monkeypatch
+):
     monkeypatch.setenv("CUSTOMER_WRITE_CONFIRMATION", "1")
     monkeypatch.setenv("CUSTOMER_CONFIRMATION_SCOPE", "all")
     planner = planner_for([refund, withdraw()])
     first = await say(client, planner, "h33-cards", "晚到十一天，申请退款")
     card = next(a for a in first.json()["ui_actions"] if a["id"] == "confirm_application")
-    await say(client, planner, "h33-cards", card["message"], requested_action="confirm_application",
-              confirmation_id=card["confirmation_id"])
+    await say(
+        client,
+        planner,
+        "h33-cards",
+        card["message"],
+        requested_action="confirm_application",
+        confirmation_id=card["confirmation_id"],
+    )
     case = v2_runtime["case_service"].list_by_session("h33-cards")[0]
     second = await say(client, planner, "h33-cards", "撤回刚才的退款申请")
     assert v2_runtime["case_service"].get(case["case_id"])["status"] == "pending_review"
@@ -124,8 +134,14 @@ async def test_withdrawal_waits_for_confirmation_when_cards_are_on(client, v2_ru
     assert card["action_type"] == "withdraw_case"
     # A withdrawal names a case, not an order: there is no other order to pick.
     assert not [a for a in second.json()["ui_actions"] if a["id"] == "reselect_application"]
-    await say(client, planner, "h33-cards", card["message"], requested_action="confirm_application",
-              confirmation_id=card["confirmation_id"])
+    await say(
+        client,
+        planner,
+        "h33-cards",
+        card["message"],
+        requested_action="confirm_application",
+        confirmation_id=card["confirmation_id"],
+    )
     assert v2_runtime["case_service"].get(case["case_id"])["status"] == "withdrawn"
     assert (await approve(client, case["case_id"])).status_code == 409
 

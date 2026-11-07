@@ -47,3 +47,10 @@ data/v1rtucious_raw/*.parquet
 
 # local evaluation and drill outputs
 reports/
+
+# outputs of the offline evals and benchmark dry-runs
+benchmark_runs/
+benchmark-tmp/
+evaluation/red_team_eval_results.jsonl
+evaluation/red_team_eval_report.md
+evaluation/route_drift_report.md

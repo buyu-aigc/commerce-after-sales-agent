@@ -78,7 +78,9 @@ def clicked(action, kind="confirm_application"):
 
 
 @pytest.mark.anyio
-async def test_write_waits_for_click_and_click_runs_only_the_stored_task(client, v2_runtime, confirmation_mode):
+async def test_write_waits_for_click_and_click_runs_only_the_stored_task(
+    client, v2_runtime, confirmation_mode
+):
     planner, calls = planner_returning(refund_a)
     first = await chat(client, planner, "confirm-flow", "已经收到但晚到十一天，申请退款")
     assert first.status_code == 200, first.text
@@ -109,7 +111,9 @@ async def test_token_is_single_use(client, v2_runtime, confirmation_mode):
 async def test_decline_submits_nothing_and_voids_the_token(client, v2_runtime, confirmation_mode):
     planner, _ = planner_returning(refund_a)
     confirm, decline = card(await chat(client, planner, "decline", "申请退款"))
-    declined = await chat(client, planner, "decline", decline["message"], **clicked(decline, "decline_application"))
+    declined = await chat(
+        client, planner, "decline", decline["message"], **clicked(decline, "decline_application")
+    )
     assert "先不提交" in declined.json()["answer"]
     late = await chat(client, planner, "decline", confirm["message"], **clicked(confirm))
     assert "已失效" in late.json()["answer"]
@@ -147,7 +151,9 @@ async def test_expired_token_submits_nothing(client, v2_runtime, confirmation_mo
     snapshot = await main.conversation_agent.aget_state(config)
     pending = dict(snapshot.values["pending_confirmations"])
     pending[confirm["confirmation_id"]] = {**pending[confirm["confirmation_id"]], "expires_at": 0}
-    await main.conversation_agent.aupdate_state(config, {"pending_confirmations": pending}, as_node="finalize_answer")
+    await main.conversation_agent.aupdate_state(
+        config, {"pending_confirmations": pending}, as_node="finalize_answer"
+    )
     late = await chat(client, planner, "expired", confirm["message"], **clicked(confirm))
     assert "已失效" in late.json()["answer"]
     assert not v2_runtime["case_service"].list_by_session("expired")
@@ -181,7 +187,9 @@ async def test_ambiguous_object_offers_only_the_candidate_orders(client, v2_runt
 
 
 @pytest.mark.anyio
-async def test_write_the_workflow_would_reject_gets_no_card_and_no_case(client, v2_runtime, confirmation_mode):
+async def test_write_the_workflow_would_reject_gets_no_card_and_no_case(
+    client, v2_runtime, confirmation_mode
+):
     def cancel_delivered_a(indices, message):
         return TaskProposal(
             kind="application",
@@ -241,7 +249,9 @@ def reselect(response):
 
 
 @pytest.mark.anyio
-async def test_wrong_order_card_offers_the_same_action_on_the_order_meant(client, v2_runtime, confirmation_mode):
+async def test_wrong_order_card_offers_the_same_action_on_the_order_meant(
+    client, v2_runtime, confirmation_mode
+):
     planner, calls = planner_returning(refund_c)
     first = await chat(client, planner, "reselect", "健康美容那笔申请退款")
     wrong, _ = card(first)
@@ -249,7 +259,9 @@ async def test_wrong_order_card_offers_the_same_action_on_the_order_meant(client
     other = reselect(first)
     # Same token as the card; no order_id, so the page does not switch to the rejected order.
     assert other["confirmation_id"] == wrong["confirmation_id"] and not other.get("order_id")
-    offered = await chat(client, planner, "reselect", other["message"], **clicked(other, "reselect_application"))
+    offered = await chat(
+        client, planner, "reselect", other["message"], **clicked(other, "reselect_application")
+    )
     assert offered.status_code == 200, offered.text
     assert calls["n"] == 1  # picking another order never asks the model again
     confirm, _ = card(offered)

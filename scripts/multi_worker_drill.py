@@ -59,7 +59,6 @@ REVIEW_SPECS = [
 ]
 
 
-
 def _free_port() -> int:
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as sock:
         sock.bind(("127.0.0.1", 0))
@@ -155,9 +154,7 @@ def _read_case(db: Path, case_id: str) -> dict[str, Any]:
         row = conn.execute("SELECT * FROM cases WHERE case_id = ?", (case_id,)).fetchone()
         if row is None:
             return {"status": None, "events": 0}
-        events = conn.execute(
-            "SELECT COUNT(*) FROM order_events WHERE case_id = ?", (case_id,)
-        ).fetchone()[0]
+        events = conn.execute("SELECT COUNT(*) FROM order_events WHERE case_id = ?", (case_id,)).fetchone()[0]
     return {"status": dict(row).get("status"), "events": int(events)}
 
 
@@ -196,9 +193,7 @@ async def _create_case(
     return response.status_code == 200, body.get("case_id"), response.status_code
 
 
-async def _decide(
-    client: httpx.AsyncClient, case_id: str, decision: str, reviewer: str
-) -> tuple[int, str]:
+async def _decide(client: httpx.AsyncClient, case_id: str, decision: str, reviewer: str) -> tuple[int, str]:
     response = await client.post(
         f"/review/cases/{case_id}/{decision}",
         headers={"X-Review-Token": TOKEN},
@@ -235,9 +230,7 @@ async def _run_scenarios(base: str, db: Path, support_db: Path) -> dict[str, Any
         created_ids = [case_id for ok, case_id, _ in create_results if ok and case_id]
         creation = {
             "requests": len(create_results),
-            "http_codes": dict(
-                sorted(Counter(str(code) for _, _, code in create_results).items())
-            ),
+            "http_codes": dict(sorted(Counter(str(code) for _, _, code in create_results).items())),
             "unique_cases": len(set(created_ids)),
             "requests_detail": [
                 {
@@ -276,9 +269,7 @@ async def _run_scenarios(base: str, db: Path, support_db: Path) -> dict[str, Any
         idempotent_ids = [case_id for ok, case_id, _ in idempotent_results if ok and case_id]
         idempotent = {
             "requests": len(idempotent_results),
-            "http_codes": dict(
-                sorted(Counter(str(code) for _, _, code in idempotent_results).items())
-            ),
+            "http_codes": dict(sorted(Counter(str(code) for _, _, code in idempotent_results).items())),
             "unique_cases": len(set(idempotent_ids)),
         }
         idempotent["ok"] = (
@@ -363,7 +354,10 @@ async def _run_scenarios(base: str, db: Path, support_db: Path) -> dict[str, Any
         )
         different_ids = [case_id for ok, case_id, _ in seeds if ok and case_id]
         approvals = await asyncio.gather(
-            *[_decide(client, case_id, "approve", f"different-{index}") for index, case_id in enumerate(different_ids)]
+            *[
+                _decide(client, case_id, "approve", f"different-{index}")
+                for index, case_id in enumerate(different_ids)
+            ]
         )
         different_states = [_read_case(db, case_id) for case_id in different_ids]
         different = {
@@ -450,8 +444,12 @@ def render_markdown(report: dict[str, Any]) -> str:
     details = {
         "concurrent_creation": lambda s: f"{s['requests']} requests, {s['unique_cases']} unique cases",
         "idempotent_creation": lambda s: f"{s['requests']} requests, {s['unique_cases']} unique case",
-        "same_case_approve_30": lambda s: f"{s['case']['status']}, events={s['case']['events']}, notifications={s['notifications']}",
-        "mixed_approve_reject_30": lambda s: f"{s['case']['status']}, events={s['case']['events']}, notifications={s['notifications']}",
+        "same_case_approve_30": lambda s: (
+            f"{s['case']['status']}, events={s['case']['events']}, notifications={s['notifications']}"
+        ),
+        "mixed_approve_reject_30": lambda s: (
+            f"{s['case']['status']}, events={s['case']['events']}, notifications={s['notifications']}"
+        ),
         "different_cases_approve_8": lambda s: f"{len(s['states'])} cases executed",
     }
     for name, section in report["scenarios"].items():

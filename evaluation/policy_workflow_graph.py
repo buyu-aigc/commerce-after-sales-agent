@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Run 20 synthetic orders through the real V2 LangGraph, with/without policy_check."""
+
 from __future__ import annotations
 
 import argparse
@@ -99,7 +100,11 @@ def make_state(
         "current_task_text": "",
         "current_slots": {},
         "current_context": {},
-        "dialog_state": {"active_order_id": order_id, "filled_slots": {"order_id": order_id}, "turn_count": 1},
+        "dialog_state": {
+            "active_order_id": order_id,
+            "filled_slots": {"order_id": order_id},
+            "turn_count": 1,
+        },
         "filled_slots": {"order_id": order_id},
         "missing_slots": [],
         "handoff_reasons": [],
@@ -173,7 +178,9 @@ async def run_scenario(use_policy: bool, specs: list[dict[str, Any]]) -> dict[st
                     "index": index,
                     "expected_group": spec["kind"],
                     "auto": auto,
-                    "status": result.get("policy_decision", {}).get("decision") if isinstance(result.get("policy_decision"), dict) else None,
+                    "status": result.get("policy_decision", {}).get("decision")
+                    if isinstance(result.get("policy_decision"), dict)
+                    else None,
                     "case_id": result.get("case_id"),
                     "final_answer": str(result.get("final_answer", ""))[:120],
                 }
@@ -202,9 +209,7 @@ async def main_async(output: Path) -> dict[str, Any]:
         "with_policy": with_policy,
         "review_reduction_pp": round((without["review_rate"] - with_policy["review_rate"]) * 100, 2),
         "false_auto": sum(
-            1
-            for spec, row in zip(specs, with_policy["rows"])
-            if spec["kind"] == "review" and row["auto"]
+            1 for spec, row in zip(specs, with_policy["rows"]) if spec["kind"] == "review" and row["auto"]
         ),
     }
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -212,8 +217,10 @@ async def main_async(output: Path) -> dict[str, Any]:
         "# Policy Workflow Graph Bench",
         "",
         "> 20 synthetic orders through the real V2 LangGraph, with/without policy_check.",
-        f"- without policy: auto {without['auto']} / review {without['review']} ({without['review_rate']:.2%} review)",
-        f"- with policy: auto {with_policy['auto']} / review {with_policy['review']} ({with_policy['review_rate']:.2%} review)",
+        f"- without policy: auto {without['auto']} / review {without['review']}"
+        f" ({without['review_rate']:.2%} review)",
+        f"- with policy: auto {with_policy['auto']} / review {with_policy['review']}"
+        f" ({with_policy['review_rate']:.2%} review)",
         f"- review reduction: {report['review_reduction_pp']:.2f} pp",
         f"- false auto: {report['false_auto']}",
         "",

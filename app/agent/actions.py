@@ -10,8 +10,8 @@ from langgraph.types import interrupt
 from app import observability
 from app.after_sales.address import missing_address_fields
 from app.after_sales.complexity import assess_request
-from app.intent.turn_contract import execution_tasks, clarification_message
 from app.agent.state import AgentState
+from app.intent.turn_contract import clarification_message, execution_tasks
 from app.llm.intent_planner import IntentPlanner
 from app.llm.response_generator import OlistTaskExtractor, PolicyResponseGenerator, QaResponseGenerator
 from app.llm.types import OlistTaskResult
@@ -97,9 +97,7 @@ class AgentActions:
         decision_risk = str(decision.get("risk_level") or "")
         state_risk = str((state or {}).get("risk_level") or "")
         risk_level = (
-            "high"
-            if "high" in {task_risk, decision_risk}
-            else (task_risk or decision_risk or state_risk)
+            "high" if "high" in {task_risk, decision_risk} else (task_risk or decision_risk or state_risk)
         )
         if self._policy_guard is not None:
             order_id = str(draft.get("order_id") or "")
@@ -181,9 +179,7 @@ class AgentActions:
             draft["review_case_id"] = case_id
         return case_id
 
-    def _link_shadow_case(
-        self, case_id: str, state: AgentState, task: dict, action_type: str
-    ) -> None:
+    def _link_shadow_case(self, case_id: str, state: AgentState, task: dict, action_type: str) -> None:
         if not case_id or self._shadow_service is None:
             return
         try:
@@ -211,21 +207,43 @@ class AgentActions:
 
     async def plan_tasks(self, state: AgentState) -> dict:
         if state.get("validated_turn_plan") is not None:
-            tasks = execution_tasks(state["validated_turn_plan"], user_id=str(state["user_id"]),
-                                    session_id=str(state["session_id"]), allowed=set(state.get("allowed_order_ids", [])),
-                                    message=state["messages"][-1]["content"])
+            tasks = execution_tasks(
+                state["validated_turn_plan"],
+                user_id=str(state["user_id"]),
+                session_id=str(state["session_id"]),
+                allowed=set(state.get("allowed_order_ids", [])),
+                message=state["messages"][-1]["content"],
+            )
             request_id = _request_id(state, state["messages"][-1]["content"])
             for index, task in enumerate(tasks, 1):
                 task.update(sub_task_index=index, sub_task_total=len(tasks), request_id=request_id)
             writes = [t for t in tasks if t.get("side_effect")]
-            summary = {"request_id": request_id, "planning_mode": "validated_turn_contract",
-                       "decomposition_mode": "validated_turn_contract", "tier": "complex" if len(tasks)>1 else "simple",
-                       "risk_level": "pending_policy" if writes else "low", "intent_count": len(tasks),
-                       "sub_task_count": len(tasks), "write_task_count": len(writes),
-                       "read_task_count": len(tasks)-len(writes), "action_types": [t["action_type"] for t in writes]}
-            return {"task_plan": tasks, "route_intent": tasks[0]["intent"], "request_analysis": summary,
-                    "trajectory_events": [*state.get("trajectory_events", []),
-                        _event("plan_tasks", "contract", "validated", {"tasks": tasks, "origin": state["validated_turn_plan"]["origin"]})]}
+            summary = {
+                "request_id": request_id,
+                "planning_mode": "validated_turn_contract",
+                "decomposition_mode": "validated_turn_contract",
+                "tier": "complex" if len(tasks) > 1 else "simple",
+                "risk_level": "pending_policy" if writes else "low",
+                "intent_count": len(tasks),
+                "sub_task_count": len(tasks),
+                "write_task_count": len(writes),
+                "read_task_count": len(tasks) - len(writes),
+                "action_types": [t["action_type"] for t in writes],
+            }
+            return {
+                "task_plan": tasks,
+                "route_intent": tasks[0]["intent"],
+                "request_analysis": summary,
+                "trajectory_events": [
+                    *state.get("trajectory_events", []),
+                    _event(
+                        "plan_tasks",
+                        "contract",
+                        "validated",
+                        {"tasks": tasks, "origin": state["validated_turn_plan"]["origin"]},
+                    ),
+                ],
+            }
         started_at = time.perf_counter()
         last_message: str = state["messages"][-1]["content"]
         requested_action = str(state.get("requested_action") or "").strip()
@@ -252,14 +270,19 @@ class AgentActions:
             planning_mode = "scoped_request_constraints"
             analysis_summary = analysis.summary()
             if not tasks:
-                tasks = [{"intent": "clarify", "text": last_message, "side_effect": False,
-                          "action_type": "none", "depends_on": []}]
+                tasks = [
+                    {
+                        "intent": "clarify",
+                        "text": last_message,
+                        "side_effect": False,
+                        "action_type": "none",
+                        "depends_on": [],
+                    }
+                ]
         elif requested_action:
             tasks = _structured_action_plan(requested_action, last_message)
             planning_mode = "structured_page_action"
-            analysis_summary = _structured_request_summary(
-                analysis, requested_action, planning_mode
-            )
+            analysis_summary = _structured_request_summary(analysis, requested_action, planning_mode)
         elif self._force_single_request:
             tasks = _single_request_control_task(last_message, analysis)
             planning_mode = "single_request_control"
@@ -275,38 +298,36 @@ class AgentActions:
         else:
             selected_action = _selected_order_action_type(last_message, state)
             if (
-                analysis.units and not analysis.write_units
+                analysis.units
+                and not analysis.write_units
                 and not any(unit.semantic_fallback for unit in analysis.units)
             ):
                 tasks = analysis.to_tasks()
                 planning_mode = "read_request_decomposition"
                 analysis_summary = analysis.summary()
-            elif (
-                analysis.is_complex
-                and analysis.write_units
-                and self._enable_complex_decomposition
-            ):
+            elif analysis.is_complex and analysis.write_units and self._enable_complex_decomposition:
                 tasks = analysis.to_tasks()
                 planning_mode = "complex_request_decomposition"
                 analysis_summary = analysis.summary()
             elif selected_action:
                 tasks = _structured_action_plan(selected_action, last_message)
                 planning_mode = "selected_order_action"
-                analysis_summary = _structured_request_summary(
-                    analysis, selected_action, planning_mode
-                )
+                analysis_summary = _structured_request_summary(analysis, selected_action, planning_mode)
             else:
                 plan = await self._intent_planner.plan(last_message)
                 tasks = [task.model_dump() for task in plan.tasks]
-                tasks = _enrich_tasks_with_analysis(
-                    tasks, analysis, complex_request=analysis.is_complex
-                )
+                tasks = _enrich_tasks_with_analysis(tasks, analysis, complex_request=analysis.is_complex)
                 planning_mode = plan.planning_mode
                 analysis_summary = analysis.summary()
         if not tasks:
             tasks = analysis.to_tasks() or [
-                {"intent": "clarify", "text": last_message, "side_effect": False,
-                 "action_type": "none", "depends_on": []}
+                {
+                    "intent": "clarify",
+                    "text": last_message,
+                    "side_effect": False,
+                    "action_type": "none",
+                    "depends_on": [],
+                }
             ]
         request_id = _request_id(state, last_message)
         analysis_summary["request_id"] = request_id
@@ -446,8 +467,7 @@ class AgentActions:
         else:
             slot_text = _with_order_context(text, _latest_user_task_message(state))
         selected_order_id = str(
-            dict(state.get("page_context", {})).get("selected_order_id")
-            or state.get("active_order_id", "")
+            dict(state.get("page_context", {})).get("selected_order_id") or state.get("active_order_id", "")
         ).lower()
         selected_repair = repair_order_id(selected_order_id) if selected_order_id else None
         task_repair = repair_order_id(slot_text)
@@ -471,7 +491,14 @@ class AgentActions:
             extracted = OlistTaskResult(order_id=selected_repair.value, category="", user_goal="page_context")
             extraction_mode = "trusted_page_context"
         elif intent in {
-            "small_talk", "clarify", "customer_profile", "policy", "qa", "ops_decision", "customer_orders", "case_progress",
+            "small_talk",
+            "clarify",
+            "customer_profile",
+            "policy",
+            "qa",
+            "ops_decision",
+            "customer_orders",
+            "case_progress",
         }:
             # Retrieval consumes the full task text. These read-only intents do
             # not need an order/category slot before retrieval can begin.
@@ -665,16 +692,32 @@ class AgentActions:
         if intent == "small_talk":
             answer = "你好，我可以帮你查询订单、了解售后政策或提交售后申请。请告诉我想处理什么问题。"
         elif intent == "clarify":
-            answer = clarification_message(task) if task.get("contract_task_id") else (
-                "可以的。请告诉我想查询订单、了解退款/取消政策，还是申请退款、取消订单或修改地址；"
-                "你也可以先在订单列表中选中对应订单。"
+            answer = (
+                clarification_message(task)
+                if task.get("contract_task_id")
+                else (
+                    "可以的。请告诉我想查询订单、了解退款/取消政策，还是申请退款、取消订单或修改地址；"
+                    "你也可以先在订单列表中选中对应订单。"
+                )
             )
         elif intent == "case_progress":
             record = self._case_service.get(str(task.get("case_id") or "")) if task.get("case_id") else None
-            if record and record.get("user_id") == state.get("user_id") and record.get("session_id") == state.get("session_id"):
-                labels = {"pending_review": "正在审核", "appealed_pending_review": "正在复核", "approving": "正在处理",
-                          "executed": "已处理完成", "rejected": "审核未通过", "timeout_canceled": "已关闭"}
-                answer = "这项申请" + labels.get(record["status"], "正在核查") + "；本次查询没有重新提交申请。"
+            if (
+                record
+                and record.get("user_id") == state.get("user_id")
+                and record.get("session_id") == state.get("session_id")
+            ):
+                labels = {
+                    "pending_review": "正在审核",
+                    "appealed_pending_review": "正在复核",
+                    "approving": "正在处理",
+                    "executed": "已处理完成",
+                    "rejected": "审核未通过",
+                    "timeout_canceled": "已关闭",
+                }
+                answer = (
+                    "这项申请" + labels.get(record["status"], "正在核查") + "；本次查询没有重新提交申请。"
+                )
             else:
                 answer = "本会话没有查到对应售后申请，本次不会替您重新提交。"
         elif intent == "customer_orders":
@@ -720,9 +763,15 @@ class AgentActions:
             "completed_tasks": completed,
             "customer_read_results": [
                 *state.get("customer_read_results", []),
-                {"task_index": idx, "intent": intent, "order_id": state.get("current_slots", {}).get("order_id") or task.get("order_id", ""),
-                 "task_id": task.get("contract_task_id"), "required_fields": task.get("required_fields", []),
-                 "answer": answer, "tool_result": context.get("order_status_result")},
+                {
+                    "task_index": idx,
+                    "intent": intent,
+                    "order_id": state.get("current_slots", {}).get("order_id") or task.get("order_id", ""),
+                    "task_id": task.get("contract_task_id"),
+                    "required_fields": task.get("required_fields", []),
+                    "answer": answer,
+                    "tool_result": context.get("order_status_result"),
+                },
             ],
             "answer_parts": [
                 *state.get("answer_parts", []),
@@ -766,8 +815,7 @@ class AgentActions:
         )
         answer_parts = [
             *state.get("answer_parts", []),
-            "这笔申请符合自动处理条件，系统已直接处理。"
-            f"\n{execution_answer}",
+            f"这笔申请符合自动处理条件，系统已直接处理。\n{execution_answer}",
         ]
         return {
             "case_id": case_id,
@@ -795,9 +843,12 @@ class AgentActions:
     async def build_after_sales_case(self, state: AgentState) -> dict:
         task = dict(state.get("current_task", {}))
         if state.get("validated_turn_plan") is not None:
-            execution_tasks({**state["validated_turn_plan"], "tasks": [task]},
-                            user_id=str(state["user_id"]), session_id=str(state["session_id"]),
-                            allowed=set(state.get("allowed_order_ids", [])))
+            execution_tasks(
+                {**state["validated_turn_plan"], "tasks": [task]},
+                user_id=str(state["user_id"]),
+                session_id=str(state["session_id"]),
+                allowed=set(state.get("allowed_order_ids", [])),
+            )
             if not task.get("side_effect") or task.get("authorization") != "explicit":
                 raise ValueError("case_creation_without_customer_authorization")
         idx = int(state.get("current_task_index", 0))
@@ -830,8 +881,10 @@ class AgentActions:
                     ),
                 ],
             }
-        slot_text = text if task.get("contract_task_id") or task.get("order_id_scope") == "missing" else _with_order_context(
-            text, _latest_user_task_message(state)
+        slot_text = (
+            text
+            if task.get("contract_task_id") or task.get("order_id_scope") == "missing"
+            else _with_order_context(text, _latest_user_task_message(state))
         )
         answer, draft = await self._prepare_escalation_from_text(slot_text, action_type, state)
         completed = list(state.get("completed_tasks", []))
@@ -886,9 +939,7 @@ class AgentActions:
             "total": task.get("sub_task_total"),
             "action_type": action_type,
             "risk_level": str(task.get("risk_level") or decision.get("risk_level") or ""),
-            "risk_reasons": list(
-                dict.fromkeys([*list(task.get("risk_reasons") or []), *handoff_reasons])
-            ),
+            "risk_reasons": list(dict.fromkeys([*list(task.get("risk_reasons") or []), *handoff_reasons])),
             "auto_eligible": bool(task.get("auto_eligible")),
             "evidence_complete": task.get("evidence_complete"),
             "missing_evidence": list(task.get("missing_evidence") or []),
@@ -1014,11 +1065,8 @@ class AgentActions:
                 "trajectory_events": events,
             }
 
-        policy_allows_auto = (
-            self._after_sales_control_mode == "execute_on_intent" and policy is None
-        ) or (
-            self._after_sales_control_mode == "full"
-            and (policy is None or policy.get("decision") == "auto")
+        policy_allows_auto = (self._after_sales_control_mode == "execute_on_intent" and policy is None) or (
+            self._after_sales_control_mode == "full" and (policy is None or policy.get("decision") == "auto")
         )
         if draft.get("requires_confirmation") is False and not policy_allows_auto:
             # The deterministic decision engine may approve a low-risk action,
@@ -1191,9 +1239,9 @@ class AgentActions:
             "trajectory_events": [
                 *events,
                 _event(
-                        "hitl_gate",
-                        "escalation",
-                        "awaiting_confirmation",
+                    "hitl_gate",
+                    "escalation",
+                    "awaiting_confirmation",
                     {
                         "task_index": idx,
                         "tool": "prepare_side_effect",
@@ -1206,9 +1254,7 @@ class AgentActions:
     async def finalize_answer(self, state: AgentState) -> dict:
         answers = list(state.get("answer_parts", []))
         final_answer = (
-            "\n\n".join(answers)
-            if answers
-            else "没有识别到可执行的电商客服任务，请补充订单号或问题。"
+            "\n\n".join(answers) if answers else "没有识别到可执行的电商客服任务，请补充订单号或问题。"
         )
         rollup = _complex_progress_rollup(state)
         if rollup and rollup not in final_answer:
@@ -1413,9 +1459,7 @@ class AgentActions:
             answer = "待审核售后申请已超时自动取消；如果仍需处理，可以在原 case 上发起二次申诉。"
             status = "timeout_canceled"
             if case_id:
-                self._case_service.mark_case_result(
-                    case_id, "timeout_canceled", reviewer_id="system_timeout"
-                )
+                self._case_service.mark_case_result(case_id, "timeout_canceled", reviewer_id="system_timeout")
             else:
                 self._case_service.mark_review_result(
                     str(state.get("session_id", "unknown")),
@@ -1426,9 +1470,7 @@ class AgentActions:
             answer = "售后申请已被审核拒绝；如果你有新的凭证或理由，可以在原 case 上发起二次申诉。"
             status = "canceled"
             if case_id:
-                self._case_service.mark_case_result(
-                    case_id, "rejected", reviewer_id="after_sales_operator"
-                )
+                self._case_service.mark_case_result(case_id, "rejected", reviewer_id="after_sales_operator")
             else:
                 self._case_service.mark_review_result(
                     str(state.get("session_id", "unknown")),
@@ -1440,9 +1482,7 @@ class AgentActions:
         if task_index is not None:
             completed = _upsert_task_status(completed, task_index, "escalation", status)
         if not case_id and self._runtime_store is not None:
-            await self._runtime_store.clear_pending_confirmation(
-                str(state.get("session_id", "unknown"))
-            )
+            await self._runtime_store.clear_pending_confirmation(str(state.get("session_id", "unknown")))
 
         return {
             "final_answer": answer,
@@ -1515,8 +1555,7 @@ class AgentActions:
         if any(token in lowered for token in ("cancel order", "cancel purchase", "取消订单")):
             return "cancel_order"
         if any(
-            token in lowered
-            for token in ("change shipping address", "change address", "改地址", "修改地址")
+            token in lowered for token in ("change shipping address", "change address", "改地址", "修改地址")
         ):
             return "change_address"
         if any(token in lowered for token in ("invoice", "发票", "开票")):
@@ -1837,13 +1876,15 @@ def _structured_action_plan(action: str, message: str) -> list[dict[str, object]
     if normalized in {"track_order", "order_status"}:
         return [{"intent": "order_status", "text": message, "side_effect": False, "depends_on": []}]
     if normalized in {"list_active_shipments", "list_attention_orders"}:
-        return [{
-            "intent": "customer_orders",
-            "text": message,
-            "side_effect": False,
-            "depends_on": [],
-            "order_filter": "in_transit" if normalized == "list_active_shipments" else "attention",
-        }]
+        return [
+            {
+                "intent": "customer_orders",
+                "text": message,
+                "side_effect": False,
+                "depends_on": [],
+                "order_filter": "in_transit" if normalized == "list_active_shipments" else "attention",
+            }
+        ]
     if normalized in {"order_summary", "customer_profile"}:
         return [{"intent": "customer_profile", "text": message, "side_effect": False, "depends_on": []}]
     if normalized in {"refund_policy", "after_sales_policy"}:
@@ -1905,8 +1946,7 @@ def _format_customer_order_summary(orders: list[dict[str, object]]) -> str:
         if category not in categories:
             categories.append(category)
     active_count = sum(
-        str(order.get("status", "")) in {"approved", "invoiced", "processing", "shipped"}
-        for order in orders
+        str(order.get("status", "")) in {"approved", "invoiced", "processing", "shipped"} for order in orders
     )
     category_text = "、".join(categories[:4])
     more = "等" if len(categories) > 4 else ""
@@ -1995,9 +2035,7 @@ def _complex_progress_rollup(state: AgentState) -> str:
     if analysis.get("tier") != "complex" or int(analysis.get("sub_task_count") or 0) < 2:
         return ""
     tasks = list(state.get("task_plan") or [])
-    write_indices = {
-        index for index, task in enumerate(tasks) if bool(task.get("side_effect"))
-    }
+    write_indices = {index for index, task in enumerate(tasks) if bool(task.get("side_effect"))}
     completed = list(state.get("completed_tasks") or [])
     processed = 0
     pending = 0
@@ -2103,9 +2141,7 @@ def _enrich_tasks_with_analysis(
     return enriched
 
 
-def _structured_request_summary(
-    analysis, action_type: str, planning_mode: str
-) -> dict[str, object]:
+def _structured_request_summary(analysis, action_type: str, planning_mode: str) -> dict[str, object]:
     """A structured page action is one explicit request by construction."""
     summary = analysis.summary()
     summary.update(
@@ -2161,11 +2197,7 @@ def _upsert_task_status(
 
 def _should_include_previous_answer(state: AgentState) -> bool:
     events = state.get("trajectory_events", [])
-    return bool(
-        state.get("final_answer")
-        and events
-        and events[-1].get("node") == "finalize_escalation"
-    )
+    return bool(state.get("final_answer") and events and events[-1].get("node") == "finalize_escalation")
 
 
 def _maybe_int(value: object) -> int | None:
@@ -2211,13 +2243,9 @@ def _merge_dialog_state(
     if handoff_reasons:
         merged_handoff.extend(handoff_reasons)
 
-    next_missing_slots = (
-        missing_slots if missing_slots is not None else dialog_state.get("missing_slots", [])
-    )
+    next_missing_slots = missing_slots if missing_slots is not None else dialog_state.get("missing_slots", [])
     next_turn_count = (
-        turn_count
-        if turn_count is not None
-        else dialog_state.get("turn_count", _turn_count(state))
+        turn_count if turn_count is not None else dialog_state.get("turn_count", _turn_count(state))
     )
     dialog_state.update(
         {
