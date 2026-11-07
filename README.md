@@ -57,6 +57,14 @@
   - 工单在独立的工作流里等待审核，客户可以继续对话、问进度。
   - 还没审核的申请可以撤回。撤回用原子的条件更新实现，撤回之后审核员不能再批准。
 
+## 运行流程
+
+按 `.env.example` 的分级确认配置绘制，图中角色按逻辑职责划分。
+
+![电商售后 Agent 运行流程](docs/diagrams/agent-workflow.png)
+
+[查看可编辑 SVG](docs/diagrams/agent-workflow.svg)
+
 ## 快速开始
 
 需要 Python 3.11 及以上版本。

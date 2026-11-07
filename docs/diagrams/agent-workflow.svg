@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2160" height="3080" viewBox="0 0 2160 3080" role="img" aria-labelledby="title desc">
+<title id="title">电商售后 Agent 运行流程</title>
+<desc id="desc">按客户、对话编排、大模型、校验与政策、执行与工单、审核员六种逻辑职责，展示任务理解、分级确认与异步人工审核。查询、直接生效操作和人工审核为可选分支，每个任务分别选择路径。</desc>
+<defs>
+<marker id="arrow" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto" markerUnits="userSpaceOnUse"><path d="M2 1 L12 7 L2 13" fill="none" stroke="#313B3A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></marker>
+</defs>
+<rect width="2160" height="3080" fill="#FFFefa"/>
+<g font-family="PingFang SC, Microsoft YaHei, sans-serif" fill="#313B3A">
+
+<text x="1080" y="100" font-size="68" font-weight="550" text-anchor="middle" fill="#313B3A">电商售后 Agent 运行流程</text>
+<text x="1080" y="161" font-size="30" font-weight="400" text-anchor="middle" fill="#66736E">从客户诉求到办理结果的产品机制</text>
+<text x="1080" y="219" font-size="25" font-weight="400" text-anchor="middle" fill="#66736E">诉求理解  →  任务校验  →  分级确认  →  异步审核与反馈</text>
+<path d="M270 366 L270 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="146" y="271" width="248" height="88" rx="20" fill="#BBD3ED" stroke="#313B3A" stroke-width="1.8"/>
+<text x="270" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">客户</text>
+<text x="270" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">客户工作台</text>
+<path d="M620 366 L620 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="496" y="271" width="248" height="88" rx="20" fill="#F5DE8A" stroke="#313B3A" stroke-width="1.8"/>
+<text x="620" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">对话编排</text>
+<text x="620" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">上下文 · 任务调度</text>
+<path d="M970 366 L970 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="846" y="271" width="248" height="88" rx="20" fill="#E9DFBA" stroke="#313B3A" stroke-width="1.8"/>
+<text x="970" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">大模型</text>
+<text x="970" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">诉求解释 · 任务建议</text>
+<path d="M1320 366 L1320 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="1196" y="271" width="248" height="88" rx="20" fill="#D6E3BC" stroke="#313B3A" stroke-width="1.8"/>
+<text x="1320" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">校验与政策</text>
+<text x="1320" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">归属校验 · 规则分流</text>
+<path d="M1670 366 L1670 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="1546" y="271" width="248" height="88" rx="20" fill="#C8DDCE" stroke="#313B3A" stroke-width="1.8"/>
+<text x="1670" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">执行与工单</text>
+<text x="1670" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">查询 · 模拟执行 · 状态</text>
+<path d="M2020 366 L2020 2843" fill="none" stroke="#A3ADA5" stroke-width="1.7" stroke-linecap="round" stroke-dasharray="10 10"/>
+<rect x="1896" y="271" width="248" height="88" rx="20" fill="#EFC6B7" stroke="#313B3A" stroke-width="1.8"/>
+<text x="2020" y="309" font-size="30" font-weight="550" text-anchor="middle" fill="#313B3A">审核员</text>
+<text x="2020" y="340" font-size="18" font-weight="400" text-anchor="middle" fill="#53605A">批准 · 驳回</text>
+<text x="76" y="435" font-size="31" font-weight="600" text-anchor="middle" fill="#6488A3">01</text>
+<text x="76" y="478" font-size="28" font-weight="500" text-anchor="middle" fill="#6488A3">进入</text>
+<text x="76" y="513" font-size="28" font-weight="500" text-anchor="middle" fill="#6488A3">与理解</text>
+<path d="M270 425 L620 425" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="329.0" y="374" width="232.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="399" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">提交自然语言诉求</text>
+<circle cx="270" cy="425" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="270" y="432" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">1</text>
+<rect x="312.0" y="442" width="266.0" height="31" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="463" font-size="22" font-weight="400" text-anchor="middle" fill="#313B3A">入口校验客户与会话权限</text>
+<path d="M620 505 H692 V540 H628" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="620" cy="505" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="512" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">2</text>
+<text x="730" y="531" font-size="26" font-weight="400" text-anchor="start" fill="#313B3A">读取历史对话、本人订单与工单</text>
+<path d="M620 610 L970 610" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="679.0" y="559" width="232.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="795.0" y="584" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">提交诉求与上下文</text>
+<circle cx="620" cy="610" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="617" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">3</text>
+<path d="M970 705 L620 705" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="666.0" y="654" width="258.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="795.0" y="679" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回结构化任务建议</text>
+<circle cx="970" cy="705" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="970" y="712" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">4</text>
+<rect x="614.0" y="722" width="361.9" height="31" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="795.0" y="743" font-size="22" font-weight="400" text-anchor="middle" fill="#313B3A">诉求类型 / 订单编号 / 客户原话</text>
+<path d="M620 810 L1320 810" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="750.0" y="759" width="440.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="970.0" y="784" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">校验订单归属、任务类型与客户原话</text>
+<circle cx="620" cy="810" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="817" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">5</text>
+<path d="M1320 905 L620 905" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="789.0" y="854" width="362.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="970.0" y="879" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回校验后的任务及分流预判</text>
+<circle cx="1320" cy="905" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1320" y="912" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">6</text>
+<rect x="185" y="956" width="1910" height="65" rx="12" fill="#FFF7DF" stroke="#D6BD75" stroke-width="1.8"/>
+<text x="1140" y="998" font-size="25" font-weight="400" text-anchor="middle" fill="#88713C">不受理或暂缓的任务返回说明；需要澄清时，请客户补充信息或点选订单</text>
+<text x="76" y="1110" font-size="31" font-weight="600" text-anchor="middle" fill="#A18C38">02</text>
+<text x="76" y="1153" font-size="28" font-weight="500" text-anchor="middle" fill="#A18C38">分流</text>
+<text x="76" y="1188" font-size="28" font-weight="500" text-anchor="middle" fill="#A18C38">与办理</text>
+<rect x="185" y="1055" width="1910" height="920" rx="14" fill="none" stroke="#B4BDB4" stroke-width="1.8"/>
+<rect x="185" y="1055" width="635" height="47" rx="10" fill="#F6F2E6" stroke="#B4BDB4" stroke-width="1.8"/>
+<text x="210" y="1087" font-size="25" font-weight="500" text-anchor="start" fill="#313B3A">按任务分别选择路径 · 同轮可包含多类任务</text>
+<text x="220" y="1140" font-size="27" font-weight="550" text-anchor="start" fill="#6488A3">A  只读查询</text>
+<path d="M620 1200 L1670 1200" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="951.0" y="1149" width="388.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1174" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">查询订单事实、政策或工单进度</text>
+<circle cx="620" cy="1200" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="1207" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">7</text>
+<path d="M1670 1290 L620 1290" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="1055.0" y="1239" width="180.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1264" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回查询结果</text>
+<circle cx="1670" cy="1290" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1670" y="1297" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">8</text>
+<path d="M185 1332 L2095 1332" fill="none" stroke="#C9D0C5" stroke-width="1.3" stroke-linecap="round"/>
+<text x="220" y="1378" font-size="27" font-weight="550" text-anchor="start" fill="#A18C38">B  需要客户确认的操作</text>
+<text x="1230" y="1378" font-size="24" font-weight="400" text-anchor="start" fill="#847747">自动办理候选 / 分流待定 / 撤回申请</text>
+<text x="1230" y="1412" font-size="21" font-weight="400" text-anchor="start" fill="#847747">分流预判不确定时，同样保留确认</text>
+<path d="M620 1450 L270 1450" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="329.0" y="1399" width="232.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="1424" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">展示操作确认卡片</text>
+<circle cx="620" cy="1450" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="1457" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">9</text>
+<path d="M270 1535 L620 1535" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="381.0" y="1484" width="128.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="1509" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">点击确认</text>
+<circle cx="270" cy="1535" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="270" y="1542" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">10</text>
+<path d="M620 1620 L1670 1620" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="860.0" y="1569" width="570.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1594" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">消费确认凭证，按原任务复核规则与状态后处理</text>
+<circle cx="620" cy="1620" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="1627" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">11</text>
+<path d="M1670 1705 L620 1705" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="977.0" y="1654" width="336.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1679" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回办理结果或待审核状态</text>
+<circle cx="1670" cy="1705" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1670" y="1712" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">12</text>
+<path d="M185 1742 L2095 1742" fill="none" stroke="#C9D0C5" stroke-width="1.3" stroke-linecap="round"/>
+<text x="220" y="1788" font-size="27" font-weight="550" text-anchor="start" fill="#A47360">C  确定需要人工审核的申请</text>
+<text x="1340" y="1788" font-size="24" font-weight="400" text-anchor="start" fill="#9E7A6A">申请直接提交，执行由审核决定</text>
+<path d="M620 1857 L1670 1857" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="951.0" y="1806" width="388.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1831" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">提交独立工单，进入待审核状态</text>
+<circle cx="620" cy="1857" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="1864" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">13</text>
+<path d="M1670 1938 L620 1938" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="1042.0" y="1887" width="206.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="1912" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回已送审信息</text>
+<circle cx="1670" cy="1938" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1670" y="1945" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">14</text>
+<path d="M620 2055 L270 2055" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="290.0" y="2004" width="310.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="2029" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回查询结果、办理回执</text>
+<circle cx="620" cy="2055" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="2062" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">15</text>
+<rect x="367.0" y="2072" width="156.0" height="31" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="2093" font-size="22" font-weight="400" text-anchor="middle" fill="#313B3A">或待审核状态</text>
+<rect x="800" y="2011" width="1110" height="86" rx="14" fill="#EFF5EE" stroke="#BDD0BA" stroke-width="1.8"/>
+<text x="1355" y="2045" font-size="28" font-weight="550" text-anchor="middle" fill="#55734D">对话可继续</text>
+<text x="1355" y="2078" font-size="22" font-weight="400" text-anchor="middle" fill="#61755E">等待确认或人工审核时，客户仍可查询、补充诉求或问进度</text>
+<text x="76" y="2205" font-size="31" font-weight="600" text-anchor="middle" fill="#72906D">03</text>
+<text x="76" y="2248" font-size="28" font-weight="500" text-anchor="middle" fill="#72906D">异步审核</text>
+<text x="76" y="2283" font-size="28" font-weight="500" text-anchor="middle" fill="#72906D">与反馈</text>
+<rect x="185" y="2152" width="1910" height="668" rx="14" fill="none" stroke="#B4BDB4" stroke-width="1.8" stroke-dasharray="8 7"/>
+<rect x="185" y="2152" width="955" height="47" rx="10" fill="#F0F5EC" stroke="#B4BDB4" stroke-width="1.8"/>
+<text x="210" y="2184" font-size="25" font-weight="500" text-anchor="start" fill="#313B3A">适用于所有已送审工单 · 确认后转人工的任务也进入此流程</text>
+<path d="M2020 2270 L1670 2270" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1742.0" y="2219" width="206.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1845.0" y="2244" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">读取待审核工单</text>
+<circle cx="2020" cy="2270" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="2020" y="2277" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">16</text>
+<path d="M2020 2370 L1670 2370" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1707.2" y="2319" width="275.7" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1845.0" y="2344" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">提交批准 / 驳回决定</text>
+<circle cx="2020" cy="2370" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="2020" y="2377" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">17</text>
+<path d="M1670 2462 H1598 V2497 H1662" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#arrow)"/>
+<circle cx="1670" cy="2462" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1670" y="2469" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">18</text>
+<text x="1570" y="2488" font-size="26" font-weight="400" text-anchor="end" fill="#313B3A">按审核决定处理，更新工单状态</text>
+<path d="M1670 2570 L620 2570" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="964.0" y="2519" width="362.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="1145.0" y="2544" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">回写处理结果，生成会话通知</text>
+<circle cx="1670" cy="2570" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="1670" y="2577" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">19</text>
+<path d="M270 2670 L620 2670" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="342.0" y="2619" width="206.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="2644" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">轮询消息与进度</text>
+<circle cx="270" cy="2670" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="270" y="2677" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">20</text>
+<path d="M620 2770 L270 2770" fill="none" stroke="#313B3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+<rect x="290.0" y="2719" width="310.0" height="35" rx="5" fill="#FFFefa" fill-opacity="0.98"/>
+<text x="445.0" y="2744" font-size="26" font-weight="400" text-anchor="middle" fill="#313B3A">返回审核结果与当前状态</text>
+<circle cx="620" cy="2770" r="20" fill="#F5D775" stroke="#B99D4D" stroke-width="1.5"/>
+<text x="620" y="2777" font-size="21" font-weight="600" text-anchor="middle" fill="#6F5B20">21</text>
+<rect x="146" y="2880" width="248" height="80" rx="18" fill="#BBD3ED" stroke="#313B3A" stroke-width="1.8"/>
+<text x="270" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">客户</text>
+<rect x="496" y="2880" width="248" height="80" rx="18" fill="#F5DE8A" stroke="#313B3A" stroke-width="1.8"/>
+<text x="620" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">对话编排</text>
+<rect x="846" y="2880" width="248" height="80" rx="18" fill="#E9DFBA" stroke="#313B3A" stroke-width="1.8"/>
+<text x="970" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">大模型</text>
+<rect x="1196" y="2880" width="248" height="80" rx="18" fill="#D6E3BC" stroke="#313B3A" stroke-width="1.8"/>
+<text x="1320" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">校验与政策</text>
+<rect x="1546" y="2880" width="248" height="80" rx="18" fill="#C8DDCE" stroke="#313B3A" stroke-width="1.8"/>
+<text x="1670" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">执行与工单</text>
+<rect x="1896" y="2880" width="248" height="80" rx="18" fill="#EFC6B7" stroke="#313B3A" stroke-width="1.8"/>
+<text x="2020" y="2929" font-size="29" font-weight="550" text-anchor="middle" fill="#313B3A">审核员</text>
+<text x="1080" y="3014" font-size="24" font-weight="400" text-anchor="middle" fill="#66736E">角色按逻辑职责划分 · 实线表示请求或动作，虚线表示返回或反馈</text>
+<text x="1080" y="3054" font-size="23" font-weight="400" text-anchor="middle" fill="#66736E">代码版本 9d262d5 · 按 .env.example 的分级确认配置绘制 · 订单操作为模拟执行</text>
+</g></svg>
